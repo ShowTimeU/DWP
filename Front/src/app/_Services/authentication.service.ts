@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {User} from '../_Models/user';
 import {HttpClient} from '@angular/common/http';
@@ -6,8 +6,11 @@ import {map} from 'rxjs/operators';
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class AuthenticationService {
+
+  private url = 'http://localhost:8080/';
+  private urlUser = 'http://localhost:8080/user/';
 
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
@@ -20,7 +23,7 @@ export class AuthenticationService {
   }
 
   createUser(user: User): Observable<User> {
-    return this.http.post<User>('/api/createUser', user);
+    return this.http.post<User>(this.url + 'registration', user);
   }
 
   public get currentUserValue(): User {
@@ -28,15 +31,15 @@ export class AuthenticationService {
   }
 
   login(email: string, password: string) {
-    return this.http.post<any>('http://localhost:8080/api/login', { email, password })
+    return this.http.post<any>(this.url + 'login', {email, password})
       .pipe(map(user => {
-          if(!user) {
+          if (!user) {
             return this.snack('Username or password is incorrect');
           }
           sessionStorage.setItem('currentUser', JSON.stringify(user));
           this.currentUserSubject.next(user);
           return user;
-      })
+        })
       );
   }
 
@@ -46,8 +49,9 @@ export class AuthenticationService {
   }
 
   updateUser(user: User) {
-    this.matSnackBar.open('User details successfully saved!',null, {duration: 3000, panelClass: 'snackConf'});
-    this.http.post<User>( 'http://localhost:8080/api/updateUser', user).subscribe(data => {
+    this.matSnackBar.open('User details successfully saved!',
+      null, {duration: 3000, panelClass: 'snackConf'});
+    this.http.post<User>(this.urlUser + 'updateUser', user).subscribe(data => {
       sessionStorage.setItem('currentUser', JSON.stringify(user));
       this.currentUserSubject.next(user);
       return user;
@@ -55,7 +59,7 @@ export class AuthenticationService {
   }
 
   getUser(userId): Observable<User> {
-    return this.http.get<User>('http://localhost:8080/api/getUser/' + userId);
+    return this.http.get<User>(this.urlUser + 'getUser' + userId);
   }
 
   snack(msg) {

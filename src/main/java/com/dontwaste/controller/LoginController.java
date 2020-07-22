@@ -6,12 +6,14 @@ import com.dontwaste.model.customer.web.user.response.LoginResponse;
 import com.dontwaste.model.customer.web.user.response.UserResponse;
 import com.dontwaste.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.security.NoSuchAlgorithmException;
 
+@CrossOrigin
 @RestController
 public class LoginController {
     @Autowired

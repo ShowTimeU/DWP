@@ -8,20 +8,20 @@ import {HttpClient, HttpParams} from "@angular/common/http";
 })
 export class ProductService {
 
-  private url = 'http://localhost:8080/api';
+  private urlProduct = 'http://localhost:8080/product/';
 
   constructor(private http: HttpClient) { }
 
   createProduct(product): Observable<Product> {
-    return this.http.post<Product>(this.url + '/createProduct', product);
+    return this.http.post<Product>(this.urlProduct + 'createProduct', product);
   }
 
   getAllProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.url + '/getAllProducts');
+    return this.http.get<Product[]>(this.urlProduct + 'getAllProducts');
   }
 
   getFilteredProducts(area, min, max) {
-    return this.http.post<Product[]>(this.url + '/searchProduct', {area, min, max});
+    return this.http.post<Product[]>(this.urlProduct + 'searchProduct', {area, min, max});
   }
 
 }

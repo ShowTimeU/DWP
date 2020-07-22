@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
     this.auth.currentUser.subscribe(data => {
       this.currentUser = data;
       this.manager = this.currentUser.email == Role.Manager;
+      console.log(JSON.parse(sessionStorage.getItem('currentUser')));
     });
   }
 

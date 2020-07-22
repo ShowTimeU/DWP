@@ -11,7 +11,7 @@ import {CartItem} from "../_Models/cart-item";
 })
 export class CartService {
 
-  private cartUrl = 'http://localhost:8080/cart';
+  private urlCart = 'http://localhost:8080/cart/';
   private currentUser: User;
 
   constructor(private http: HttpClient,
@@ -20,44 +20,21 @@ export class CartService {
   }
 
   getCartItems(user: User): Observable<CartItem[]> {
-
     const userId = user.id.toString();
     let params = new HttpParams().set('userId', userId)
-    return this.http.get<CartItem[]>(this.cartUrl + '/getAllCart', {params: params});
-    // .pipe(
-    //   map((res: any[]) => {
-    //     let cartItems: CartItem[] = [];
-    //
-    //     for (let item of res) {
-    //       let productExists = false;
-    //
-    //       for (let i in cartItems) {
-    //         if (cartItems[i].product_id === item.id) {
-    //           cartItems[i].quantity++;
-    //           productExists = true;
-    //           break;
-    //         }
-    //       }
-    //       if (!productExists) {
-    //         cartItems.push(new CartItem(item.id, item.product));
-    //       }
-    //     }
-    //     return cartItems;
-    //   })
-    // )
-
+    return this.http.get<CartItem[]>(this.urlCart + 'getAllCart', {params: params});
   }
 
   addProductToCart(product: Product, user: User): Observable<any> {
     const userId = user.id;
     const productId = product.id;
-    return this.http.post<any>(this.cartUrl + '/addToCart', {productId, userId});
+    return this.http.post<any>(this.urlCart + 'addToCart', {productId, userId});
   }
 
   removeProductsFromCart(product: CartItem, user: User) {
     const productId = product.productId;
     const userId = user.id;
     let params = new HttpParams().set('productId', String(productId)).set('userId', String(userId));
-    return this.http.delete(this.cartUrl + '/deleteFromCart', {params: params});
+    return this.http.delete(this.urlCart + 'deleteFromCart', {params: params});
   }
 }
