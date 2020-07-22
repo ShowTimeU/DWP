@@ -1,0 +1,74 @@
+<body class="inventory-body">
+
+<div class="container">
+  <div class="info">
+    <h1>"Don't! Waste"</h1><br/>
+    <h2>for business</h2>
+  </div>
+
+  <div class="form">
+    <mat-card>
+      <mat-card-content>
+        <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+
+          <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput
+                   formControlName="name" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>E-mail address</mat-label>
+            <input matInput
+                   formControlName="email" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>City</mat-label>
+            <input matInput
+                   formControlName="city" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Address</mat-label>
+            <input matInput
+                   formControlName="address" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Website</mat-label>
+            <input matInput
+                   formControlName="website" required>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Telephone</mat-label>
+            <span matPrefix> +972 &nbsp; </span>
+            <input type="tel"
+                   matInput
+                   placeholder="501234567"
+                   formControlName="phone" required>
+            <mat-icon matSuffix>mode_edit</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <span class="textArea">{{role.length}}/{{maxChars}}</span>
+            <textarea matInput
+                      placeholder="Leave your comment"
+                      formControlName="comment"
+                      [(ngModel)]="role"
+                      [maxlength]="maxChars"></textarea>
+          </mat-form-field>
+          <br/>
+
+          <button mat-raised-button
+                  type="submit"
+                  class="button"
+                  [disabled]="!formGroup.valid"> Send request
+          </button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+</body>

@@ -1,0 +1,69 @@
+<div *ngIf="currentUser">
+  <mat-card>
+    <h1> <b>MY PERSONAL INFO</b> </h1>
+    <h2> Feel free to edit any of your details below so your account is totally up to date. </h2>
+    <mat-card-content>
+      <form [formGroup]="info" (ngSubmit)="onSubmit()" *ngIf="this.info">
+
+        <div class="field">
+          <p>E-mail:</p>
+          <mat-form-field appearance="fill">
+          <input matInput value="{{currentUser.email}}" disabled/>
+          </mat-form-field>
+        </div><br/><br/>
+
+        <div class="field">
+          <p>First name:</p>
+          <mat-form-field appearance="fill">
+            <input matInput
+                   value="{{currentUser.firstName}}"
+                   formControlName="firstName"
+                   (keydown.space)="$event.preventDefault()"
+                   required/>
+          </mat-form-field>
+        </div>
+
+        <div class="field">
+          <p>Last name:</p>
+          <mat-form-field appearance="fill">
+            <input matInput
+                   value="{{currentUser.lastName}}"
+                   formControlName="lastName"
+                   (keydown.space)="$event.preventDefault()"
+                   required/>
+          </mat-form-field>
+        </div>
+
+        <div class="field">
+          <p>Phone:</p>
+          <mat-form-field appearance="fill">
+            <span matPrefix><b>+972</b></span>
+            <input matInput
+                   value="{{currentUser.phone}}"
+                   formControlName="phone"
+                   (keydown.space)="$event.preventDefault()"
+                   required/>
+          </mat-form-field>
+        </div>
+
+        <div class="field">
+          <p>Area:</p>
+          <mat-form-field>
+            <mat-select formControlName="area" required>
+              <mat-option *ngFor="let area of areas"
+                          [value]="area.value" >
+                {{area.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <button mat-raised-button
+                type="submit"
+                class="button"
+                [disabled]="!info.dirty"> Save
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

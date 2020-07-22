@@ -1,0 +1,73 @@
+.inventory-body {
+  position: fixed;
+  min-width: 100%;
+  background-image: url("src/assets/background2.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+}
+img {
+  position: absolute;
+  margin-top: -58px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.container {
+  display: flex;
+}
+.info {
+  color: #2A2B2DFF;
+  position: absolute;
+  left: 23%;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+}
+h1 {
+  font-size: 40px;
+  margin-bottom: 0;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+h2 {
+  font-size: 34px;
+}
+.form {
+  position: absolute;
+  right: 10%;
+  top: 48%;
+  transform: translateY(-50%);
+  width: 550px;
+}
+mat-card {
+  background: rgba(255, 255, 255, 0.8);
+}
+mat-card-content {
+  text-align: center;
+}
+mat-form-field {
+  height: 50px;
+  position: relative;
+  max-width: 450px;
+  margin: 2.3em auto;
+  display: block;
+  font-size: 16px;
+}
+button {
+  background-color: #2A2B2DFF;
+  color: ghostwhite;
+  height: 50px;
+  width: 200px;
+  font-size: 20px;
+  margin-bottom: 20px;
+  margin-top: 70px;
+}
+textarea {
+  resize: none !important;
+  height: 100px;
+}
+.textArea {
+  position: absolute;
+  top: -20px;
+}

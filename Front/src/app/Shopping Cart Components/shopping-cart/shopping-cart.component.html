@@ -1,0 +1,55 @@
+<div class="container">
+  <ng-template #empty>
+    <h1> Your cart is empty </h1>
+  </ng-template>
+
+  <div *ngIf="cartItems.length > 0; else empty"><h1> Your chosen products</h1>
+    <table mat-table>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Product name: </th>
+      </ng-container>
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef> Price: </th>
+      </ng-container>
+      <ng-container matColumnDef="qty">
+        <th mat-header-cell *matHeaderCellDef> Qty: </th>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </table>
+
+    <app-shopping-cart-item *ngFor="let item of cartItems"
+                            [cartItem]="item"
+                            (productRemoved)="removeProduct($event)">
+    </app-shopping-cart-item>
+  </div>
+
+  <div class="action">
+    <div *ngIf="cartItems.length">
+      <a [routerLink]="['cart-details']" [matDialogClose]>
+        <button mat-raised-button
+                role="button"
+                [disabled]="cartItems.length < 1">
+          <mat-icon>shopping_cart</mat-icon>
+          View bag
+        </button>
+      </a>
+
+      <a [routerLink]="['checkout']" [matDialogClose]>
+        <button mat-raised-button
+                style="background-color: #8DE3E4;
+              color: #2A2B2DFF; margin-left: 20px"
+                role="button"
+                [disabled]="cartItems.length < 1">
+          <mat-icon>payment</mat-icon>
+          Checkout
+        </button>
+      </a>
+
+      <br/>
+      <h2> Total price: {{calcTotalPrice() | currency: 'ILS'}} </h2>
+    </div>
+  </div>
+</div>
+

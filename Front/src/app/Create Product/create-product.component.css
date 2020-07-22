@@ -1,0 +1,87 @@
+.inventory-body {
+  position: fixed;
+  min-width: 100%;
+  background-image: url("src/assets/background2.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+}
+img {
+  position: absolute;
+  margin-top: -58px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+h1 {
+  color: #404040;
+  font-size: 26px;
+  padding-top: 20px;
+}
+.form {
+  color: #404040;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  height: 800px;
+  width: 1200px;
+  margin-top: 60px;
+}
+mat-card {
+  text-align: center;
+  padding:0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.8);
+}
+mat-card-content {
+  display: flex;
+}
+mat-form-field {
+  padding-top: 50px;
+  padding-bottom: 30px;
+  font-size: 16px;
+}
+textarea {
+  resize: none !important;
+  height: 100px;
+}
+.textArea {
+  position: absolute;
+  top: -20px;
+}
+.shortFields {
+  width: 255px;
+  padding-right: 20px;
+}
+form {
+  display: flex;
+  height: 100%;
+}
+.left {
+  margin-left: 25px;
+  margin-right: 25px;
+  width: 50%;
+  display: grid;
+}
+.right {
+  margin-left: 25px;
+  margin-right: -15px;
+  width: 50%;
+}
+button {
+  background-color: #404040;
+  color: ghostwhite;
+  height: 50px;
+  width: 200px;
+  font-size: 20px;
+  margin-bottom: 20px;
+  margin-top: 70px;
+}
+::ng-deep.snackReg {
+  background-color: #F44336;
+  color: white;
+  bottom: 10px;
+}
+::ng-deep.mat-simple-snackbar {
+  justify-content: center !important;
+}

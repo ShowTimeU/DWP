@@ -1,0 +1,44 @@
+<mat-card>
+
+  <mat-form-field class="searchInput" floatLabel='never'>
+    <input
+      matInput
+      [(ngModel)]="searchText"
+      placeholder="Enter Product Name Or Institution Name"
+      autocomplete="off">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+
+  <div class="filterInput">
+    <mat-form-field appearance="fill">
+      <mat-label> Choose Area </mat-label>
+      <mat-select [(ngModel)]="selectedValue"
+                  (ngModelChange)="filter()" >
+        <mat-option *ngFor="let area of areas"
+                    [value]="area.value">
+          {{area.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label> Choose Price </mat-label>
+      <mat-select [(ngModel)]="selectedPrice"
+                  (ngModelChange)="filter()">
+        <mat-option *ngFor="let price of priceList"
+                    [value]="price">
+          {{price.view}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+</mat-card>
+
+<div class="products">
+  <div *ngFor="let product of productList | filter: searchText" class="list">
+    <app-product-card [productItem]="product"></app-product-card>
+  </div>
+</div>
+
+

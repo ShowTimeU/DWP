@@ -1,0 +1,54 @@
+.card {
+  width: 400px;
+  margin: 2% 11px 2% 11px;
+  color: #404040;
+  background: rgba(255, 255, 255, 0.5);
+}
+.header-image {
+  top: 3px;
+  background-size: cover;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+}
+mat-card-header {
+  height: 70px;
+}
+img {
+  height: 265px;
+}
+::ng-deep .mat-card-header-text {
+  margin: 0 !important;
+}
+.mat-card-header-text {
+  margin: 0 auto !important;
+}
+.price {
+  display: flex;
+  font-size: 16px;
+  margin-bottom: 40px;
+}
+.newPrice {
+  left: 51%;
+  position: absolute;
+}
+.oldPrice {
+  position: absolute;
+  right: 51%;
+  text-decoration: line-through;
+}
+::ng-deep.snackAdd {
+  position: absolute;
+  top: 65px;
+  right: 112px;
+  height: 50px;
+  background-color: #FF4081;
+  color: white;
+}
+
+::ng-deep.mat-simple-snackbar {
+  justify-content: center !important;
+}
+button {
+  background: rgba(255, 255, 255, 0.3);
+}

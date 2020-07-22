@@ -1,0 +1,65 @@
+mat-card {
+  max-width: 620px;
+  margin: 110px auto 0;
+  text-align: center;
+  height: 750px;
+  padding: 0;
+  color: #404040;
+}
+mat-card:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+h1 {
+  font-size: 30px;
+  padding-top: 20px;
+}
+h2 {
+  font-size: 16px;
+}
+mat-card-content {
+  width: 100%;
+  margin-top: 30px;
+  position: absolute;
+  text-align: center;
+}
+.field {
+  display: flex;
+  font-size: 18px;
+  align-items: center;
+  justify-content: center;
+}
+p {
+  width: 100px;
+  text-align: left;
+}
+mat-form-field {
+  margin-bottom: 30px;
+  text-align: center;
+  vertical-align: middle;
+  padding-left: 20px;
+  width: 430px;
+  height: 60px;
+  font-size: 18px;
+}
+span {
+  position: relative;
+  left: 130px;
+}
+button {
+  background-color: #404040;
+  color: ghostwhite;
+  height: 50px;
+  width: 200px;
+  font-size: 20px;
+  margin-top: 30px;
+}
+
+::ng-deep.snackConf {
+  background-color: #FF4081;
+  color: white;
+  bottom: 10px !important;
+}
+
+::ng-deep.mat-simple-snackbar {
+  justify-content: center !important;
+}

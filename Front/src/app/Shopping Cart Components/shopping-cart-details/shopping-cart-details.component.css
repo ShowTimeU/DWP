@@ -1,0 +1,65 @@
+mat-card {
+  position: absolute;
+  min-height: 100% !important;
+  top: 0;
+  width: 100%;
+  box-sizing: border-box;
+  color: #404040;
+}
+h1 {
+  padding-top: 100px;
+  font-size: 30px;
+  text-align: center;
+  font-weight: bold;
+}
+
+img {
+  height: 100%;
+  width: 70%;
+}
+table {
+  width: 100%;
+}
+th {
+  font-size: 16px;
+  width: 25%;
+}
+th.mat-header-cell {
+  padding-right: 0;
+  padding-left: 0;
+  text-align: center;
+  border: 0;
+}
+th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+  padding-right: 0;
+  padding-left: 0;
+  text-align: center;
+}
+th.mat-header-cell:last-of-type, td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type {
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+  width: 10%;
+}
+td.mat-cell{
+  border-bottom-style: none;
+}
+mat-card-actions {
+  margin: 0 auto;
+  text-align: center;
+}
+.checkoutText {
+  font-size: 30px;
+  text-align: center;
+  padding-top: 0;
+}
+.checkout {
+  font-size: 20px;
+  background-color: #8DE3E4;
+  color: #404040;
+  width: 200px;
+  height: 50px;
+  margin-bottom: 50px !important;
+}
+
+

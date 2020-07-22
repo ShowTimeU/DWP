@@ -1,0 +1,144 @@
+<mat-sidenav-container (backdropClick)="close('backdrop')">
+
+  <mat-sidenav #sidenav fixedInViewport="true" [mode]="push" [opened]="false">
+
+    <mat-nav-list>
+      <div class="menu">
+
+        <div *ngIf="currentUser" class="userName">
+          <button mat-fab id="avatar">
+            <span class="initials">{{checkNameInitials()}}</span>
+          </button>
+          <h3 style="margin: 0; padding: 19.5px 0 0 100px;"> Hi, </h3>
+          <h1 style="position:relative;
+                     padding-left: 100px;
+                     color: #404040"><b>{{currentUser.firstName}} {{currentUser.lastName}}</b></h1>
+          <hr>
+        </div>
+
+        <div class="user">
+          <a [routerLink]="['user-info']"
+             (click)="sidenav.close()"
+             *ngIf="currentUser && isUserOrAdmin">
+            <button mat-button>
+              <mat-icon>account_circle</mat-icon>
+              <span> My info </span>
+            </button>
+          </a><br/><br/>
+          <a [routerLink]="['user-orders']"
+             (click)="sidenav.close()"
+             *ngIf="currentUser && isUserOrAdmin">
+            <button mat-button>
+              <mat-icon>list</mat-icon>
+              <span> My orders </span>
+            </button>
+          </a><br/><br/>
+          <a [routerLink]="['user-social-accounts']"
+             (click)="sidenav.close()"
+             *ngIf="currentUser && isUserOrAdmin">
+            <button mat-button>
+              <mat-icon>people</mat-icon>
+              <span> My social accounts </span>
+            </button>
+          </a><br/><br/>
+          <a [routerLink]="['user-payment-methods']"
+             (click)="sidenav.close()"
+             *ngIf="currentUser && isUserOrAdmin">
+            <button mat-button>
+              <mat-icon>payments</mat-icon>
+              <span> Payment methods </span>
+            </button>
+          </a><br/><br/>
+        </div>
+
+        <div class="manager">
+          <a [routerLink]="['business-info']"
+             (click)="sidenav.close()"
+             *ngIf="currentUser && isManager">
+            <button mat-button>
+              <mat-icon>account_circle</mat-icon>
+              <span> General info </span>
+            </button>
+          </a><br/><br/>
+          <a [routerLink]="['business-products']"
+             (click)="sidenav.close()"
+             *ngIf="currentUser && isManager">
+            <button mat-button>
+              <mat-icon>view_list</mat-icon>
+              <span> All products </span>
+            </button>
+          </a><br/><br/>
+          <a [routerLink]="['business-orders']"
+             (click)="sidenav.close()"
+             *ngIf="currentUser && isManager">
+            <button mat-button>
+              <mat-icon>history</mat-icon>
+              <span> All orders </span>
+            </button>
+          </a>
+        </div>
+
+        <div class="info">
+          <hr>
+          <div class="aboutUs">
+            <a [routerLink]="['about-us']" (click)="sidenav.close()">
+              <button mat-button>
+                <mat-icon>info</mat-icon>
+                <span> About Us </span>
+              </button>
+            </a>
+          </div>
+          <div class="socials">
+            <a [href]="instagramUrl" target="_blank">
+              <img
+                src="../../assets/3694238-128.png"
+                alt="" matTooltip="Instagram"
+                matTooltipPosition="above"
+                style="padding-right: 17px">
+            </a>
+            <a [href]="facebookUrl" target="_blank">
+              <img src="../../assets/3694241-128.png"
+                   alt="" matTooltip="Facebook"
+                   matTooltipPosition="above"
+                   style="padding-right: 17px">
+            </a>
+            <a [href]="twitterUrl" target="_blank" style="padding-right: 17px">
+              <img
+                src="../../assets/3694223-128.png"
+                alt="" matTooltip="Twitter"
+                matTooltipPosition="above">
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar id="header">
+      <a [routerLink]="['/']"
+         style="color: ghostwhite;
+         font-size: 24px;
+         margin: 0 auto;
+         text-decoration: none;
+         letter-spacing: 5px"> Don't!Waste </a>
+
+      <button class="hamBtn"
+              type="button"
+              aria-label="Toggle sidenav"
+              mat-icon-button
+              (click)="sidenav.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+
+    </mat-toolbar>
+
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

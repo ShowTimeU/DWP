@@ -1,0 +1,95 @@
+.inventory-body {
+  position: fixed;
+  min-width: 100%;
+  background-image: url("src/assets/background2.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+}
+img {
+  position: absolute;
+  margin-top: -58px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.container {
+  display: flex;
+}
+.info {
+  position: absolute;
+  left: 23%;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #2A2B2DFF;
+  text-align: center;
+}
+.form {
+  position: absolute;
+  right: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 625px;
+  width: 550px;
+  text-align: center;
+}
+h1 {
+  font-size: 40px;
+  margin-bottom: 0;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+h2 {
+  font-size: 34px;
+}
+mat-card {
+  background: rgba(255, 255, 255, 0.8);
+}
+mat-card:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+mat-form-field {
+  position: relative;
+  max-width: 450px;
+  margin: 1.5em auto;
+  display: block;
+  font-size: 20px;
+}
+.newCustomer {
+  margin: 30px 0 50px 0;
+  font-size: 24px;
+  overflow: hidden;
+  text-align: center;
+}
+.newCustomer:before,
+.newCustomer:after {
+  background-color: #000;
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 50%;
+}
+.newCustomer:before {
+  right: 0.5em;
+  margin-left: -50%;
+}
+.newCustomer:after {
+  left: 0.5em;
+  margin-right: -50%;
+}
+button {
+  background-color: #2A2B2DFF;
+  color: ghostwhite;
+  height: 50px;
+  width: 200px;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+::ng-deep.snackBusLogin {
+  background-color: #F44336;
+  color: white;
+  bottom: 30px !important;
+}

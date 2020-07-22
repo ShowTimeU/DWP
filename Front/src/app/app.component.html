@@ -1,0 +1,45 @@
+<button (click)="logout()"
+        *ngIf="currentUser"
+        [hidden]="!currentUser"
+        mat-stroked-button
+        class="logoutBtn">
+  <mat-icon>logout</mat-icon>
+  Log Out
+</button>
+
+<div class="dropdown">
+  <button mat-stroked-button
+          *ngIf="!currentUser"
+          [hidden]="currentUser"
+          class="loginBtn">
+    <mat-icon>login</mat-icon>
+    Log In
+  </button>
+  <div class="dropdown-content">
+    <button mat-icon-button
+            [routerLink]="['login']">
+      <mat-icon>account_circle</mat-icon>
+      User Log In
+    </button>
+    <button mat-icon-button
+            [routerLink]="['business-login']">
+      <mat-icon>business_center</mat-icon>
+      Business Log In
+    </button>
+  </div>
+</div>
+
+<div *ngIf="this.router.url != '/cart-details'">
+  <button mat-icon-button
+          (click)="openCart()"
+          class="cartBtn"
+          *ngIf="currentUser && isUserOrAdmin"
+          [hidden]="!currentUser">
+    <mat-icon [matBadge]="total"
+              matBadgeOverlap="false"
+              [matBadgeHidden]="total < 1"
+              matBadgeColor="accent">shopping_cart
+    </mat-icon>
+  </button>
+</div>
+<app-header></app-header>

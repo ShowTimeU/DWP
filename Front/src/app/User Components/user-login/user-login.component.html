@@ -1,0 +1,49 @@
+<body class="inventory-body">
+
+<div classs="container">
+  <div class="info">
+    <h1>"Don't! Waste"</h1><br/>
+    <h2>for user</h2>
+  </div>
+
+  <div class="form">
+    <mat-card>
+      <mat-card-content>
+        <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+          <mat-form-field appearance="fill">
+            <mat-label>Email address</mat-label>
+            <input matInput
+                   formControlName="email"
+                   [ngClass]="{ 'is-invalid': submitted && f.email.errors }" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input type="password"
+                   matInput
+                   formControlName="password"
+                   [ngClass]="{ 'is-invalid': submitted && f.password.errors }" required>
+          </mat-form-field>
+
+          <div>
+            <button mat-raised-button
+                    type="submit" [disabled]="!formGroup.valid"> Sign In
+            </button>
+          </div>
+          <br/>
+
+        </form>
+
+        <h2 class="newCustomer"> New customer? </h2>
+
+        <div>
+          <button
+            mat-raised-button
+            (click)="toRegistration()"> Create Account
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+</body>

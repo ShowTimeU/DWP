@@ -1,0 +1,26 @@
+<table *ngIf="cartItem" mat-table>
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef><b>{{cartItem.productName}} </b>
+    </th>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef> <b>{{calcPrice() | currency: 'ILS'}}</b></th>
+  </ng-container>
+
+  <ng-container matColumnDef="quantity">
+    <th mat-header-cell *matHeaderCellDef> <b>{{cartItem.quantity}}</b> </th>
+  </ng-container>
+
+  <ng-container matColumnDef="cancel" class="cancelBtn">
+    <th mat-header-cell *matHeaderCellDef>
+      <button style="float: right;" mat-icon-button (click)="onClick()">
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </th>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</table><br/>
+

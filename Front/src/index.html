@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>DontWasteProject</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+</head>
+<body class="mat-typography">
+<app-root></app-root>
+<script>
+  let btn = document.getElementById("avatar");
+  let prevScrollPos = window.pageYOffset;
+  window.onscroll = function () {
+    const currentScrollPos = window.pageYOffset;
+    if (currentScrollPos < prevScrollPos) {
+      document.getElementById("avatar").style.backgroundColor = '#404040';
+      document.getElementById("avatar").style.color = 'ghostwhite';
+    } else {
+      document.getElementById("avatar").style.backgroundColor = '#8DE3E4';
+      document.getElementById("avatar").style.color = '#404040';
+    }
+    prevScrollPos = currentScrollPos;
+  }
+</script>
+
+</body>
+</html>

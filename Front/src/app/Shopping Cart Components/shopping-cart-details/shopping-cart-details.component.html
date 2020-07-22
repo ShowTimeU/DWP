@@ -1,0 +1,61 @@
+<mat-card>
+  <ng-template #empty>
+    <h1> Your cart is empty </h1>
+  </ng-template>
+  <div *ngIf="cartItems.length > 0; else empty">
+    <h1> Your chosen products </h1>
+  </div>
+  <mat-card-content>
+
+    <div *ngFor="let item of cartItems">
+      <table mat-table>
+        <ng-container matColumnDef="image">
+          <th mat-header-cell *matHeaderCellDef><img [src]="item.image">
+          </th>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef>
+            <b>{{item.productName}}</b> from {{item.institution}}<br/><br/>
+            Ingredients: {{item.description}}
+          </th>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef> Price: {{item.price * item.quantity | currency: 'ILS'}} </th>
+        </ng-container>
+
+        <ng-container matColumnDef="location">
+          <th mat-header-cell *matHeaderCellDef> Located in <b>{{item.area}}</b></th>
+        </ng-container>
+
+        <ng-container matColumnDef="quantity">
+          <th mat-header-cell *matHeaderCellDef> Qty: {{item.quantity}} </th>
+        </ng-container>
+
+        <ng-container matColumnDef="cancel" class="cancelBtn">
+          <th mat-header-cell *matHeaderCellDef>
+            <button style="float: right;" mat-icon-button (click)="removeProduct(item)">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </th>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+      </table>
+      <br/>
+
+    </div>
+  </mat-card-content>
+  <mat-card-actions *ngIf="cartItems.length > 0">
+    <h2 class="checkoutText"> Total price: <b>{{calcTotalPrice() | currency: 'ILS'}}</b> </h2>
+      <button class="checkout"
+              mat-raised-button
+              role="button"
+              [disabled]="cartItems.length < 1" (click)="checkPage()">
+        <mat-icon>payment</mat-icon>
+        Checkout
+      </button>
+  </mat-card-actions>
+</mat-card>

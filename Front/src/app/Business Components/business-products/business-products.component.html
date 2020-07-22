@@ -1,0 +1,50 @@
+<mat-card>
+  <mat-card-content>
+    <button mat-raised-button
+            (click)="toCreateProduct()">
+      <mat-icon>add_circle_outline</mat-icon>
+      Add new product
+    </button>
+
+    <div *ngFor="let item of productList">
+      <table mat-table>
+        <ng-container matColumnDef="image">
+          <th mat-header-cell *matHeaderCellDef><img [src]="item.image">
+          </th>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef>
+            <b>{{item.productName}}</b> from {{item.institution}}<br/><br/>
+            Ingredients: {{item.description}}
+          </th>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef> Price: {{item.price * item.quantity | currency: 'ILS'}} </th>
+        </ng-container>
+
+        <ng-container matColumnDef="location">
+          <th mat-header-cell *matHeaderCellDef> Located in <b>{{item.area}}</b></th>
+        </ng-container>
+
+        <ng-container matColumnDef="quantity">
+          <th mat-header-cell *matHeaderCellDef> Qty: {{item.quantity}} </th>
+        </ng-container>
+
+        <ng-container matColumnDef="cancel" class="cancelBtn">
+          <th mat-header-cell *matHeaderCellDef>
+            <!--          <button style="float: right;" mat-icon-button (click)="removeProduct(item)">-->
+            <!--            <mat-icon>cancel</mat-icon>-->
+            <!--          </button>-->
+          </th>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+      </table>
+      <br/>
+
+    </div>
+  </mat-card-content>
+</mat-card>

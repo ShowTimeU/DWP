@@ -1,0 +1,68 @@
+h1 {
+  font-size: 40px;
+  margin-top: 120px;
+  text-align: center;
+  font-weight: bold;
+  color: #404040;
+}
+h2 {
+  margin-top: 50px;
+  color: #404040;
+  font-size: 25px;
+  text-align: center;
+  font-weight: bold;
+}
+.mainTable {
+  text-align: center;
+  margin: 25px auto;
+  border-collapse: collapse;
+  border-style: hidden;
+  width: 50%;
+}
+td {
+  line-height: 1.6;
+  width: 20%;
+  padding: 15px;
+  border: 1px solid #404040;
+}
+
+.title {
+  color: #2A2B2DFF;
+  font-size: 18px;
+  font-weight: bold;
+}
+.subtitle {
+  color: #2A2B2DFF;
+  font-size: 16px;
+}
+h3 {
+  color: #2A2B2DFF;
+  font-size: 25px;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 50px;
+}
+mat-card {
+  margin: 25px auto;
+  height: 350px;
+  text-align: center;
+  width: 60%;
+}
+.beforeAfter {
+  border-collapse: collapse;
+  border-style: hidden;
+  height: 100%;
+}
+.ba1 {
+  color: #2A2B2DFF;
+  font-size: 30px;
+  font-weight: bold;
+}
+.ba2 {
+  color: #2A2B2DFF;
+  font-size: 24px;
+}
+th {
+  padding: 0 20px 0 20px;
+  border: 1px solid #2A2B2DFF;
+}

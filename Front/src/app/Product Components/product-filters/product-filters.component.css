@@ -1,0 +1,26 @@
+mat-card {
+  top: 50px;
+  background-color: ghostwhite;
+  color: #404040;
+}
+mat-form-field {
+  padding-right: 25px;
+  width: 200px;
+}
+.filterInput{
+  margin: 0 auto;
+  display: table;
+}
+.products {
+  text-align: center;
+  margin: 55px 43px 0 43px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.list {
+  padding-top: 80px;
+}
+.searchInput {
+  width: 95%;
+  margin: 0 42px;
+}
