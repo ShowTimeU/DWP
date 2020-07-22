@@ -5,6 +5,7 @@ import {AuthenticationService} from "../../_Services/authentication.service";
 import {first} from "rxjs/operators";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-user-registration',
@@ -25,6 +26,7 @@ export class UserRegistrationComponent implements OnInit {
   formGroup: FormGroup;
   returnUrl: string;
   error = '';
+  private encWord = 'food';
 
   constructor(private snack: MatSnackBar,
               private formBuilder: FormBuilder,
@@ -55,6 +57,7 @@ export class UserRegistrationComponent implements OnInit {
     if (this.formGroup.invalid) {
       return;
     }
+    // this.formGroup.value.password = CryptoJS.AES.encrypt(this.encWord.trim(), this.formGroup.value.password.trim()).toString();
     this.auth.createUser(this.formGroup.value)
       .pipe(first())
       .subscribe(
