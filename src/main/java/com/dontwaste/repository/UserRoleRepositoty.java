@@ -9,5 +9,6 @@ import java.util.List;
 public interface UserRoleRepositoty extends JpaRepository<UserRole, Long> {
 
     List<UserRole> getAllByUser(User user);
+    UserRole getByUser(User user);
 
 }

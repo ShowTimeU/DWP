@@ -2,6 +2,7 @@ package com.dontwaste.converter.user;
 
 import com.dontwaste.model.customer.entity.Session;
 import com.dontwaste.model.customer.entity.User;
+import com.dontwaste.model.customer.entity.UserRole;
 import com.dontwaste.model.customer.web.user.UserCreateRequest;
 import com.dontwaste.model.customer.web.user.response.LoginResponse;
 import com.dontwaste.model.customer.web.user.response.UserResponse;
@@ -40,7 +41,7 @@ public class UserConverter {
                 .build();
     }
 
-    public LoginResponse loginResponse(User user, Session session){
+    public LoginResponse loginResponse(User user, Session session, UserRole userRole){
         return LoginResponse.builder()
                 .id(user.getId())
                 .firstName(user.getFirstName())
@@ -49,6 +50,7 @@ public class UserConverter {
                 .phone(user.getPhone())
                 .area(user.getArea())
                 .token(session.getToken())
+                .role(userRole.getRole().getRoleName())
                 .build();
     }
 

@@ -99,8 +99,8 @@ public class UserServiceImp implements UserService{
                 .token(UUID.randomUUID().toString())
                 .build();
         sessionService.addSession(userSession);
-
-        return userConverter.loginResponse(user, userSession);
+        UserRole userRole = userRoleRepositoty.getByUser(user);
+        return userConverter.loginResponse(user, userSession, userRole);
     }
 
 }
