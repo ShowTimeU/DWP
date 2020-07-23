@@ -15,6 +15,7 @@ public interface UserService {
     LoginResponse login(UserLoginRequest userLoginRequest) throws NoSuchAlgorithmException;
     Boolean updateUser(UserUpdateRequest userUpdateRequest);
     UserResponse getUserById(Long id);
+    void logout(String token);
 
 
 

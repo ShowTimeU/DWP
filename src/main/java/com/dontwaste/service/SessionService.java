@@ -7,7 +7,7 @@ public interface SessionService {
 
     void addSession(Session session);
     User getUserByToken(String token);
-
+    void deleteSessionByToken(String token);
 
 
 }

@@ -103,4 +103,8 @@ public class UserServiceImp implements UserService{
         return userConverter.loginResponse(user, userSession, userRole);
     }
 
+    @Override
+    public void logout(String token) {
+        sessionService.deleteSessionByToken(token);
+    }
 }

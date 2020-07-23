@@ -24,4 +24,9 @@ public class SessionServiceImp implements SessionService {
         Session session = sessionRepository.findByToken(token);
         return session.getUser();
     }
+
+    @Override
+    public void deleteSessionByToken(String token) {
+        sessionRepository.deleteByToken(token);
+    }
 }

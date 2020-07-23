@@ -35,4 +35,9 @@ public class UserController {
         return userService.getUserById(id);
     }
 
+    @DeleteMapping(value = "/logout")
+    public void logout(@RequestParam String token){
+        userService.logout(token);
+    }
+
 }
