@@ -7,4 +7,5 @@ export class User {
   phone: string;
   area: string;
   token?: string;
+  role?: string;
 }

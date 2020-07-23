@@ -6,7 +6,6 @@ import {CartService} from "../../_Services/cart.service";
 import {AuthenticationService} from "../../_Services/authentication.service";
 import {MessengerService} from "../../_Services/messenger.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {User} from "../../_Models/user";
 import {Role} from "../../_Models/role";
 
 @Component({
@@ -31,8 +30,10 @@ export class ProductCardComponent implements OnInit {
   ngOnInit() {
     this.auth.currentUser.subscribe(data => {
       this.currentUser = data;
-      this.manager = this.currentUser.email == Role.Manager;
     });
+    if(this.currentUser) {
+      this.manager = this.currentUser.role == Role.Manager;
+    }
   }
 
 

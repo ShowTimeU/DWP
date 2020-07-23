@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
 import {User} from "../_Models/user";
-import {HttpClient, HttpParams} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {AuthenticationService} from "./authentication.service";
 import {Product} from "../_Models/product";
 import {CartItem} from "../_Models/cart-item";
@@ -20,21 +20,24 @@ export class CartService {
   }
 
   getCartItems(user: User): Observable<CartItem[]> {
+    let headers = new HttpHeaders().set('Authorization', this.currentUser.token);
     const userId = user.id.toString();
     let params = new HttpParams().set('userId', userId)
-    return this.http.get<CartItem[]>(this.urlCart + 'getAllCart', {params: params});
+    return this.http.get<CartItem[]>(this.urlCart + 'getAllCart', {params: params, headers: headers});
   }
 
   addProductToCart(product: Product, user: User): Observable<any> {
+    let headers = new HttpHeaders().set('Authorization', this.currentUser.token);
     const userId = user.id;
     const productId = product.id;
-    return this.http.post<any>(this.urlCart + 'addToCart', {productId, userId});
+    return this.http.post<any>(this.urlCart + 'addToCart', {productId, userId}, {headers: headers});
   }
 
   removeProductsFromCart(product: CartItem, user: User) {
+    let headers = new HttpHeaders().set('Authorization', this.currentUser.token);
     const productId = product.productId;
     const userId = user.id;
     let params = new HttpParams().set('productId', String(productId)).set('userId', String(userId));
-    return this.http.delete(this.urlCart + 'deleteFromCart', {params: params});
+    return this.http.delete(this.urlCart + 'deleteFromCart', {params: params, headers: headers});
   }
 }

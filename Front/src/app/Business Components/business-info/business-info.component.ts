@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from "../../_Models/user";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {Area} from "../../_Models/area";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {AuthenticationService} from "../../_Services/authentication.service";
 
@@ -22,7 +21,6 @@ export class BusinessInfoComponent implements OnInit {
   ngOnInit() {
     this.auth.currentUser.subscribe(user => {
       this.currentUser = user;
-      console.log(this.currentUser);
     });
     this.auth.getUser(this.currentUser.id).subscribe(data=> {
       this.currentUser = data;
@@ -32,6 +30,8 @@ export class BusinessInfoComponent implements OnInit {
         id: this.currentUser.id,
         firstName: new FormControl(this.currentUser.firstName, Validators.pattern('[a-zA-Z ]{2,15}')),
         lastName: new FormControl(this.currentUser.lastName, Validators.pattern('[a-zA-Z ]{2,15}')),
+        phone: new FormControl(this.currentUser.phone),
+        area: new FormControl(this.currentUser.area)
       });
     });
   }

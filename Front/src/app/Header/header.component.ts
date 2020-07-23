@@ -55,7 +55,7 @@ export class HeaderComponent implements OnInit {
   }
 
   get isUserOrAdmin() {
-    if(this.currentUser && this.currentUser.email === Role.Manager) {
+    if(this.currentUser && this.currentUser.role === Role.Manager) {
       return false;
     } else {
       return this.currentUser;
@@ -63,7 +63,7 @@ export class HeaderComponent implements OnInit {
   }
 
   get isManager() {
-    return this.currentUser && this.currentUser.email === Role.Manager;
+    return this.currentUser && this.currentUser.role === Role.Manager;
   }
 
 }

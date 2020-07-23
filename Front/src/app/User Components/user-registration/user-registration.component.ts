@@ -57,7 +57,7 @@ export class UserRegistrationComponent implements OnInit {
     if (this.formGroup.invalid) {
       return;
     }
-    // this.formGroup.value.password = CryptoJS.AES.encrypt(this.encWord.trim(), this.formGroup.value.password.trim()).toString();
+    // this.formGroup.value.password = CryptoJS.AES.encrypt(this.encWord, this.formGroup.value.password).toString();
     this.auth.createUser(this.formGroup.value)
       .pipe(first())
       .subscribe(

@@ -13,7 +13,7 @@ import {Role} from "./_Models/role";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   currentUser: User;
   total: any;
 
@@ -27,19 +27,23 @@ export class AppComponent implements OnInit{
       this.currentUser = this.auth.currentUserValue;
       setInterval(() => {
         this.checkCart();
-        this.changeDetection.markForCheck();}, 1000)
-      } else {
+        this.changeDetection.markForCheck();
+      }, 1000)
+    } else {
       this.auth.currentUser.subscribe(x => this.currentUser = x);
     }
   }
+
   ngOnInit() {
 
   }
 
   checkCart() {
-    this.cart.getCartItems(this.currentUser).subscribe(data => {
-      this.total = data.reduce((acc, prod) => acc += prod.quantity, 0);
-    });
+    if (this.currentUser.role == Role.User) {
+      this.cart.getCartItems(this.currentUser).subscribe(data => {
+        this.total = data.reduce((acc, prod) => acc += prod.quantity, 0);
+      });
+    }
   }
 
   logout() {
@@ -55,7 +59,7 @@ export class AppComponent implements OnInit{
   }
 
   get isUserOrAdmin() {
-    if(this.currentUser && this.currentUser.email === Role.Manager) {
+    if (this.currentUser && this.currentUser.role === Role.Manager) {
       return false;
     } else {
       return this.currentUser;

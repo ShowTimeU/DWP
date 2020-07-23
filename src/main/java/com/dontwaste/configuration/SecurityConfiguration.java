@@ -23,10 +23,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/registration", "/login").permitAll();
-//                .antMatchers("/institution").hasAnyAuthority("MANAGER", "ADMIN")
-//                .antMatchers("/product").hasAnyAuthority("MANAGER", "ADMIN")
-//                .antMatchers("/cart").hasAnyAuthority("USER");
+                .antMatchers("/registration", "/login", "/user").permitAll()
+                .antMatchers("/institution").hasAnyAuthority("MANAGER", "ADMIN")
+                .antMatchers("/product").hasAnyAuthority("MANAGER", "ADMIN", "USER")
+                .antMatchers("/cart/getAllCart").hasAnyAuthority("USER");
 
         http.addFilterBefore(securityFilter(), UsernamePasswordAuthenticationFilter.class);
 

@@ -13,7 +13,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatButtonModule} from '@angular/material/button';
 import {UserLoginComponent} from './User Components/user-login/user-login.component';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule, HttpHeaderResponse, HttpHeaders} from '@angular/common/http';
 import {JwtInterceptor} from './_Helpers/jwt.interceptor';
 import {ErrorInterceptor} from './_Helpers/error.interceptor';
 import {AppRoutingModule} from './app-routing.module';

@@ -20,9 +20,10 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.auth.currentUser.subscribe(data => {
       this.currentUser = data;
-      this.manager = this.currentUser.email == Role.Manager;
-      console.log(JSON.parse(sessionStorage.getItem('currentUser')));
     });
+    if(this.currentUser) {
+      this.manager = this.currentUser.role == Role.Manager;
+    }
   }
 
   toSearchPage() {
