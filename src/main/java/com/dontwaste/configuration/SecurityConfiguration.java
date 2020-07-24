@@ -25,8 +25,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/registration", "/login", "/user").permitAll()
                 .antMatchers("/institution").hasAnyAuthority("MANAGER", "ADMIN")
-                .antMatchers("/product").hasAnyAuthority("MANAGER", "ADMIN", "USER")
-                .antMatchers("/cart/getAllCart").hasAnyAuthority("USER");
+                .antMatchers("/product").hasAnyAuthority("MANAGER", "ADMIN", "USER");
 
         http.addFilterBefore(securityFilter(), UsernamePasswordAuthenticationFilter.class);
 
