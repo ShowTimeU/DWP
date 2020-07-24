@@ -31,24 +31,18 @@ public class Runner implements CommandLineRunner {
                 .institutionName("Japanica")
                 .institutionCity("Haifa")
                 .institutionAddress("Mashava HaGermanit 5")
-                .institutionEmail("Japanica@gmail.com")
-                .institutionPassword("12345")
                 .institutionPhone("12345678")
                 .institutionLogo("JapanicaLogo")
                 .institutionWebSite("japanica.com")
-                .institutionComment("No comment")
                 .build();
 
         Institution institution2 = Institution.builder()
                 .institutionName("Burger Salun")
                 .institutionCity("Tel-Aviv")
                 .institutionAddress("Rotchild 53")
-                .institutionEmail("Burger@gmail.com")
-                .institutionPassword("qwerty")
                 .institutionPhone("87654321")
                 .institutionLogo("BurgerSalunLogo")
                 .institutionWebSite("BurgerSalun.net")
-                .institutionComment("No comment")
                 .build();
 
         institutionRepository.saveAll(Arrays.asList(institution1, institution2));

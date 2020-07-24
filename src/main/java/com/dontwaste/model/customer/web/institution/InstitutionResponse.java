@@ -14,9 +14,7 @@ public class InstitutionResponse {
     private String institutionCity;
     private String institutionAddress;
     private String institutionPhone;
-    private String institutionEmail;
     private String institutionWebSite;
-    private String institutionComment;
     private String institutionLogo;
 
 }

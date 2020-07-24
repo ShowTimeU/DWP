@@ -31,6 +31,4 @@ public class User extends BaseDate {
 
     @Column(name = "PHONE", length = 20, nullable = false)
     private String phone;
-    @Column(name = "AREA", length = 100)
-    private String area;
 }
