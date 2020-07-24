@@ -25,10 +25,12 @@ export class AppComponent implements OnInit {
               private cart: CartService) {
     if (this.auth.currentUserValue) {
       this.currentUser = this.auth.currentUserValue;
-      setInterval(() => {
-        this.checkCart();
-        this.changeDetection.markForCheck();
-      }, 1000)
+      if(this.currentUser.role === Role.User) {
+        setInterval(() => {
+          this.checkCart();
+          this.changeDetection.markForCheck();
+        }, 2000)
+      }
     } else {
       this.auth.currentUser.subscribe(x => this.currentUser = x);
     }
@@ -39,11 +41,10 @@ export class AppComponent implements OnInit {
   }
 
   checkCart() {
-    if (this.currentUser.role == Role.User) {
-      this.cart.getCartItems(this.currentUser).subscribe(data => {
-        this.total = data.reduce((acc, prod) => acc += prod.quantity, 0);
-      });
-    }
+    this.cart.getCartItems(this.currentUser).subscribe(data => {
+      this.total = data.reduce((acc, prod) => acc += prod.quantity, 0);
+    });
+
   }
 
   logout() {
