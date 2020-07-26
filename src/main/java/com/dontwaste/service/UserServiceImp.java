@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -61,7 +62,6 @@ public class UserServiceImp implements UserService{
         if(userToUpdate == null){
             throw new RuntimeException("This user is not exist in database");
         }
-        userToUpdate.setArea(userUpdateRequest.getArea());
         userToUpdate.setFirstName(userUpdateRequest.getFirstName());
         userToUpdate.setLastName(userUpdateRequest.getLastName());
         userToUpdate.setPhone(userUpdateRequest.getPhone());
@@ -70,6 +70,11 @@ public class UserServiceImp implements UserService{
             return true;
         }
         return false;
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 
     @Override

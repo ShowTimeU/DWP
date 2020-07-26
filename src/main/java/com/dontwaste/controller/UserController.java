@@ -1,6 +1,7 @@
 package com.dontwaste.controller;
 
 
+import com.dontwaste.model.customer.entity.User;
 import com.dontwaste.model.customer.web.user.UserCreateRequest;
 import com.dontwaste.model.customer.web.user.UserLoginRequest;
 import com.dontwaste.model.customer.web.user.UserUpdateRequest;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -33,6 +35,11 @@ public class UserController {
     @GetMapping(value = "/getUser/{id}")
     public UserResponse getUserById(@PathVariable Long id){
         return userService.getUserById(id);
+    }
+
+    @GetMapping(value = "/allUsers")
+    public List<User> getAllUsers(){
+        return userService.getAllUsers();
     }
 
     @DeleteMapping(value = "/logout")
