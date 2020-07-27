@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {first} from "rxjs/operators";
-import {AuthenticationService} from "../../_Services/authentication.service";
+import {AuthenticationService} from "../../-Services-/authentication.service";
 import {Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
@@ -34,8 +34,8 @@ export class BusinessRegistrationComponent implements OnInit {
     });
   }
 
-
   onSubmit() {
 
   }
+
 }

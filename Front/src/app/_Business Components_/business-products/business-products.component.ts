@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Product} from "../../_Models/product";
-import {ProductService} from "../../_Services/product.service";
+import {Product} from "../../-Models-/product";
+import {ProductService} from "../../-Services-/product.service";
 import {Router} from "@angular/router";
-import {AuthenticationService} from "../../_Services/authentication.service";
-import {User} from "../../_Models/user";
+import {AuthenticationService} from "../../-Services-/authentication.service";
+import {User} from "../../-Models-/user";
 
 @Component({
   selector: 'app-business-products',

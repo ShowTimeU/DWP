@@ -9,13 +9,25 @@
           <button mat-fab id="avatar">
             <span class="initials">{{checkNameInitials()}}</span>
           </button>
-          <h3 style="margin: 0; padding: 19.5px 0 0 100px;"> Hi, </h3>
+          <h3 style="margin: 0; padding: 20px 0 0 100px;"> Hi, </h3>
           <h1 style="position:relative;
                      padding-left: 100px;
                      color: #404040"><b>{{currentUser.firstName}} {{currentUser.lastName}}</b></h1>
           <hr>
         </div>
 
+        <!--------------------------------------ADMIN------------------------------------->
+        <a [routerLink]="['user-search']"
+           (click)="sidenav.close()"
+           *ngIf="isAdmin">
+          <button mat-raised-button
+                  class="adminPanel"
+                  *ngIf="isAdmin">USERS LIST
+          </button>
+        </a>
+        <!-------------------------------------------------------------------------------->
+
+        <!--------------------------------------USER------------------------------------->
         <div class="user">
           <a [routerLink]="['user-info']"
              (click)="sidenav.close()"
@@ -50,7 +62,9 @@
             </button>
           </a><br/><br/>
         </div>
+        <!------------------------------------------------------------------------------->
 
+        <!--------------------------------------MANAGER------------------------------------->
         <div class="manager">
           <a [routerLink]="['business-info']"
              (click)="sidenav.close()"
@@ -77,6 +91,7 @@
             </button>
           </a>
         </div>
+        <!---------------------------------------------------------------------------------->
 
         <div class="info">
           <hr>
@@ -117,6 +132,7 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
+
     <mat-toolbar id="header">
       <a [routerLink]="['/']"
          style="color: ghostwhite;

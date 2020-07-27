@@ -9,9 +9,9 @@ import java.util.List;
 
 public interface InstitutionService {
 
-    void createInstitution(CreateInstitutionRequest createInstitutionRequest) throws NoSuchAlgorithmException;
-    Institution getInstitutionByEmail(String email);
-    List<InstitutionResponse> getAllInstitutions();
-    void deleteInstitution(Long id);
+//    void createInstitution(CreateInstitutionRequest createInstitutionRequest) throws NoSuchAlgorithmException;
+//    Institution getInstitutionByEmail(String email);
+//    List<InstitutionResponse> getAllInstitutions();
+//    void deleteInstitution(Long id);
 
 }

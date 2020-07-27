@@ -1,17 +1,17 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {AuthenticationService} from '../../_Services/authentication.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {first} from 'rxjs/operators';
-import {MatSnackBar} from '@angular/material/snack-bar';
-import {Role} from "../../_Models/role";
+import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {ActivatedRoute, Router} from "@angular/router";
+import {AuthenticationService} from "../../-Services-/authentication.service";
+import {first} from "rxjs/operators";
+import {Role} from "../../-Models-/role";
 
 @Component({
-  selector: 'app-user-login',
-  templateUrl: './user-login.component.html',
-  styleUrls: ['./user-login.component.css']
+  selector: 'app-business-login',
+  templateUrl: './business-login.component.html',
+  styleUrls: ['./business-login.component.css']
 })
-export class UserLoginComponent implements OnInit {
+export class BusinessLoginComponent implements OnInit {
 
   formGroup: FormGroup;
   returnUrl: string;
@@ -24,7 +24,7 @@ export class UserLoginComponent implements OnInit {
               private auth: AuthenticationService,
               private router: Router) {
     if (this.auth.currentUserValue) {
-      this.router.navigate(['/']);
+      this.router.navigate(['business-products']);
     }
   }
 
@@ -43,16 +43,16 @@ export class UserLoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    if (this.formGroup.invalid || this.f.email.value == Role.Manager) {
-      this.snack.open('Got to "Business Log In" page',
-          null, {duration: 3000, panelClass: 'snackLogin'})
+    if (this.formGroup.invalid || this.f.email.value == Role.User) {
+      this.snack.open('Got to "User Log In" page',
+        null, {duration: 3000, panelClass: 'snackBusLogin'})
       return;
     }
     this.auth.login(this.f.email.value, this.f.password.value)
       .pipe(first())
       .subscribe(data => {
           if (data) {
-            this.router.navigate(['/']);
+            this.router.navigate(['business-products']);
             window.location.reload();
           }
         },
@@ -64,6 +64,6 @@ export class UserLoginComponent implements OnInit {
   }
 
   toRegistration() {
-    this.router.navigate(['registration']);
+    this.router.navigate(['business-registration']);
   }
 }

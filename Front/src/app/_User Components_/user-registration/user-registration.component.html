@@ -52,16 +52,6 @@
             <mat-icon matSuffix>mode_edit</mat-icon>
           </mat-form-field>
 
-          <mat-form-field appearance="fill">
-            <mat-label>Choose Area</mat-label>
-            <mat-select formControlName="area" required>
-              <mat-option *ngFor="let area of areas"
-                          [value]="area.value">
-                {{area.viewValue}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-
           <button mat-raised-button
                   type="submit"
                   class="button"

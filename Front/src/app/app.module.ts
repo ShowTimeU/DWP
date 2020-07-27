@@ -12,10 +12,10 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatButtonModule} from '@angular/material/button';
-import {UserLoginComponent} from './User Components/user-login/user-login.component';
-import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule, HttpHeaderResponse, HttpHeaders} from '@angular/common/http';
-import {JwtInterceptor} from './_Helpers/jwt.interceptor';
-import {ErrorInterceptor} from './_Helpers/error.interceptor';
+import {UserLoginComponent} from './_User Components_/user-login/user-login.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {JwtInterceptor} from './-Helpers-/jwt.interceptor';
+import {ErrorInterceptor} from './-Helpers-/error.interceptor';
 import {AppRoutingModule} from './app-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
@@ -23,12 +23,12 @@ import {MatCardModule} from '@angular/material/card';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {ProductCardComponent} from './Product Components/product-card/product-card.component';
 import {ProductCardsListComponent} from './Product Components/product-cards-list/product-cards-list.component';
-import {UserRegistrationComponent} from './User Components/user-registration/user-registration.component';
+import {UserRegistrationComponent} from './_User Components_/user-registration/user-registration.component';
 import {MatSelectModule} from "@angular/material/select";
 import {ProductSearchComponent} from './Product Components/product-search/product-search.component';
 import {ProductFiltersComponent} from './Product Components/product-filters/product-filters.component';
-import {FilterPipe} from './_Helpers/filter.pipe';
-import {UserInfoComponent} from './User Components/user-info/user-info.component';
+import {FilterPipe} from './-Helpers-/filter.pipe';
+import {UserInfoComponent} from './_User Components_/user-info/user-info.component';
 import {ShoppingCartComponent} from './Shopping Cart Components/shopping-cart/shopping-cart.component';
 import {MatTableModule} from "@angular/material/table";
 import {ShoppingCartItemComponent} from './Shopping Cart Components/shopping-cart-item/shopping-cart-item.component';
@@ -37,16 +37,18 @@ import {ShoppingCartDetailsComponent} from './Shopping Cart Components/shopping-
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {AboutUsComponent} from './About Us/about-us.component';
 import {CheckoutComponent} from './Checkout/checkout.component';
-import {UserOrdersComponent} from './User Components/user-orders/user-orders.component';
-import {UserPaymentsComponent} from './User Components/user-payments/user-payments.component';
-import {UserSocialAccountsComponent} from './User Components/user-social-accounts/user-social-accounts.component';
-import {BusinessLoginComponent} from './Business Components/business-login/business-login.component';
-import {BusinessRegistrationComponent} from './Business Components/business-registration/business-registration.component';
-import {BusinessProductsComponent} from './Business Components/business-products/business-products.component';
+import {UserOrdersComponent} from './_User Components_/user-orders/user-orders.component';
+import {UserPaymentsComponent} from './_User Components_/user-payments/user-payments.component';
+import {UserSocialAccountsComponent} from './_User Components_/user-social-accounts/user-social-accounts.component';
+import {BusinessLoginComponent} from './_Business Components_/business-login/business-login.component';
+import {BusinessRegistrationComponent} from './_Business Components_/business-registration/business-registration.component';
+import {BusinessProductsComponent} from './_Business Components_/business-products/business-products.component';
 import {MatStepperModule} from "@angular/material/stepper";
-import { BusinessInfoComponent } from './Business Components/business-info/business-info.component';
-import { BusinessOrdersComponent } from './Business Components/business-orders/business-orders.component';
-import { CreateProductComponent } from './Create Product/create-product.component';
+import {BusinessInfoComponent} from './_Business Components_/business-info/business-info.component';
+import {BusinessOrdersComponent} from './_Business Components_/business-orders/business-orders.component';
+import {CreateProductComponent} from './Product Components/create-product/create-product.component';
+import {UserSearchComponent} from './_Admin Components_/user-search/user-search.component';
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 @NgModule({
   declarations: [
@@ -75,6 +77,7 @@ import { CreateProductComponent } from './Create Product/create-product.componen
     BusinessInfoComponent,
     BusinessOrdersComponent,
     CreateProductComponent,
+    UserSearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -98,6 +101,7 @@ import { CreateProductComponent } from './Create Product/create-product.componen
     MatDialogModule,
     MatTooltipModule,
     MatStepperModule,
+    MatPaginatorModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

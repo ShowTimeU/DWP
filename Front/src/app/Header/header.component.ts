@@ -1,8 +1,8 @@
 import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
-import {User} from '../_Models/user';
+import {User} from '../-Models-/user';
 import {MatSidenav} from '@angular/material/sidenav';
-import {AuthenticationService} from '../_Services/authentication.service';
-import {Role} from "../_Models/role";
+import {AuthenticationService} from '../-Services-/authentication.service';
+import {Role} from "../-Models-/role";
 
 @Component({
   selector: 'app-header',
@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
   instagramUrl: string = 'https://instagram.com';
   facebookUrl: string = 'https://facebook.com';
   currentUser: User;
+  isAdmin = false;
   reason = '';
   @ViewChild('sidenav') sidenav: MatSidenav;
   push: any;
@@ -37,6 +38,9 @@ export class HeaderComponent implements OnInit {
         }, 1000)
       }
     });
+    if(this.currentUser && this.currentUser.role === Role.Admin) {
+      this.isAdmin = true;
+    }
   }
 
   checkName() {

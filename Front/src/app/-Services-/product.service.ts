@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
-import {Product} from "../_Models/product";
+import {Product} from "../-Models-/product";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
-import {User} from "../_Models/user";
+import {User} from "../-Models-/user";
 import {AuthenticationService} from "./authentication.service";
 
 @Injectable({
@@ -10,7 +10,7 @@ import {AuthenticationService} from "./authentication.service";
 })
 export class ProductService {
 
-  private urlProduct = 'http://localhost:8080/product/';
+  private urlProduct = 'http://localhost:8080/product';
   private currentUser: User;
 
   constructor(private http: HttpClient,
@@ -20,15 +20,15 @@ export class ProductService {
 
   createProduct(product): Observable<Product> {
     let headers = new HttpHeaders().set('Authorization', this.currentUser.token);
-    return this.http.post<Product>(this.urlProduct + 'createProduct', product, {headers: headers});
+    return this.http.post<Product>(this.urlProduct + '/createProduct', product, {headers: headers});
   }
 
   getAllProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.urlProduct + 'getAllProducts');
+    return this.http.get<Product[]>(this.urlProduct + '/getAllProducts');
   }
 
   getFilteredProducts(area, min, max) {
-    return this.http.post<Product[]>(this.urlProduct + 'searchProduct', {area, min, max});
+    return this.http.post<Product[]>(this.urlProduct + '/searchProduct', {area, min, max});
   }
 
 }

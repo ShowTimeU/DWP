@@ -21,8 +21,5 @@ public class UserUpdateRequest {
     @NotBlank
     @Length(max = 20)
     private String phone;
-    @NotBlank
-    @Length(max = 100)
-    private String area;
 
 }

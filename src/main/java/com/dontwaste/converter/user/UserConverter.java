@@ -24,7 +24,6 @@ public class UserConverter {
                 .email(userCreateRequest.getEmail())
                 .password(passwordConverter.getHash(userCreateRequest.getPassword()))
                 .phone(userCreateRequest.getPhone())
-                .area(userCreateRequest.getArea())
                 .build();
     }
 
@@ -37,7 +36,6 @@ public class UserConverter {
                 .lastName(user.getLastName())
                 .email(user.getEmail())
                 .phone(user.getPhone())
-                .area(user.getArea())
                 .build();
     }
 
@@ -48,7 +46,6 @@ public class UserConverter {
                 .lastName(user.getLastName())
                 .email(user.getEmail())
                 .phone(user.getPhone())
-                .area(user.getArea())
                 .token(session.getToken())
                 .role(userRole.getRole().getRoleName())
                 .build();

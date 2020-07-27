@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from "../../_Models/user";
+import {User} from "../../-Models-/user";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {AuthenticationService} from "../../_Services/authentication.service";
+import {AuthenticationService} from "../../-Services-/authentication.service";
 
 @Component({
   selector: 'app-business-info',
@@ -30,8 +30,7 @@ export class BusinessInfoComponent implements OnInit {
         id: this.currentUser.id,
         firstName: new FormControl(this.currentUser.firstName, Validators.pattern('[a-zA-Z ]{2,15}')),
         lastName: new FormControl(this.currentUser.lastName, Validators.pattern('[a-zA-Z ]{2,15}')),
-        phone: new FormControl(this.currentUser.phone),
-        area: new FormControl(this.currentUser.area)
+        phone: new FormControl(this.currentUser.phone)
       });
     });
   }

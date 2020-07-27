@@ -17,24 +17,24 @@ public class InstitutionController {
     @Autowired
     InstitutionService institutionService;
 
-    @PostMapping(value = "/createInstitution")
-    public void createInstitution(@RequestBody CreateInstitutionRequest createInstitutionRequest) throws NoSuchAlgorithmException {
-        institutionService.createInstitution(createInstitutionRequest);
-    }
-
-    @GetMapping(value = "/getInstitution")
-    public Institution getInstitutionByEmail(@RequestParam String email){
-        return institutionService.getInstitutionByEmail(email);
-    }
-
-    @GetMapping(value = "/getAllInstitutions")
-    public List<InstitutionResponse> getAllInstitutions(){
-        return institutionService.getAllInstitutions();
-    }
-
-    @DeleteMapping("/deleteInstitution")
-    public void deleteInstitution(@RequestParam Long id){
-        institutionService.deleteInstitution(id);
-    }
+//    @PostMapping(value = "/createInstitution")
+//    public void createInstitution(@RequestBody CreateInstitutionRequest createInstitutionRequest) throws NoSuchAlgorithmException {
+//        institutionService.createInstitution(createInstitutionRequest);
+//    }
+//
+//    @GetMapping(value = "/getInstitution")
+//    public Institution getInstitutionByEmail(@RequestParam String email){
+//        return institutionService.getInstitutionByEmail(email);
+//    }
+//
+//    @GetMapping(value = "/getAllInstitutions")
+//    public List<InstitutionResponse> getAllInstitutions(){
+//        return institutionService.getAllInstitutions();
+//    }
+//
+//    @DeleteMapping("/deleteInstitution")
+//    public void deleteInstitution(@RequestParam Long id){
+//        institutionService.deleteInstitution(id);
+//    }
 
 }

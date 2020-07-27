@@ -1,10 +1,10 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Subscription} from "rxjs";
-import {User} from "../../_Models/user";
-import {AuthenticationService} from "../../_Services/authentication.service";
-import {CartItem} from "../../_Models/cart-item";
-import {MessengerService} from "../../_Services/messenger.service";
-import {CartService} from "../../_Services/cart.service";
+import {User} from "../../-Models-/user";
+import {AuthenticationService} from "../../-Services-/authentication.service";
+import {CartItem} from "../../-Models-/cart-item";
+import {MessengerService} from "../../-Services-/messenger.service";
+import {CartService} from "../../-Services-/cart.service";
 import {Router} from "@angular/router";
 
 @Component({

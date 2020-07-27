@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {Product} from "../_Models/product";
-import {Area} from "../_Models/area";
-import {ProductService} from "../_Services/product.service";
+import {Product} from "../../-Models-/product";
+import {Area} from "../../-Models-/area";
+import {ProductService} from "../../-Services-/product.service";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {first} from "rxjs/operators";

@@ -32,7 +32,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                                         "/user/deleteUser").hasAuthority( "ADMIN")
                 .antMatchers("/product/createProduct",
                                         "/product/deleteProduct").hasAnyAuthority("ADMIN", "MANAGER")
-                .antMatchers("/user/getUser","/user/updateUser","/user/logout").authenticated();
+                .antMatchers("/user/getUser","/user/logout").authenticated();
 
         http.addFilterBefore(securityFilter(), UsernamePasswordAuthenticationFilter.class);
 

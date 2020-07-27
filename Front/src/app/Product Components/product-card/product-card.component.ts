@@ -1,12 +1,12 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Product} from "../../_Models/product";
+import {Product} from "../../-Models-/product";
 import {Router} from "@angular/router";
-import {ProductService} from "../../_Services/product.service";
-import {CartService} from "../../_Services/cart.service";
-import {AuthenticationService} from "../../_Services/authentication.service";
-import {MessengerService} from "../../_Services/messenger.service";
+import {ProductService} from "../../-Services-/product.service";
+import {CartService} from "../../-Services-/cart.service";
+import {AuthenticationService} from "../../-Services-/authentication.service";
+import {MessengerService} from "../../-Services-/messenger.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {Role} from "../../_Models/role";
+import {Role} from "../../-Models-/role";
 
 @Component({
   selector: 'app-product-card',
