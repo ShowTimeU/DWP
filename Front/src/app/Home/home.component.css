@@ -1,7 +1,7 @@
 button {
   position: absolute;
   left: 50%;
-  top: 120px;
+  top: 5%;
   transform: translate(-50%);
   height: 50px;
   width: 200px;
@@ -15,6 +15,7 @@ h1 {
   z-index: 9999;
 }
 img {
-  width: 100%;
-  display: block
+  display: block;
+  width: auto;
+  height: auto;
 }

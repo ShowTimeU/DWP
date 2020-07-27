@@ -1,6 +1,6 @@
 .inventory-body {
   position: fixed;
-  min-width: 100%;
+  min-width: auto;
   background-image: url("src/assets/background.png");
   background-repeat: no-repeat;
   background-size: 100%;
