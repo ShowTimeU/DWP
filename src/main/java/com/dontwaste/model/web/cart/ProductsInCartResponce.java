@@ -1,5 +1,8 @@
 package com.dontwaste.model.web.cart;
 
+import com.dontwaste.model.entity.Branch;
+import com.dontwaste.model.entity.ProductTemplate;
+import com.dontwaste.model.entity.product.Product;
 import lombok.*;
 
 @AllArgsConstructor
@@ -9,13 +12,13 @@ import lombok.*;
 public class ProductsInCartResponce {
     Long id;
     Long userId;
-    Long productId;
-    String productName;
-    String image;
-    String description;
-
-    Double price;
     Integer quantity;
+
+    Product product;
+    ProductTemplate productTemplate;
+    Branch branch;
+
+
 
 
 
