@@ -1,0 +1,53 @@
+<div>
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+  </mat-form-field>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Id</th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="branchCity">
+      <th mat-header-cell *matHeaderCellDef> Branch City</th>
+      <td mat-cell *matCellDef="let element"> {{element.branchCity}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="branchAddress">
+      <th mat-header-cell *matHeaderCellDef> Branch Address</th>
+      <td mat-cell *matCellDef="let element"> {{element.branchAddress}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="branchPhone">
+      <th mat-header-cell *matHeaderCellDef> Branch Phone</th>
+      <td mat-cell *matCellDef="let element"> {{element.branchPhone}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="branchEmail">
+      <th mat-header-cell *matHeaderCellDef> Branch E-mail</th>
+      <td mat-cell *matCellDef="let element"> {{element.branchEmail}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="institutionId">
+      <th mat-header-cell *matHeaderCellDef> Institution Id</th>
+      <td mat-cell *matCellDef="let element"> {{element.institutionId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="userId">
+      <th mat-header-cell *matHeaderCellDef> User Id</th>
+      <td mat-cell *matCellDef="let element"> {{element.userId}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[10, 30, 50]" showFirstLastButtons></mat-paginator>
+</div>

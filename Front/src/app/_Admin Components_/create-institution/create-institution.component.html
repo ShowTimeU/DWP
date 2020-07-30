@@ -1,0 +1,49 @@
+<div class="form">
+  <form [formGroup]="formGroup"
+        (ngSubmit)="onSubmit()">
+    <mat-card>
+      <mat-card-title>
+        <h1><b>CREATE NEW INSTITUTION</b></h1>
+      </mat-card-title>
+
+      <mat-card-content>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Institution name</mat-label>
+            <input matInput
+                   formControlName="institutionName" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Institution website</mat-label>
+            <input matInput
+                   formControlName="institutionWebSite" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Institution logo</mat-label>
+            <input matInput
+                   formControlName="institutionLogo" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <span class="textArea">{{role.length}}/{{maxChars}}</span>
+            <textarea matInput
+                      placeholder="Institution description"
+                      formControlName="institutionDescription"
+                      [(ngModel)]="role"
+                      [maxlength]="maxChars"></textarea>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button
+                type="submit"
+                class="button"
+                [disabled]="!formGroup.valid"> Create
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>
+

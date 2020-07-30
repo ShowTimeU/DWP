@@ -1,0 +1,54 @@
+<div class="form">
+  <mat-card>
+  <form [formGroup]="formGroup"
+        (ngSubmit)="onSubmit()">
+      <mat-card-title>
+        <h1><b>ADD BRANCH</b></h1>
+      </mat-card-title>
+
+      <mat-card-content>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Branch City</mat-label>
+            <input matInput
+                   formControlName="branchCity" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Branch Address</mat-label>
+            <input matInput
+                   formControlName="branchAddress" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Branch Phone</mat-label>
+            <input matInput
+                   formControlName="branchPhone" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Branch Email</mat-label>
+            <input matInput
+                   formControlName="branchEmail" required>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button
+                type="submit"
+                class="button"
+                [disabled]="!formGroup.valid"> Create
+        </button>
+      </mat-card-actions>
+  </form>
+    <mat-form-field appearance="fill">
+      <mat-label>Institution</mat-label>
+      <mat-select [(ngModel)]="selectedValue" name="institution">
+        <mat-option *ngFor="let institution of institutionList"
+                    [value]="institution.id">
+          {{institution.institutionName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-card>
+</div>
