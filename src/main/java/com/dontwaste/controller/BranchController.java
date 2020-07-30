@@ -29,6 +29,11 @@ public class BranchController {
         return branchService.getAllBranches();
     }
 
+    @GetMapping(value = "/getBranch")
+    public BranchResponse getBranch(@RequestParam(name = "branchId") Long branchId){
+        return branchService.getBranch(branchId);
+    }
+
     @DeleteMapping("/deleteBranch")
     public void deleteIBranch(@RequestParam Long id){
         branchService.deleteBranch(id);

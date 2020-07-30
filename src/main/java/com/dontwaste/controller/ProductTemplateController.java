@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/productTemplate")
 public class ProductTemplateController {
@@ -16,8 +17,8 @@ public class ProductTemplateController {
     ProductTemplateService productTemplateService;
 
     @PostMapping("/addTemplate")
-    public void addProductTemplate(ProductTemplateCreationRequest productTemplateCreationRequest, Long institutionId){
-        productTemplateService.addProductTemplate(productTemplateCreationRequest, institutionId);
+    public void addProductTemplate(ProductTemplateCreationRequest productTemplateCreationRequest){
+        productTemplateService.addProductTemplate(productTemplateCreationRequest);
     }
 
     @GetMapping("/getAllTemplates")
@@ -27,7 +28,7 @@ public class ProductTemplateController {
 
     @GetMapping("/getTemplate")
     public ProductTemplateResponse getTemplate(@RequestParam Long id){
-        return productTemplateService.getProductTeplate(id);
+        return productTemplateService.getProductTemplate(id);
     }
 
     @DeleteMapping("/deleteTemplate")

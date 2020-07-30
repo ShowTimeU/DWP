@@ -36,7 +36,6 @@ export class UserSearchComponent implements OnInit{
       this.ELEMENT_DATA = data;
       this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
       this.dataSource.paginator = this.paginator;
-      console.log(this.ELEMENT_DATA)
     })
   }
 

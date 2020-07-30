@@ -46,7 +46,7 @@ import {BusinessProductsComponent} from './_Business Components_/business-produc
 import {MatStepperModule} from "@angular/material/stepper";
 import {BusinessInfoComponent} from './_Business Components_/business-info/business-info.component';
 import {BusinessOrdersComponent} from './_Business Components_/business-orders/business-orders.component';
-import {CreateProductComponent} from './Product Components/create-product/create-product.component';
+import {CreateProductTemplateComponent} from './_Admin Components_/create-product-template/create-product-template.component';
 import {UserSearchComponent} from './_Admin Components_/user-search/user-search.component';
 import {MatPaginatorModule} from "@angular/material/paginator";
 import { CreateInstitutionComponent } from './_Admin Components_/create-institution/create-institution.component';
@@ -54,6 +54,7 @@ import { InstitutionSearchComponent } from './_Admin Components_/institution-sea
 import { LinkifyPipe } from './-Helpers-/linkify.pipe';
 import { CreateInstitutionBranchComponent } from './_Admin Components_/create-institution-branch/create-institution-branch.component';
 import { BranchSearchComponent } from './_Admin Components_/branch-search/branch-search.component';
+import { BranchInfoComponent } from './_Admin Components_/branch-info/branch-info.component';
 
 @NgModule({
   declarations: [
@@ -81,13 +82,14 @@ import { BranchSearchComponent } from './_Admin Components_/branch-search/branch
     BusinessProductsComponent,
     BusinessInfoComponent,
     BusinessOrdersComponent,
-    CreateProductComponent,
+    CreateProductTemplateComponent,
     UserSearchComponent,
     CreateInstitutionComponent,
     InstitutionSearchComponent,
     LinkifyPipe,
     CreateInstitutionBranchComponent,
     BranchSearchComponent,
+    BranchInfoComponent,
   ],
   imports: [
     BrowserModule,

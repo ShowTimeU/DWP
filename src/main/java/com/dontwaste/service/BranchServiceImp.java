@@ -54,10 +54,10 @@ public class BranchServiceImp implements BranchService {
         return branches;
     }
 
-//    @Override
-//    public BranchResponse getSnif(Long id) {
-//        return snifConverter.convertToWeb(snifRepository.findById(id).get());
-//    }
+    @Override
+    public BranchResponse getBranch(Long id) {
+        return branchConverter.convertToWeb(branchRepository.findById(id).get());
+    }
 
     @Override
     public void deleteBranch(Long id) {

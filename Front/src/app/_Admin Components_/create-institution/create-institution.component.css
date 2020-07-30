@@ -10,7 +10,6 @@ h1 {
   transform: translate(-50%);
   height: 400px;
   width: 600px;
-  margin-top: 60px;
   text-align: center;
 }
 mat-card {

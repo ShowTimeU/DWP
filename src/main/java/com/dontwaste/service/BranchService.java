@@ -9,6 +9,6 @@ public interface BranchService {
 
     void addBranch(CreateBranchRequest createBranchRequest, Long userId, Long institutionId);
     List<BranchResponse> getAllBranches();
-//    BranchResponse getBranch(Long id);
+    BranchResponse getBranch(Long id);
     void deleteBranch(Long id);
 }

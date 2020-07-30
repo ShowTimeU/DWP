@@ -14,3 +14,9 @@ mat-paginator {
 th {
   width: 13%;
 }
+.branchInfo {
+  font-weight: bold;
+}
+.branchInfo:hover {
+  cursor: pointer;
+}

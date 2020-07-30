@@ -50,6 +50,21 @@
             </button>
           </a>
         </div>
+        <div class="adminPanel" *ngIf="isAdmin">
+          <p> PRODUCT TEMPLATES MENU: </p>
+          <a [routerLink]="['create-product-template']"
+             (click)="sidenav.close()">
+            <button mat-raised-button
+                    class="adminBtn">CREATE PRODUCT TEMPLATE
+            </button>
+          </a>
+          <a [routerLink]="['branch-search']"
+             (click)="sidenav.close()">
+            <button mat-raised-button
+                    class="adminBtn">BRANCH LIST
+            </button>
+          </a>
+        </div>
 
         <!-------------------------------------------------------------------------------->
 

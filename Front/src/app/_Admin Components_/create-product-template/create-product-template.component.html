@@ -1,0 +1,52 @@
+<div class="form">
+  <mat-card>
+    <form [formGroup]="formGroup"
+          (ngSubmit)="onSubmit()">
+      <mat-card-title>
+        <h1><b>CREATE NEW PRODUCT TEMPLATE</b></h1>
+      </mat-card-title>
+
+      <mat-card-content>
+        <mat-form-field appearance="fill">
+          <mat-label>Product name</mat-label>
+          <input matInput
+                 formControlName="productName" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill"
+                        class="shortFields">
+          <mat-label>Product image</mat-label>
+          <input matInput
+                 formControlName="productImage">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <span class="textArea">{{role.length}}/{{maxChars}}</span>
+          <textarea matInput
+                    placeholder="Product description"
+                    formControlName="productDescription"
+                    [(ngModel)]="role"
+                    [maxlength]="maxChars"></textarea>
+        </mat-form-field>
+
+      </mat-card-content>
+      <mat-form-field appearance="fill">
+        <mat-label>Institution</mat-label>
+        <mat-select [(ngModel)]="selectedValue" formControlName="institutionId">
+          <mat-option *ngFor="let institution of institutionList"
+                      [value]="institution.id">
+            {{institution.institutionName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-card-actions>
+        <button mat-raised-button
+                type="submit"
+                class="button"
+                [disabled]="!formGroup.valid"> Create
+        </button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+
+</div>

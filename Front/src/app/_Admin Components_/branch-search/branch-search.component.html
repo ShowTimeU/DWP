@@ -28,17 +28,18 @@
 
     <ng-container matColumnDef="branchEmail">
       <th mat-header-cell *matHeaderCellDef> Branch E-mail</th>
-      <td mat-cell *matCellDef="let element"> {{element.branchEmail}} </td>
+      <td mat-cell *matCellDef="let element">
+        <a (click)="updateBranchInfo()" class="branchInfo">{{element.branchEmail}}</a></td>
     </ng-container>
 
-    <ng-container matColumnDef="institutionId">
-      <th mat-header-cell *matHeaderCellDef> Institution Id</th>
-      <td mat-cell *matCellDef="let element"> {{element.institutionId}} </td>
+    <ng-container matColumnDef="institutionName">
+      <th mat-header-cell *matHeaderCellDef> Institution Name</th>
+      <td mat-cell *matCellDef> {{institutionName}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="userId">
-      <th mat-header-cell *matHeaderCellDef> User Id</th>
-      <td mat-cell *matCellDef="let element"> {{element.userId}} </td>
+    <ng-container matColumnDef="userEmail">
+      <th mat-header-cell *matHeaderCellDef> User E-mail</th>
+      <td mat-cell *matCellDef> {{userEmail}} </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

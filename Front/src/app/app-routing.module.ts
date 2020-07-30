@@ -19,12 +19,13 @@ import {Role} from "./-Models-/role";
 import {BusinessInfoComponent} from "./_Business Components_/business-info/business-info.component";
 import {BusinessOrdersComponent} from "./_Business Components_/business-orders/business-orders.component";
 import {BusinessProductsComponent} from "./_Business Components_/business-products/business-products.component";
-import {CreateProductComponent} from "./Product Components/create-product/create-product.component";
+import {CreateProductTemplateComponent} from "./_Admin Components_/create-product-template/create-product-template.component";
 import {UserSearchComponent} from "./_Admin Components_/user-search/user-search.component";
 import {CreateInstitutionComponent} from "./_Admin Components_/create-institution/create-institution.component";
 import {InstitutionSearchComponent} from "./_Admin Components_/institution-search/institution-search.component";
 import {CreateInstitutionBranchComponent} from "./_Admin Components_/create-institution-branch/create-institution-branch.component";
 import {BranchSearchComponent} from "./_Admin Components_/branch-search/branch-search.component";
+import {BranchInfoComponent} from "./_Admin Components_/branch-info/branch-info.component";
 
 
 const routes: Routes = [
@@ -87,6 +88,18 @@ const routes: Routes = [
     data: {roles: [Role.Admin]}
   },
   {
+    path: 'branch-info',
+    component: BranchInfoComponent,
+    canActivate: [AuthGuard],
+    data: {roles: [Role.Admin]}
+  },
+  {
+    path: 'create-product-template',
+    component: CreateProductTemplateComponent,
+    canActivate: [AuthGuard],
+    data: {roles: [Role.Admin]}
+  },
+  {
     path: 'user-info',
     component: UserInfoComponent,
     canActivate: [AuthGuard],
@@ -143,12 +156,6 @@ const routes: Routes = [
   {
     path: 'business-products',
     component: BusinessProductsComponent,
-    canActivate: [AuthGuard],
-    data: {roles: [Role.Manager, Role.Admin]}
-  },
-  {
-    path: 'create-product',
-    component: CreateProductComponent,
     canActivate: [AuthGuard],
     data: {roles: [Role.Manager, Role.Admin]}
   },

@@ -7,6 +7,7 @@ import {AuthenticationService} from "../../-Services-/authentication.service";
 import {MessengerService} from "../../-Services-/messenger.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Role} from "../../-Models-/role";
+import {ProductTemplate} from "../../-Models-/product-template";
 
 @Component({
   selector: 'app-product-card',
@@ -16,6 +17,7 @@ import {Role} from "../../-Models-/role";
 export class ProductCardComponent implements OnInit {
 
   @Input() productItem: Product;
+  @Input() productTemplateItem: ProductTemplate;
   public counter: number = 1;
   currentUser: any;
   manager = false;
