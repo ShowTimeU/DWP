@@ -8,7 +8,7 @@ import com.dontwaste.model.web.product.ProductResponse;
 import com.dontwaste.model.entity.product.Product;
 import com.dontwaste.repository.ProductRepository;
 import com.dontwaste.repository.ProductTemplateRepository;
-import com.dontwaste.repository.SnifRepository;
+import com.dontwaste.repository.BranchRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +22,7 @@ public class ProductServiceImp implements ProductService  {
     @Autowired
     ProductConverter productConverter;
     @Autowired
-    SnifRepository branchRepository;
+    BranchRepository branchRepository;
     @Autowired
     ProductTemplateRepository productTemplateRepository;
 
@@ -49,8 +49,12 @@ public class ProductServiceImp implements ProductService  {
     @Override
     public List<ProductResponse> getAllProducts() {
         List<ProductResponse> products = new ArrayList<>();
-        productRepository.findAll().stream()
-                .map(product -> products.add(productConverter.convertToWeb(product)));
+        List<Product> lp = productRepository.findAll();
+        for(Product product : lp){
+            products.add(productConverter.convertToWeb(product));
+        }
+//        productRepository.findAll().stream()
+//                .map(product -> products.add(productConverter.convertToWeb(product)));
         return products;
     }
 

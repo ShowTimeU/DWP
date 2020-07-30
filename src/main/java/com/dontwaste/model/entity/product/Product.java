@@ -25,7 +25,7 @@ public class Product extends BaseDate {
     private Integer quantity;
 
     @OneToOne
-    @JoinColumn(name = "SNIF_ID", referencedColumnName = "ID")
+    @JoinColumn(name = "BRANCH_ID", referencedColumnName = "ID")
     private Branch branch;
 
     @OneToOne

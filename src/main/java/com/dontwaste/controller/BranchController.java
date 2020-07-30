@@ -20,7 +20,7 @@ public class BranchController {
     @PostMapping(value = "/addBranch")
     public void addBranch(@RequestBody CreateBranchRequest createBranchRequest,
                           @RequestParam(name = "userId") Long userId,
-                          @RequestParam(name = "institutionId") Long institutionId) throws NoSuchAlgorithmException {
+                          @RequestParam(name = "institutionId") Long institutionId) {
         branchService.addBranch(createBranchRequest, userId, institutionId);
     }
 

@@ -62,10 +62,7 @@ public class CartServiceImp implements CartService{
                          .id(x.getId())
                          .userId(x.getUser().getId())
                          .productId(x.getProduct().getId())
-//                         .description(x.getProduct().getDescription())
-//                         .image(x.getProduct().getImage())
                          .price(x.getProduct().getPrice())
-//                         .productName(x.getProduct().getProductName())
                          .quantity(x.getQuantity())
                          .build())
         .collect(Collectors.toList());

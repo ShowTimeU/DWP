@@ -7,7 +7,7 @@ import com.dontwaste.model.entity.User;
 import com.dontwaste.model.web.branch.CreateBranchRequest;
 import com.dontwaste.model.web.branch.BranchResponse;
 import com.dontwaste.repository.InstitutionRepository;
-import com.dontwaste.repository.SnifRepository;
+import com.dontwaste.repository.BranchRepository;
 import com.dontwaste.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,7 @@ import java.util.List;
 @Service
 public class BranchServiceImp implements BranchService {
     @Autowired
-    SnifRepository branchRepository;
+    BranchRepository branchRepository;
     @Autowired
     BranchConverter branchConverter;
     @Autowired
@@ -45,8 +45,12 @@ public class BranchServiceImp implements BranchService {
     @Override
     public List<BranchResponse> getAllBranches() {
         List<BranchResponse> branches = new ArrayList<>();
-        branchRepository.findAll().stream()
-                .map(branch -> branches.add(branchConverter.convertToWeb(branch)));
+        List<Branch> li =  branchRepository.findAll();
+        for(Branch branch : li){
+            branches.add(branchConverter.convertToWeb(branch));
+        }
+//        branchRepository.findAll().stream()
+//                .map(branch -> branches.add(branchConverter.convertToWeb(branch)));
         return branches;
     }
 
