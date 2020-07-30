@@ -62,6 +62,7 @@ public class CartServiceImp implements CartService{
                          .id(cart.getId())
                          .userId(cart.getUser().getId())
                          .quantity(cart.getQuantity())
+                         .institution(cart.getProduct().getBranch().getInstitution())
                          .product(cart.getProduct())
                          .productTemplate(cart.getProduct().getProductTemplate())
                          .branch(cart.getProduct().getBranch())
