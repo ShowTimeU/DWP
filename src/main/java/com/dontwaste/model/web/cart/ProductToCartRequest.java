@@ -17,26 +17,4 @@ public class ProductToCartRequest {
     private Long userId;
     @NotNull
     private Long productId;
-    @NotBlank
-    private String productName;
-    @NotBlank
-    @Length(min = 6, max = 500)
-    private String description;
-    @NotBlank
-    private String image;
-    @Min(value = 1)
-    @NotNull
-    private Double startingPrice;
-    @Min(value = 1)
-    @NotNull
-    private Double price;
-    @NotBlank
-    @Length(max = 100)
-    private String area;
-    @NotBlank
-    @Length(max = 50)
-    private String institution;
-    @NotNull
-    private Integer quantity;
-
 }
