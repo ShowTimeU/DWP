@@ -17,7 +17,7 @@ public class ProductTemplateController {
     ProductTemplateService productTemplateService;
 
     @PostMapping("/addTemplate")
-    public void addProductTemplate(ProductTemplateCreationRequest productTemplateCreationRequest){
+    public void addProductTemplate(@RequestBody ProductTemplateCreationRequest productTemplateCreationRequest){
         productTemplateService.addProductTemplate(productTemplateCreationRequest);
     }
 

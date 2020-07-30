@@ -58,12 +58,14 @@ public class CartServiceImp implements CartService{
             throw  new RuntimeException("Unknown user");
         }
         return cartRepository.findAllByUser(user).stream()
-                 .map(x -> new ProductsInCartResponce().builder()
-                         .id(x.getId())
-                         .userId(x.getUser().getId())
-                         .productId(x.getProduct().getId())
-                         .price(x.getProduct().getPrice())
-                         .quantity(x.getQuantity())
+                 .map(cart -> new ProductsInCartResponce().builder()
+                         .id(cart.getId())
+                         .userId(cart.getUser().getId())
+                         .quantity(cart.getQuantity())
+                         .institution(cart.getProduct().getBranch().getInstitution())
+                         .product(cart.getProduct())
+                         .productTemplate(cart.getProduct().getProductTemplate())
+                         .branch(cart.getProduct().getBranch())
                          .build())
         .collect(Collectors.toList());
 
