@@ -22,9 +22,8 @@ public class ProductTemplateServiceImp implements ProductTemplateService {
     ProductTemplateConverter productTemplateConverter;
 
     @Override
-    public void addProductTemplate(ProductTemplateCreationRequest productTemplateCreationRequest,
-                                   Long institutionId) {
-        Institution institution = institutionRepository.findById(institutionId).get();
+    public void addProductTemplate(ProductTemplateCreationRequest productTemplateCreationRequest) {
+        Institution institution = institutionRepository.findById(productTemplateCreationRequest.getInstitutionId()).get();
         if(institution == null){
             throw new RuntimeException("institution is not exist");
         }
