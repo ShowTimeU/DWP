@@ -49,6 +49,11 @@ import {BusinessOrdersComponent} from './_Business Components_/business-orders/b
 import {CreateProductComponent} from './Product Components/create-product/create-product.component';
 import {UserSearchComponent} from './_Admin Components_/user-search/user-search.component';
 import {MatPaginatorModule} from "@angular/material/paginator";
+import { CreateInstitutionComponent } from './_Admin Components_/create-institution/create-institution.component';
+import { InstitutionSearchComponent } from './_Admin Components_/institution-search/institution-search.component';
+import { LinkifyPipe } from './-Helpers-/linkify.pipe';
+import { CreateInstitutionBranchComponent } from './_Admin Components_/create-institution-branch/create-institution-branch.component';
+import { BranchSearchComponent } from './_Admin Components_/branch-search/branch-search.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +83,11 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     BusinessOrdersComponent,
     CreateProductComponent,
     UserSearchComponent,
+    CreateInstitutionComponent,
+    InstitutionSearchComponent,
+    LinkifyPipe,
+    CreateInstitutionBranchComponent,
+    BranchSearchComponent,
   ],
   imports: [
     BrowserModule,

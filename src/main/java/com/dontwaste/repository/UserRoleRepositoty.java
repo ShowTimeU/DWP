@@ -1,7 +1,7 @@
 package com.dontwaste.repository;
 
-import com.dontwaste.model.customer.entity.User;
-import com.dontwaste.model.customer.entity.UserRole;
+import com.dontwaste.model.entity.User;
+import com.dontwaste.model.entity.UserRole;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

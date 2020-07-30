@@ -25,14 +25,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/registration", "/login",
                         "/product/searchProduct", "/product/getAllProducts").permitAll()
-                .antMatchers("/institution/getAllInstitutions",
-                                        "/institution/createInstitution",
+                .antMatchers("/institution/createInstitution",
                                         "/institution/deleteInstitution",
                                         "/institution/getInstitution",
                                         "/user/deleteUser").hasAuthority( "ADMIN")
                 .antMatchers("/product/createProduct",
                                         "/product/deleteProduct").hasAnyAuthority("ADMIN", "MANAGER")
-                .antMatchers("/user/getUser","/user/logout").authenticated();
+                .antMatchers("/user/getUser","/user/updateUser","/user/logout").authenticated();
 
         http.addFilterBefore(securityFilter(), UsernamePasswordAuthenticationFilter.class);
 

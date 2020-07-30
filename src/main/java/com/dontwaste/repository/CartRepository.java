@@ -1,8 +1,8 @@
 package com.dontwaste.repository;
 
-import com.dontwaste.model.customer.entity.Cart;
-import com.dontwaste.model.customer.entity.product.Product;
-import com.dontwaste.model.customer.entity.User;
+import com.dontwaste.model.entity.Cart;
+import com.dontwaste.model.entity.product.Product;
+import com.dontwaste.model.entity.User;
 import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;

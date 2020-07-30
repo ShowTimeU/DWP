@@ -1,7 +1,7 @@
 package com.dontwaste.service;
 
-import com.dontwaste.model.customer.web.cart.ProductToCartRequest;
-import com.dontwaste.model.customer.web.cart.ProductsInCartResponce;
+import com.dontwaste.model.web.cart.ProductToCartRequest;
+import com.dontwaste.model.web.cart.ProductsInCartResponce;
 
 import java.util.List;
 

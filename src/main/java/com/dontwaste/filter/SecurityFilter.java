@@ -1,6 +1,6 @@
 package com.dontwaste.filter;
 
-import com.dontwaste.model.customer.entity.User;
+import com.dontwaste.model.entity.User;
 import com.dontwaste.service.SessionService;
 import com.dontwaste.service.UserRoleService;
 import com.dontwaste.service.UserService;
@@ -17,7 +17,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 

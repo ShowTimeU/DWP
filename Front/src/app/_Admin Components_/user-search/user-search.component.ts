@@ -3,8 +3,7 @@ import {AuthenticationService} from "../../-Services-/authentication.service";
 import {User} from "../../-Models-/user";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
-import {BehaviorSubject} from "rxjs";
-import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
+import {Role} from "../../-Models-/role";
 
 @Component({
   selector: 'app-user-search',
@@ -15,17 +14,17 @@ export class UserSearchComponent implements OnInit{
 
   private ELEMENT_DATA: User[];
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'phone'];
+  dataSource: MatTableDataSource<User>;
 
   constructor(private user: AuthenticationService) {
   }
 
   ngOnInit(): void {
-    this.getAllUsers();
+    if(this.user.currentUserValue.role === Role.Admin) {
+      this.getAllUsers();
+    }
   }
-
-  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'phone'];
-  dataSource: MatTableDataSource<User>;
-
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

@@ -17,14 +17,40 @@
         </div>
 
         <!--------------------------------------ADMIN------------------------------------->
-        <a [routerLink]="['user-search']"
-           (click)="sidenav.close()"
-           *ngIf="isAdmin">
-          <button mat-raised-button
-                  class="adminPanel"
-                  *ngIf="isAdmin">USERS LIST
-          </button>
-        </a>
+        <div class="adminPanel" *ngIf="isAdmin">
+          <p> INSTITUTIONS MENU: </p>
+          <a [routerLink]="['create-institution']"
+             (click)="sidenav.close()"
+             *ngIf="isAdmin">
+            <button mat-raised-button
+                    class="adminBtn">CREATE INST
+            </button>
+          </a>
+          <a [routerLink]="['institution-search']"
+             (click)="sidenav.close()"
+             *ngIf="isAdmin">
+            <button mat-raised-button
+                    class="adminBtn">INST LIST
+            </button>
+          </a>
+        </div>
+        <br/>
+        <div class="adminPanel" *ngIf="isAdmin">
+          <p> BRANCHES MENU: </p>
+          <a [routerLink]="['create-institution-branch']"
+             (click)="sidenav.close()">
+            <button mat-raised-button
+                    class="adminBtn">CREATE BRANCH
+            </button>
+          </a>
+          <a [routerLink]="['branch-search']"
+             (click)="sidenav.close()">
+            <button mat-raised-button
+                    class="adminBtn">BRANCH LIST
+            </button>
+          </a>
+        </div>
+
         <!-------------------------------------------------------------------------------->
 
         <!--------------------------------------USER------------------------------------->

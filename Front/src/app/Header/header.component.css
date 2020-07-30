@@ -93,8 +93,9 @@ a img {
   padding-left: 0;
 }
 .adminPanel {
-  height: 50px;
-  width: 150px;
-  left: 50%;
-  transform: translate(-50%);
+  text-align: center;
+}
+.adminBtn {
+  margin-right: 1%;
+  width: 140px;
 }

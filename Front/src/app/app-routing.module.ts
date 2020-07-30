@@ -21,6 +21,10 @@ import {BusinessOrdersComponent} from "./_Business Components_/business-orders/b
 import {BusinessProductsComponent} from "./_Business Components_/business-products/business-products.component";
 import {CreateProductComponent} from "./Product Components/create-product/create-product.component";
 import {UserSearchComponent} from "./_Admin Components_/user-search/user-search.component";
+import {CreateInstitutionComponent} from "./_Admin Components_/create-institution/create-institution.component";
+import {InstitutionSearchComponent} from "./_Admin Components_/institution-search/institution-search.component";
+import {CreateInstitutionBranchComponent} from "./_Admin Components_/create-institution-branch/create-institution-branch.component";
+import {BranchSearchComponent} from "./_Admin Components_/branch-search/branch-search.component";
 
 
 const routes: Routes = [
@@ -55,6 +59,30 @@ const routes: Routes = [
   {
     path: 'user-search',
     component: UserSearchComponent,
+    canActivate: [AuthGuard],
+    data: {roles: [Role.Admin]}
+  },
+  {
+    path: 'create-institution',
+    component: CreateInstitutionComponent,
+    canActivate: [AuthGuard],
+    data: {roles: [Role.Admin]}
+  },
+  {
+    path: 'institution-search',
+    component: InstitutionSearchComponent,
+    canActivate: [AuthGuard],
+    data: {roles: [Role.Admin]}
+  },
+  {
+    path: 'create-institution-branch',
+    component: CreateInstitutionBranchComponent,
+    canActivate: [AuthGuard],
+    data: {roles: [Role.Admin]}
+  },
+  {
+    path: 'branch-search',
+    component: BranchSearchComponent,
     canActivate: [AuthGuard],
     data: {roles: [Role.Admin]}
   },

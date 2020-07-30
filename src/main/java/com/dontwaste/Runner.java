@@ -1,7 +1,7 @@
 package com.dontwaste;
 
-import com.dontwaste.model.customer.entity.Institution;
-import com.dontwaste.model.customer.entity.Role;
+import com.dontwaste.model.entity.Institution;
+import com.dontwaste.model.entity.Role;
 import com.dontwaste.repository.InstitutionRepository;
 import com.dontwaste.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,18 +29,12 @@ public class Runner implements CommandLineRunner {
     private void addInstitutions(){
         Institution institution1 = Institution.builder()
                 .institutionName("Japanica")
-                .institutionCity("Haifa")
-                .institutionAddress("Mashava HaGermanit 5")
-                .institutionPhone("12345678")
                 .institutionLogo("JapanicaLogo")
                 .institutionWebSite("japanica.com")
                 .build();
 
         Institution institution2 = Institution.builder()
                 .institutionName("Burger Salun")
-                .institutionCity("Tel-Aviv")
-                .institutionAddress("Rotchild 53")
-                .institutionPhone("87654321")
                 .institutionLogo("BurgerSalunLogo")
                 .institutionWebSite("BurgerSalun.net")
                 .build();

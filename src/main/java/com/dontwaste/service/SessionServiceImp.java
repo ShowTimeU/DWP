@@ -1,10 +1,9 @@
 package com.dontwaste.service;
 
 
-import com.dontwaste.model.customer.entity.Session;
-import com.dontwaste.model.customer.entity.User;
+import com.dontwaste.model.entity.Session;
+import com.dontwaste.model.entity.User;
 import com.dontwaste.repository.SessionRepository;
-import com.dontwaste.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

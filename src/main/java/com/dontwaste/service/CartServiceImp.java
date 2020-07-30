@@ -1,10 +1,10 @@
 package com.dontwaste.service;
 
-import com.dontwaste.model.customer.entity.Cart;
-import com.dontwaste.model.customer.entity.product.Product;
-import com.dontwaste.model.customer.entity.User;
-import com.dontwaste.model.customer.web.cart.ProductToCartRequest;
-import com.dontwaste.model.customer.web.cart.ProductsInCartResponce;
+import com.dontwaste.model.entity.Cart;
+import com.dontwaste.model.entity.product.Product;
+import com.dontwaste.model.entity.User;
+import com.dontwaste.model.web.cart.ProductToCartRequest;
+import com.dontwaste.model.web.cart.ProductsInCartResponce;
 import com.dontwaste.repository.CartRepository;
 import com.dontwaste.repository.ProductRepository;
 import com.dontwaste.repository.UserRepository;
@@ -62,10 +62,10 @@ public class CartServiceImp implements CartService{
                          .id(x.getId())
                          .userId(x.getUser().getId())
                          .productId(x.getProduct().getId())
-                         .description(x.getProduct().getDescription())
-                         .image(x.getProduct().getImage())
+//                         .description(x.getProduct().getDescription())
+//                         .image(x.getProduct().getImage())
                          .price(x.getProduct().getPrice())
-                         .productName(x.getProduct().getProductName())
+//                         .productName(x.getProduct().getProductName())
                          .quantity(x.getQuantity())
                          .build())
         .collect(Collectors.toList());

@@ -1,7 +1,7 @@
 package com.dontwaste.controller;
 
-import com.dontwaste.model.customer.web.cart.ProductToCartRequest;
-import com.dontwaste.model.customer.web.cart.ProductsInCartResponce;
+import com.dontwaste.model.web.cart.ProductToCartRequest;
+import com.dontwaste.model.web.cart.ProductsInCartResponce;
 import com.dontwaste.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

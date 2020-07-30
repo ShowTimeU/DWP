@@ -1,17 +1,13 @@
 package com.dontwaste.controller;
 
 
-import com.dontwaste.model.customer.entity.User;
-import com.dontwaste.model.customer.web.user.UserCreateRequest;
-import com.dontwaste.model.customer.web.user.UserLoginRequest;
-import com.dontwaste.model.customer.web.user.UserUpdateRequest;
-import com.dontwaste.model.customer.web.user.response.LoginResponse;
-import com.dontwaste.model.customer.web.user.response.UserResponse;
+import com.dontwaste.model.entity.User;
+import com.dontwaste.model.web.user.UserUpdateRequest;
+import com.dontwaste.model.web.user.response.UserResponse;
 import com.dontwaste.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 @CrossOrigin
