@@ -1,11 +1,13 @@
-<button
-  mat-raised-button
-  *ngIf="!manager"
-  (click)="toSearchPage()"> Check All Products
-</button>
-
-<img src="../../assets/1.png" height="600"  alt="1"/>
-<img src="../../assets/2.png" height="600" alt="2" style="position: absolute;"/>
-
-<app-product-cards-list></app-product-cards-list>
+<div>
+  <button
+    mat-raised-button
+    *ngIf="!manager"
+    (click)="toSearchPage()"> Check All Products
+  </button>
+  <img src="../../assets/1.png" alt="1">
+  <img src="../../assets/2.png" style="position: absolute" alt="2">
+  <div class="productList">
+    <app-product-cards-list></app-product-cards-list>
+  </div>
+</div>
 

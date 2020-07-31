@@ -4,6 +4,8 @@ import {ProductService} from "../../-Services-/product.service";
 import {Router} from "@angular/router";
 import {AuthenticationService} from "../../-Services-/authentication.service";
 import {User} from "../../-Models-/user";
+import {ProductTemplate} from "../../-Models-/product-template";
+import {Role} from "../../-Models-/role";
 
 @Component({
   selector: 'app-business-products',
@@ -12,37 +14,28 @@ import {User} from "../../-Models-/user";
 })
 export class BusinessProductsComponent implements OnInit {
 
-  productList: Product[];
+  productList: ProductTemplate[];
   currentUser: User;
-  displayedColumns: string[] = ['image', 'description', 'price', 'location', 'quantity', 'cancel'];
 
   constructor(private product: ProductService,
               private router: Router,
               private auth: AuthenticationService) { }
 
   ngOnInit(): void {
-    if(this.auth.currentUserValue) {
+    if(this.auth.currentUserValue && this.auth.currentUserValue.role === Role.Manager) {
       this.currentUser = this.auth.currentUserValue;
       this.getProductsByInstitution();
     }
   }
 
   getProductsByInstitution() {
-    this.product.getAllProducts().subscribe( data => {
-      this.productList = data;
-      this.sorting(this.productList);
-    })
+    // this.product.getAllTemplates().subscribe( data => {
+    //   this.productList = data;
+    // })
   }
 
   toCreateProduct() {
     this.router.navigate(['create-product']);
   }
 
-  sorting(productList: Product[]) {
-    productList.sort((a, b) => {
-      if (a.productName < b.productName) return -1;
-      else if (a.productName > b.productName) return 1;
-      else return 0;
-    });
-  }
 }

@@ -35,7 +35,7 @@ export class CartService {
 
   removeProductsFromCart(product: CartItem, user: User) {
     let headers = new HttpHeaders().set('Authorization', this.currentUser.token);
-    const productId = product.productId;
+    const productId = product.product.id;
     const userId = user.id;
     let params = new HttpParams().set('productId', String(productId)).set('userId', String(userId));
     return this.http.delete(this.urlCart + '/deleteFromCart', {params: params, headers: headers});

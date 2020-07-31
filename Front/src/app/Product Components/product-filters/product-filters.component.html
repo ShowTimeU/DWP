@@ -5,21 +5,21 @@
       matInput
       [(ngModel)]="searchText"
       placeholder="Enter Product Name Or Institution Name"
-      autocomplete="off">
+      autocomplete="on">
     <mat-icon matSuffix>search</mat-icon>
   </mat-form-field>
 
   <div class="filterInput">
-    <mat-form-field appearance="fill">
-      <mat-label> Choose Area </mat-label>
-      <mat-select [(ngModel)]="selectedValue"
-                  (ngModelChange)="filter()" >
-        <mat-option *ngFor="let area of areas"
-                    [value]="area.value">
-          {{area.viewValue}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+<!--    <mat-form-field appearance="fill">-->
+<!--      <mat-label> Choose Area </mat-label>-->
+<!--      <mat-select [(ngModel)]="selectedValue"-->
+<!--                  (ngModelChange)="filter()" >-->
+<!--        <mat-option *ngFor="let area of areas"-->
+<!--                    [value]="area.value">-->
+<!--          {{area.viewValue}}-->
+<!--        </mat-option>-->
+<!--      </mat-select>-->
+<!--    </mat-form-field>-->
 
     <mat-form-field appearance="fill">
       <mat-label> Choose Price </mat-label>

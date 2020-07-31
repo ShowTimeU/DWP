@@ -1,13 +1,16 @@
 <mat-card class="card">
   <mat-card-header>
-    <img mat-card-avatar [attr.src]="productTemplateItem.institution.institutionLogo" class="header-image" alt="Institution logo"/>
+    <img mat-card-avatar
+         [attr.src]="productItem.productTemplate.institution.institutionLogo"
+         class="header-image"
+         alt="Institution logo"/>
     <div class="mat-card-header-text">
-      <mat-card-title> {{productTemplateItem.productName}} </mat-card-title>
-      <mat-card-subtitle> From <b>{{productTemplateItem.institution.institutionName}}</b></mat-card-subtitle>
+      <mat-card-title> {{productItem.productTemplate.productName}} </mat-card-title>
+      <mat-card-subtitle> From <b>{{productItem.productTemplate.institution.institutionName}}</b></mat-card-subtitle>
     </div>
   </mat-card-header>
 
-  <img mat-card-image [src]="productTemplateItem.productImage" alt="Product image">
+  <img mat-card-image [src]="productItem.productTemplate.productImage" alt="Product image">
   <mat-card-content class="price">
     <div class="newPrice"><b>  {{productItem.price | currency: 'ILS'}} </b></div>
     <div class="oldPrice"> {{productItem.startingPrice | currency: 'ILS'}} </div>

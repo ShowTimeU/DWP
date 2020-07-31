@@ -19,11 +19,12 @@ export class CreateInstitutionBranchComponent implements OnInit {
 
   formGroup: FormGroup;
   institutionList: Institution[];
-  userSubscription: Subscription;
   currentUser: User;
   createdBranch: Branch;
   error = '';
   selectedValue: string;
+  selectedUser: string;
+  userList: User[];
 
   constructor(private snack: MatSnackBar,
               private fb: FormBuilder,
@@ -32,9 +33,9 @@ export class CreateInstitutionBranchComponent implements OnInit {
               private auth: AuthenticationService) { }
 
   ngOnInit(): void {
-    this.institution.getAllInstitutions().subscribe(data => this.institutionList = data)
-    this.userSubscription = this.auth.currentUser.subscribe(data => this.currentUser = data);
-    if(this.currentUser && this.currentUser.role === Role.Admin) {
+    this.institution.getAllInstitutions().subscribe(data => this.institutionList = data);
+    this.auth.getAllUsers().subscribe(data => this.userList = data);
+    if(this.auth.currentUserValue && this.auth.currentUserValue.role === Role.Admin) {
       this.formGroup = this.fb.group({
         branchCity: new FormControl('', Validators.required),
         branchAddress: new FormControl('', Validators.required),
@@ -48,7 +49,7 @@ export class CreateInstitutionBranchComponent implements OnInit {
     if (this.formGroup.invalid) {
       return;
     }
-    this.institution.createInstitutionBranch(this.formGroup.value, this.selectedValue, this.currentUser).subscribe(data => {
+    this.institution.createInstitutionBranch(this.formGroup.value, this.selectedValue, this.selectedUser).subscribe(data => {
       this.createdBranch = data;
       this.router.navigate(['/branch-search']);
       console.log(this.createdBranch);

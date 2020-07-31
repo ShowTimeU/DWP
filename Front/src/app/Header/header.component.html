@@ -20,21 +20,20 @@
         <div class="adminPanel" *ngIf="isAdmin">
           <p> INSTITUTIONS MENU: </p>
           <a [routerLink]="['create-institution']"
-             (click)="sidenav.close()"
-             *ngIf="isAdmin">
+             (click)="sidenav.close()">
             <button mat-raised-button
                     class="adminBtn">CREATE INST
             </button>
           </a>
           <a [routerLink]="['institution-search']"
-             (click)="sidenav.close()"
-             *ngIf="isAdmin">
+             (click)="sidenav.close()">
             <button mat-raised-button
                     class="adminBtn">INST LIST
             </button>
           </a>
         </div>
         <br/>
+
         <div class="adminPanel" *ngIf="isAdmin">
           <p> BRANCHES MENU: </p>
           <a [routerLink]="['create-institution-branch']"
@@ -50,22 +49,19 @@
             </button>
           </a>
         </div>
+        <br/>
+
         <div class="adminPanel" *ngIf="isAdmin">
           <p> PRODUCT TEMPLATES MENU: </p>
           <a [routerLink]="['create-product-template']"
              (click)="sidenav.close()">
             <button mat-raised-button
-                    class="adminBtn">CREATE PRODUCT TEMPLATE
+                    class="adminBtn">CREATE TEMPLATE
             </button>
           </a>
-          <a [routerLink]="['branch-search']"
-             (click)="sidenav.close()">
-            <button mat-raised-button
-                    class="adminBtn">BRANCH LIST
-            </button>
-          </a>
-        </div>
 
+        </div>
+        <br/>
         <!-------------------------------------------------------------------------------->
 
         <!--------------------------------------USER------------------------------------->

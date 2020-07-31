@@ -59,13 +59,11 @@ export class CreateProductTemplateComponent implements OnInit {
     }
     this.product.createProductTemplate(this.formGroup.value).subscribe(data => {
       this.createdProductTemplate = data;
-      console.log(this.createdProductTemplate);
-      // this.router.navigate(['/business-products']);
+      this.router.navigate(['/business-products']);
     }, error => {
       error = this.snack.open('This product already exists!',
         null, {duration: 3000, panelClass: 'snackReg'});
       this.error = error;
-      console.log(this.formGroup.value);
     });
   }
 

@@ -20,8 +20,8 @@ export class ProductCardsListComponent implements OnInit {
     return this.product.getAllProducts().subscribe(data => {
       this.productList = data;
       this.productList.sort((a, b) => {
-        if (a.productName < b.productName) return -1;
-        else if (a.productName > b.productName) return 1;
+        if (a.productTemplate.productName < b.productTemplate.productName) return -1;
+        else if (a.productTemplate.productName > b.productTemplate.productName) return 1;
         else return 0;
       });
     });

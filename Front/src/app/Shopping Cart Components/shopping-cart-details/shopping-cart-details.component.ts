@@ -47,7 +47,7 @@ export class ShoppingCartDetailsComponent implements OnInit {
   }
 
   calcTotalPrice() {
-    return this.cartItems.reduce((acc, prod) => acc += (prod.price * prod.quantity), 0);
+    return this.cartItems.reduce((acc, prod) => acc += (prod.product.price * prod.quantity), 0);
   }
 
   checkPage() {

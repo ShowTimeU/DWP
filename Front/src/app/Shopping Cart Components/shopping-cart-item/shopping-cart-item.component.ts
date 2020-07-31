@@ -23,10 +23,10 @@ export class ShoppingCartItemComponent implements OnInit {
   }
 
   calcPrice() {
-    if (this.cartItem.quantity < 1) {
-      return this.cartItem.price;
+    if (this.cartItem.product.price < 1) {
+      return this.cartItem.product.price;
     }
-    return this.cartItem.price * this.cartItem.quantity;
+    return this.cartItem.product.price * this.cartItem.quantity;
   }
 
 }

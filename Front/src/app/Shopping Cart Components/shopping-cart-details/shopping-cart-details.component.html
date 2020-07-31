@@ -10,23 +10,23 @@
     <div *ngFor="let item of cartItems">
       <table mat-table>
         <ng-container matColumnDef="image">
-          <th mat-header-cell *matHeaderCellDef><img [src]="item.image">
+          <th mat-header-cell *matHeaderCellDef><img [src]="item.productTemplate.productImage" alt="ph">
           </th>
         </ng-container>
 
         <ng-container matColumnDef="description">
           <th mat-header-cell *matHeaderCellDef>
-            <b>{{item.productName}}</b> from {{item.institution}}<br/><br/>
-            Ingredients: {{item.description}}
+            <b>{{item.productTemplate.productName}}</b> from {{item.institution.institutionName}}<br/><br/>
+            Description: {{item.productTemplate.productDescription}}
           </th>
         </ng-container>
 
         <ng-container matColumnDef="price">
-          <th mat-header-cell *matHeaderCellDef> Price: {{item.price * item.quantity | currency: 'ILS'}} </th>
+          <th mat-header-cell *matHeaderCellDef> Price: {{item.product.price * item.quantity | currency: 'ILS'}} </th>
         </ng-container>
 
         <ng-container matColumnDef="location">
-          <th mat-header-cell *matHeaderCellDef> Located in <b>{{item.area}}</b></th>
+          <th mat-header-cell *matHeaderCellDef> Located in <b>{{item.branch.branchCity}}</b> on <b>{{item.branch.branchAddress}}</b></th>
         </ng-container>
 
         <ng-container matColumnDef="quantity">

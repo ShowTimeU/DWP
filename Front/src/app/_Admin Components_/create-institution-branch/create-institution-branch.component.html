@@ -50,5 +50,14 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>User</mat-label>
+      <mat-select [(ngModel)]="selectedUser" name="user">
+        <mat-option *ngFor="let user of userList"
+                    [value]="user.id">
+          {{user.email}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </mat-card>
 </div>

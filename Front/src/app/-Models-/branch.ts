@@ -9,6 +9,8 @@ export class Branch {
   branchEmail: string;
   institutionId: number;
   userId: number;
+  user: User;
+  institution: Institution;
 
   constructor(id: number,
               branchCity: string,
@@ -22,5 +24,7 @@ export class Branch {
     this.branchEmail = branchEmail;
     this.institutionId = institution.id;
     this.userId = user.id;
+    this.user = user;
+    this.institution = institution;
   }
 }

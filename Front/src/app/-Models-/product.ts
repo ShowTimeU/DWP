@@ -7,8 +7,8 @@ export class Product {
   price: number;
   quantity: number;
   totalPrice: number;
-  branchId: number;
-  productTemplateId: number;
+  branch: Branch;
+  productTemplate: ProductTemplate;
 
   constructor(id: number,
               startingPrice: number,
@@ -21,8 +21,8 @@ export class Product {
     this.startingPrice = startingPrice;
     this.price = price;
     this.quantity = quantity;
-    this.branchId = branch.id;
-    this.productTemplateId = productTemplate.id;
+    this.branch = branch;
+    this.productTemplate = productTemplate;
     this.totalPrice = totalPrice * quantity;
   }
 }

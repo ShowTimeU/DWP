@@ -32,6 +32,7 @@ export class ShoppingCartComponent implements OnInit {
     if (this.auth.currentUserValue) {
       this.cartService.getCartItems(this.currentUser).subscribe((items) => {
         this.cartItems = items;
+        console.log(this.cartItems);
         this.calcTotalPrice();
       })
     }
@@ -44,7 +45,7 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   calcTotalPrice() {
-    return this.cartItems.reduce((acc, prod) => acc += (prod.price * prod.quantity), 0);
+    return this.cartItems.reduce((acc, prod) => acc += (prod.product.price * prod.quantity), 0);
   }
 
 }

@@ -1,24 +1,27 @@
 import {Product} from "./product";
+import {ProductTemplate} from "./product-template";
+import {Institution} from "./institution";
+import {Branch} from "./branch";
 
 export class CartItem {
   productId: number;
-  productName: string;
   quantity: number;
-  price: number;
-  image?: string;
-  description?: string;
-  institution?: string;
-  area?: string;
+  institution: Institution;
+  product: Product;
+  productTemplate: ProductTemplate;
+  branch: Branch;
 
 
-  constructor(product: Product, quantity= 1) {
+  constructor(product: Product,
+              productTemplate: ProductTemplate,
+              institution: Institution,
+              branch: Branch,
+              quantity= 1) {
     this.productId = product.id;
-    this.productName = product.productName;
     this.quantity = quantity;
-    this.price = product.price;
-    this.image = product.image;
-    this.description = product.description;
-    this.institution = product.institution;
-    this.area = product.area;
+    this.institution = institution;
+    this.product = product;
+    this.productTemplate = productTemplate;
+    this.branch = branch;
   }
 }

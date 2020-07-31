@@ -38,4 +38,9 @@ export class ProductService {
     return this.http.post<ProductTemplate>(this.urlProductTemplate + '/addTemplate', productTemplate, {headers: headers});
   }
 
+  getAllTemplates(institution): Observable<ProductTemplate[]> {
+    let headers = new HttpHeaders().set('Authorization', this.currentUser.token);
+    return this.http.get<ProductTemplate[]>(this.urlProductTemplate + '/getAllTemplates');
+  }
+
 }

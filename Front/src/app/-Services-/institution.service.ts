@@ -29,10 +29,9 @@ export class InstitutionService {
     return this.http.get<Institution[]>(this.urlInstitution + '/getAllInstitutions');
   }
 
-  createInstitutionBranch(branch, institutionId, user: User): Observable<Branch> {
+  createInstitutionBranch(branch, institutionId, userId): Observable<Branch> {
     let headers = new HttpHeaders().set('Authorization', this.currentUser.token);
-    const userId = user.id;
-    let params = new HttpParams().set('institutionId', institutionId).set('userId', String(userId));
+    let params = new HttpParams().set('institutionId', institutionId).set('userId', userId);
     return this.http.post<Branch>(this.urlBranch + '/addBranch', branch, {params: params, headers: headers});
   }
 

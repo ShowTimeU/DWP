@@ -9,9 +9,9 @@ export class FilterPipe implements PipeTransform {
     if(!args)
       return value;
     return value.filter(
-      item => item.productName.toLowerCase().indexOf(args.toLowerCase()) > -1
+      item => item.productTemplate.productName.toLowerCase().indexOf(args.toLowerCase()) > -1
         ||
-        item.institution.toLowerCase().indexOf(args.toLowerCase()) > -1);
+        item.productTemplate.institution.institutionName.toLowerCase().indexOf(args.toLowerCase()) > -1);
   }
 
 }

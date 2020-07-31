@@ -10,4 +10,5 @@ public interface ProductTemplateService {
     void deleteProductTemplate(Long id);
     List<ProductTemplateResponse> getAllProductTemplatesByInstitution(Long institutionId);
     ProductTemplateResponse getProductTemplate(Long id);
+
 }

@@ -19,16 +19,6 @@ export class ProductFiltersComponent implements OnInit {
   max: number;
 
   searchText: '';
-  areas: Area[] = [
-    {value: 'All', viewValue: 'All Districts'},
-    {value: 'Jerusalem', viewValue: 'Jerusalem District'},
-    {value: 'North', viewValue: 'Northern District'},
-    {value: 'Haifa', viewValue: 'Haifa District'},
-    {value: 'Centre', viewValue: 'Central District'},
-    {value: 'Tel Aviv', viewValue: 'Tel Aviv District'},
-    {value: 'South', viewValue: 'Southern District'},
-    {value: 'Judea and Samaria Area', viewValue: 'Judea and Samaria Area'}
-  ];
   priceList: Price[] = [
     {min: 0, max: 1000, view: 'All Prices'},
     {min: 0, max: 50, view: '₪0 - ₪50'},
@@ -82,8 +72,8 @@ export class ProductFiltersComponent implements OnInit {
 
   sorting(productList: Product[]) {
     productList.sort((a, b) => {
-      if (a.productName < b.productName) return -1;
-      else if (a.productName > b.productName) return 1;
+      if (a.productTemplate.productName < b.productTemplate.productName) return -1;
+      else if (a.productTemplate.productName > b.productTemplate.productName) return 1;
       else return 0;
     });
   }
