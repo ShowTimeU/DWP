@@ -41,7 +41,11 @@ public class ProductTemplateServiceImp implements ProductTemplateService {
     @Override
     public List<ProductTemplateResponse> getAllProductTemplatesByInstitution(Long institutionId) {
         List<ProductTemplateResponse> templates = new ArrayList<>();
-        List<ProductTemplate> lt = productTemplateRepository.findAllByInstitution_Id(institutionId);
+        Institution institution = institutionRepository.findById(institutionId).orElse(null);
+        if(institution == null){
+            throw new RuntimeException("Wrong institution");
+        }
+        List<ProductTemplate> lt = productTemplateRepository.findAllByInstitution(institution);
         for(ProductTemplate productTemplate : lt){
             templates.add(productTemplateConverter.convertToWeb(productTemplate));
         }

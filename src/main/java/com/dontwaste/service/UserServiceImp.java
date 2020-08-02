@@ -2,18 +2,14 @@ package com.dontwaste.service;
 
 import com.dontwaste.converter.user.PasswordConverter;
 import com.dontwaste.converter.user.UserConverter;
-import com.dontwaste.model.entity.Role;
-import com.dontwaste.model.entity.Session;
-import com.dontwaste.model.entity.User;
-import com.dontwaste.model.entity.UserRole;
+import com.dontwaste.model.entity.*;
 import com.dontwaste.model.web.user.UserCreateRequest;
 import com.dontwaste.model.web.user.UserLoginRequest;
 import com.dontwaste.model.web.user.UserUpdateRequest;
 import com.dontwaste.model.web.user.response.LoginResponse;
+import com.dontwaste.model.web.user.response.LoginResponseForManager;
 import com.dontwaste.model.web.user.response.UserResponse;
-import com.dontwaste.repository.RoleRepository;
-import com.dontwaste.repository.UserRepository;
-import com.dontwaste.repository.UserRoleRepositoty;
+import com.dontwaste.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,6 +37,12 @@ public class UserServiceImp implements UserService{
 
     @Autowired
     UserRoleRepositoty userRoleRepositoty;
+
+    @Autowired
+    BranchRepository branchRepository;
+
+    @Autowired
+    ProductTemplateRepository productTemplateRepository;
 
     @Override
     public UserResponse createUser(UserCreateRequest userCreateRequest) throws NoSuchAlgorithmException {
@@ -95,7 +97,6 @@ public class UserServiceImp implements UserService{
                 passwordConverter.getHash(userLoginRequest.getPassword())
         );
         if(user==null){
-            //return new UserResponse();
             throw new RuntimeException("Incorrect user or password");
         }
 
@@ -105,6 +106,18 @@ public class UserServiceImp implements UserService{
                 .build();
         sessionService.addSession(userSession);
         UserRole userRole = userRoleRepositoty.getByUser(user);
+        if(userRole.getRole().getRoleName().equals("MANAGER")){
+            Branch branch = branchRepository.findByUser(user);
+            Institution institution = branch.getInstitution();
+            List<ProductTemplate> templates = productTemplateRepository.findAllByInstitution(institution);
+
+            return  LoginResponseForManager.builder()
+                    .loginResponse(userConverter.loginResponse(user, userSession, userRole))
+                    .institution(institution)
+                    .branch(branch)
+                    .templates(templates)
+                    .build();
+        }
         return userConverter.loginResponse(user, userSession, userRole);
     }
 

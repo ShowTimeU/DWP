@@ -48,11 +48,9 @@ public class Runner implements CommandLineRunner {
                 .build();
         Role manager = Role.builder()
                 .roleName("MANAGER")
-                .isDefault(false)
                 .build();
         Role admin = Role.builder()
                 .roleName("ADMIN")
-                .isDefault(false)
                 .build();
 
         roleRepository.saveAll(Arrays.asList(user,manager,admin));
