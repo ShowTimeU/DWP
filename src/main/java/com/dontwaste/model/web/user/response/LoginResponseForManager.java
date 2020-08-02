@@ -11,10 +11,21 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-@Builder
+
 public class LoginResponseForManager extends LoginResponse {
 
-    private LoginResponse loginResponse;
+
+    @Builder(builderMethodName = "childBuilder")
+    public LoginResponseForManager(Long id, String firstName, String lastName,
+                                   String email, String phone, String token,
+                                   String role, Branch branch, Institution institution,
+                                    List<ProductTemplate> templates){
+        super(id, firstName, lastName, email, phone, token, role);
+        this.branch = branch;
+        this.institution = institution;
+        this.templates = templates;
+    }
+
     private Branch branch;
     private Institution institution;
     private List<ProductTemplate> templates;

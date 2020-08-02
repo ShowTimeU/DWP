@@ -110,9 +110,14 @@ public class UserServiceImp implements UserService{
             Branch branch = branchRepository.findByUser(user);
             Institution institution = branch.getInstitution();
             List<ProductTemplate> templates = productTemplateRepository.findAllByInstitution(institution);
-
-            return  LoginResponseForManager.builder()
-                    .loginResponse(userConverter.loginResponse(user, userSession, userRole))
+            return  LoginResponseForManager.childBuilder()
+                    .id(user.getId())
+                    .firstName(user.getFirstName())
+                    .lastName(user.getLastName())
+                    .email(user.getEmail())
+                    .phone(user.getPhone())
+                    .token(userSession.getToken())
+                    .role(userRole.getRole().getRoleName())
                     .institution(institution)
                     .branch(branch)
                     .templates(templates)
