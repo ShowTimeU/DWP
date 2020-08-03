@@ -1,0 +1,26 @@
+.card {
+  width: 320px;
+  margin: 2% 11px 2% 11px;
+  color: #404040;
+}
+mat-card {
+  background: rgba(255, 255, 255, 0.5);
+}
+mat-card:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+mat-card-header {
+  height: 40px;
+}
+img {
+  height: 200px;
+}
+::ng-deep .mat-card-header-text {
+  margin: 0 !important;
+}
+.mat-card-header-text {
+  margin: 0 auto !important;
+}
+button {
+  background: rgba(255, 255, 255, 0.3);
+}

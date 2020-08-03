@@ -1,0 +1,17 @@
+<div class="card" >
+  <mat-card>
+    <mat-card-header>
+      <div class="mat-card-header-text">
+        <mat-card-title> {{item.productName}} </mat-card-title>
+      </div>
+    </mat-card-header>
+    <img mat-card-image [src]="item.productImage" alt="Product image" >
+    <mat-card-content>
+      <button mat-raised-button
+              (click)="toCreateProduct()">
+        <mat-icon>add_to_queue</mat-icon>
+        Add this product
+      </button>
+    </mat-card-content>
+  </mat-card>
+</div>
