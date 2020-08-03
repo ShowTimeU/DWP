@@ -22,7 +22,7 @@ export class ProductService {
 
   createProduct(product): Observable<Product> {
     let headers = new HttpHeaders().set('Authorization', this.currentUser.token);
-    return this.http.post<Product>(this.urlProduct + '/createProduct', product, {headers: headers});
+    return this.http.post<Product>(this.urlProduct + '/addProduct', product, {headers: headers});
   }
 
   getAllProducts(): Observable<Product[]> {
@@ -38,9 +38,10 @@ export class ProductService {
     return this.http.post<ProductTemplate>(this.urlProductTemplate + '/addTemplate', productTemplate, {headers: headers});
   }
 
-  getAllTemplates(institution): Observable<ProductTemplate[]> {
+  getAllTemplates(institutionId): Observable<ProductTemplate[]> {
     let headers = new HttpHeaders().set('Authorization', this.currentUser.token);
-    return this.http.get<ProductTemplate[]>(this.urlProductTemplate + '/getAllTemplates');
+    let params = new HttpParams().set('institutionId', institutionId);
+    return this.http.get<ProductTemplate[]>(this.urlProductTemplate + '/getAllTemplates', {headers: headers, params: params});
   }
 
 }

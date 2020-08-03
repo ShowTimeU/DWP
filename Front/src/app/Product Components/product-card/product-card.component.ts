@@ -31,9 +31,6 @@ export class ProductCardComponent implements OnInit {
     this.auth.currentUser.subscribe(data => {
       this.currentUser = data;
     });
-    if(this.currentUser) {
-      this.manager = this.currentUser.role == Role.Manager;
-    }
   }
 
 

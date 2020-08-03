@@ -1,0 +1,68 @@
+.form {
+  display: flex;
+  margin-top: 6%;
+  text-align: center;
+  height: 80%;
+}
+mat-card-content {
+  width: 100%;
+  text-align: center;
+  color: #A9A9A9;
+  font-size: 16px;
+}
+mat-form-field {
+  margin-bottom: 2%;
+  text-align: center;
+  padding: 0 !important;
+  font-size: 18px;
+  width: 100%;
+}
+.field {
+  background-color: #F5F5F5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+.descField {
+  line-height: 1.5;
+  background-color: #F5F5F5;
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: grayscale(80%);
+}
+.description {
+  position: absolute;
+  left: 10%;
+  width: 30%;
+  height: auto;
+  background: rgba(255, 255, 255, 0.8);
+  flex-wrap: wrap;
+}
+.value {
+  position: absolute;
+  right: 10%;
+  width: 30%;
+  height: auto;
+  background: rgba(255, 255, 255, 0.8);
+}
+.valueContent {
+  padding-top: 25%;
+  padding-bottom: 25%;
+}
+.small {
+  color: #404040;
+  width: 50%;
+}
+button {
+  height: 50px;
+  width: 200px;
+  font-size: 18px;
+  background: rgba(255, 255, 255, 0.3);
+}

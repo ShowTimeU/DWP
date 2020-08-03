@@ -26,6 +26,7 @@ import {InstitutionSearchComponent} from "./_Admin Components_/institution-searc
 import {CreateInstitutionBranchComponent} from "./_Admin Components_/create-institution-branch/create-institution-branch.component";
 import {BranchSearchComponent} from "./_Admin Components_/branch-search/branch-search.component";
 import {BranchInfoComponent} from "./_Admin Components_/branch-info/branch-info.component";
+import {CreateProductComponent} from "./_Business Components_/create-product/create-product.component";
 
 
 const routes: Routes = [
@@ -156,6 +157,12 @@ const routes: Routes = [
   {
     path: 'business-products',
     component: BusinessProductsComponent,
+    canActivate: [AuthGuard],
+    data: {roles: [Role.Manager, Role.Admin]}
+  },
+  {
+    path: 'create-product',
+    component: CreateProductComponent,
     canActivate: [AuthGuard],
     data: {roles: [Role.Manager, Role.Admin]}
   },

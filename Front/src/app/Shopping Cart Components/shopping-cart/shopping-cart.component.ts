@@ -32,7 +32,6 @@ export class ShoppingCartComponent implements OnInit {
     if (this.auth.currentUserValue) {
       this.cartService.getCartItems(this.currentUser).subscribe((items) => {
         this.cartItems = items;
-        console.log(this.cartItems);
         this.calcTotalPrice();
       })
     }

@@ -55,7 +55,8 @@ import { LinkifyPipe } from './-Helpers-/linkify.pipe';
 import { CreateInstitutionBranchComponent } from './_Admin Components_/create-institution-branch/create-institution-branch.component';
 import { BranchSearchComponent } from './_Admin Components_/branch-search/branch-search.component';
 import { BranchInfoComponent } from './_Admin Components_/branch-info/branch-info.component';
-import { CreateProductComponent } from './_Admin Components_/create-product/create-product.component';
+import { CreateProductComponent } from './_Business Components_/create-product/create-product.component';
+import { BusinessProductTemplateComponent } from './_Business Components_/business-product-template/business-product-template.component';
 
 @NgModule({
   declarations: [
@@ -92,6 +93,7 @@ import { CreateProductComponent } from './_Admin Components_/create-product/crea
     BranchSearchComponent,
     BranchInfoComponent,
     CreateProductComponent,
+    BusinessProductTemplateComponent,
   ],
   imports: [
     BrowserModule,

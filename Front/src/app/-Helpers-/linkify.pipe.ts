@@ -6,7 +6,7 @@ import linkifyStr from 'linkifyjs/string';
 })
 export class LinkifyPipe implements PipeTransform {
 
-  transform(str: string): string {
+  transform(str: any): any {
     return str ? linkifyStr(str, {target: '_system'}) : str;
   }
 

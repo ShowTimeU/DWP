@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Product} from "../../-Models-/product";
 import {ProductService} from "../../-Services-/product.service";
 import {Router} from "@angular/router";
@@ -14,28 +14,27 @@ import {Role} from "../../-Models-/role";
 })
 export class BusinessProductsComponent implements OnInit {
 
-  productList: ProductTemplate[];
   currentUser: User;
+  productTemplateList: ProductTemplate[];
 
   constructor(private product: ProductService,
               private router: Router,
-              private auth: AuthenticationService) { }
+              private auth: AuthenticationService) {
+  }
 
   ngOnInit(): void {
-    if(this.auth.currentUserValue && this.auth.currentUserValue.role === Role.Manager) {
+    if (this.auth.currentUserValue && this.auth.currentUserValue.role === Role.Manager) {
       this.currentUser = this.auth.currentUserValue;
-      this.getProductsByInstitution();
+      this.product.getAllTemplates(this.currentUser.institution.id).subscribe(data => {
+        this.productTemplateList = data;
+        this.productTemplateList.sort((a, b) => {
+          if (a.productName < b.productName) return -1;
+          else if (a.productName > b.productName) return 1;
+          else return 0;
+        });
+      });
     }
   }
 
-  getProductsByInstitution() {
-    // this.product.getAllTemplates().subscribe( data => {
-    //   this.productList = data;
-    // })
-  }
-
-  toCreateProduct() {
-    this.router.navigate(['create-product']);
-  }
 
 }

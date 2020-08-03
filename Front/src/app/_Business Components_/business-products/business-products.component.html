@@ -1,18 +1,5 @@
-<mat-card *ngFor="let item of productList">
-  <mat-card-header>
-    <img mat-card-avatar [attr.src]="item.institution.institutionLogo" class="header-image"
-         alt="Institution logo"/>
-    <div class="mat-card-header-text">
-      <mat-card-title> {{item.productName}} </mat-card-title>
-      <mat-card-subtitle> From <b>{{item.institution.institutionName}}</b></mat-card-subtitle>
-    </div>
-  </mat-card-header>
-  <img mat-card-image [src]="item.productImage" alt="Product image">
-  <mat-card-content>
-    <!--    <button mat-raised-button-->
-    <!--            (click)="toCreateProduct()">-->
-    <!--      <mat-icon>add_circle_outline</mat-icon>-->
-    <!--      Add new product-->
-    <!--    </button>-->
-  </mat-card-content>
-</mat-card>
+<div class="productTemplates">
+  <div *ngFor="let productTemplate of productTemplateList">
+    <app-business-product-template [item]="productTemplate"></app-business-product-template>
+  </div>
+</div>
