@@ -55,3 +55,33 @@ img {
 button {
   background: rgba(255, 255, 255, 0.3);
 }
+
+.banner {
+  position: absolute;
+  width: 105px;
+  height: 25px;
+  left: 20px;
+  top: 106px;
+  opacity: 0.7;
+}
+.bannerText {
+  position: absolute;
+  color: ghostwhite;
+  left: 10px;
+  top: 97px;
+  font-size: 12px;
+}
+.banner2 {
+  position: absolute;
+  width: 135px;
+  height: 25px;
+  left: 20px;
+  top: 134px;
+  opacity: 0.7;
+}
+.bannerText2 {
+  position: absolute;
+  left: 11px;
+  top: 125px;
+  font-size: 12px;
+}

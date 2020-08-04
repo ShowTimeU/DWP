@@ -11,6 +11,14 @@
   </mat-card-header>
 
   <img mat-card-image [src]="productItem.productTemplate.productImage" alt="Product image">
+  <div>
+    <img class="banner" mat-card-image src="../../../assets/bannerCity.png"/>
+    <mat-card-title class="bannerText"> {{productItem.branch.branchCity}} </mat-card-title>
+  </div>
+  <div>
+    <img class="banner2" mat-card-image src="../../../assets/bannerAddress.png"/>
+    <mat-card-title class="bannerText2"> {{productItem.branch.branchAddress}} </mat-card-title>
+  </div>
   <mat-card-content class="price">
     <div class="newPrice"><b>  {{productItem.price | currency: 'ILS'}} </b></div>
     <div class="oldPrice"> {{productItem.startingPrice | currency: 'ILS'}} </div>
