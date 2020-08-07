@@ -106,10 +106,12 @@ public class UserServiceImp implements UserService{
                 .build();
         sessionService.addSession(userSession);
         UserRole userRole = userRoleRepositoty.getByUser(user);
+
         if(userRole.getRole().getRoleName().equals("MANAGER")){
             Branch branch = branchRepository.findByUser(user);
             Institution institution = branch.getInstitution();
             List<ProductTemplate> templates = productTemplateRepository.findAllByInstitution(institution);
+            System.out.println(templates.toString());
             return  LoginResponseForManager.childBuilder()
                     .id(user.getId())
                     .firstName(user.getFirstName())

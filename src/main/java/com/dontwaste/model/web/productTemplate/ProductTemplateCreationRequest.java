@@ -17,6 +17,10 @@ public class ProductTemplateCreationRequest {
 
     @NotNull
     private Long institutionId;
+    @NotNull
+    private Long kitchenTypeId;
+    @NotNull
+    private Long dishTypeId;
     @NotBlank
     @Length(max = 30)
     private String productName;
@@ -24,5 +28,11 @@ public class ProductTemplateCreationRequest {
     private String productDescription;
     @Length(max = 2600)
     private String productImage;
+    @NotBlank
+    private boolean kosher;
+    @NotBlank
+    private boolean vegeterian;
+    @NotBlank
+    private boolean vegan;
 
 }

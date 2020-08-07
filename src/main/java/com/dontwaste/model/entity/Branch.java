@@ -23,7 +23,7 @@ public class Branch extends BaseId {
     @Column(name = "BRANCH_EMAIL", length = 30)
     private String branchEmail;
     @OneToOne
-    @JoinColumn(name = "USER_ID", referencedColumnName = "ID")
+    @JoinColumn(name = "USER_ID", referencedColumnName = "ID", unique = true)
     private User user;
     @OneToOne
     @JoinColumn(name = "INSTITUTION_ID", referencedColumnName = "ID")

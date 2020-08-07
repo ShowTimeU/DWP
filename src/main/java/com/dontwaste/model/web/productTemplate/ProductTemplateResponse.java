@@ -1,6 +1,8 @@
 package com.dontwaste.model.web.productTemplate;
 
 import com.dontwaste.model.entity.Institution;
+import com.dontwaste.model.entity.product.productType.DishType;
+import com.dontwaste.model.entity.product.productType.KitchenType;
 import lombok.*;
 
 @AllArgsConstructor
@@ -14,6 +16,11 @@ public class ProductTemplateResponse {
     private String productName;
     private String productDescription;
     private String productImage;
+    private boolean kosher;
+    private boolean vegeterian;
+    private boolean vegan;
     private Institution institution;
+    private DishType dishType;
+    private KitchenType kitchenType;
 
 }

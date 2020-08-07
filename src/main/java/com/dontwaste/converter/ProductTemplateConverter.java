@@ -2,6 +2,8 @@ package com.dontwaste.converter;
 
 import com.dontwaste.model.entity.Institution;
 import com.dontwaste.model.entity.ProductTemplate;
+import com.dontwaste.model.entity.product.productType.DishType;
+import com.dontwaste.model.entity.product.productType.KitchenType;
 import com.dontwaste.model.web.productTemplate.ProductTemplateCreationRequest;
 import com.dontwaste.model.web.productTemplate.ProductTemplateResponse;
 import org.springframework.stereotype.Component;
@@ -10,12 +12,19 @@ import org.springframework.stereotype.Component;
 public class ProductTemplateConverter {
 
     public ProductTemplate convertToEntity(ProductTemplateCreationRequest productTemplateCreationRequest,
-                                            Institution institution){
+                                           Institution institution,
+                                           DishType dishType,
+                                           KitchenType kitchenType){
         return ProductTemplate.builder()
                 .productName(productTemplateCreationRequest.getProductName())
                 .productImage(productTemplateCreationRequest.getProductImage())
                 .productDescription(productTemplateCreationRequest.getProductDescription())
+                .kosher(productTemplateCreationRequest.isKosher())
+                .vegan(productTemplateCreationRequest.isVegan())
+                .vegeterian(productTemplateCreationRequest.isVegeterian())
                 .institution(institution)
+                .dishType(dishType)
+                .kitchenType(kitchenType)
                 .build();
     }
 
@@ -25,6 +34,9 @@ public class ProductTemplateConverter {
                 .productName(productTemplate.getProductName())
                 .productImage(productTemplate.getProductImage())
                 .productDescription(productTemplate.getProductDescription())
+                .kosher(productTemplate.isKosher())
+                .vegan(productTemplate.isVegan())
+                .vegeterian(productTemplate.isVegeterian())
                 .institution(productTemplate.getInstitution())
                 .build();
     }
