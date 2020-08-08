@@ -57,6 +57,7 @@ import { BranchSearchComponent } from './_Admin Components_/branch-search/branch
 import { BranchInfoComponent } from './_Admin Components_/branch-info/branch-info.component';
 import { CreateProductComponent } from './_Business Components_/create-product/create-product.component';
 import { BusinessProductTemplateComponent } from './_Business Components_/business-product-template/business-product-template.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -117,7 +118,8 @@ import { BusinessProductTemplateComponent } from './_Business Components_/busine
     MatDialogModule,
     MatTooltipModule,
     MatStepperModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatCheckboxModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

@@ -7,9 +7,13 @@
     <div class="mat-card-header-text">
       <mat-card-title> {{productItem.productTemplate.productName}} </mat-card-title>
       <mat-card-subtitle> From <b>{{productItem.productTemplate.institution.institutionName}}</b></mat-card-subtitle>
+      <div class="veg">
+        <img *ngIf="vegan" class="vegan" mat-card-image src="../../../assets/logos/vegan.png"/>
+        <img *ngIf="vegetarian" class="vegetarian" mat-card-image src="../../../assets/logos/vegetarian.png"/>
+        <img *ngIf="kosher" class="kosher" mat-card-image src="../../../assets/logos/kosher.png"/>
+      </div>
     </div>
   </mat-card-header>
-
   <img mat-card-image [src]="productItem.productTemplate.productImage" alt="Product image">
   <div>
     <img class="banner" mat-card-image src="../../../assets/bannerCity.png"/>
@@ -20,7 +24,7 @@
     <mat-card-title class="bannerText2"> {{productItem.branch.branchAddress}} </mat-card-title>
   </div>
   <mat-card-content class="price">
-    <div class="newPrice"><b>  {{productItem.price | currency: 'ILS'}} </b></div>
+    <div><b>  {{productItem.price | currency: 'ILS'}} </b></div>
     <div class="oldPrice"> {{productItem.startingPrice | currency: 'ILS'}} </div>
   </mat-card-content>
   <mat-card-actions>

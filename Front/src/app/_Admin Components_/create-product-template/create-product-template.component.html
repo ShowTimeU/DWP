@@ -29,16 +29,44 @@
                     [maxlength]="maxChars"></textarea>
         </mat-form-field>
 
+        <mat-form-field appearance="fill">
+          <mat-label>Kitchen</mat-label>
+          <mat-select [(ngModel)]="selectedKitchenValue" formControlName="kitchenTypeId">
+            <mat-option *ngFor="let kitchen of kitchenTypeList"
+                        [value]="kitchen.id">
+              {{kitchen.kitchenName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Dish</mat-label>
+          <mat-select [(ngModel)]="selectedDishValue" formControlName="dishTypeId">
+            <mat-option *ngFor="let dish of dishTypeList"
+                        [value]="dish.id">
+              {{dish.dishType}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div class="checkboxes">
+          <mat-checkbox formControlName="kosher" [(ngModel)]="checkedKosher">Kosher</mat-checkbox>
+          <mat-checkbox formControlName="vegetarian" [(ngModel)]="checkedVegetarian">Vegetarian</mat-checkbox>
+          <mat-checkbox formControlName="vegan" [(ngModel)]="checkedVegan">Vegan</mat-checkbox>
+        </div>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Institution</mat-label>
+          <mat-select [(ngModel)]="selectedInstitutionValue" formControlName="institutionId">
+            <mat-option *ngFor="let institution of institutionList"
+                        [value]="institution.id">
+              {{institution.institutionName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
       </mat-card-content>
-      <mat-form-field appearance="fill">
-        <mat-label>Institution</mat-label>
-        <mat-select [(ngModel)]="selectedValue" formControlName="institutionId">
-          <mat-option *ngFor="let institution of institutionList"
-                      [value]="institution.id">
-            {{institution.institutionName}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
       <mat-card-actions>
         <button mat-raised-button
                 type="submit"

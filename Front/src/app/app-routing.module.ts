@@ -28,7 +28,6 @@ import {BranchSearchComponent} from "./_Admin Components_/branch-search/branch-s
 import {BranchInfoComponent} from "./_Admin Components_/branch-info/branch-info.component";
 import {CreateProductComponent} from "./_Business Components_/create-product/create-product.component";
 
-
 const routes: Routes = [
   {
     path: '',

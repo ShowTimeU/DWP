@@ -17,7 +17,7 @@ public class ProductTemplateResponse {
     private String productDescription;
     private String productImage;
     private boolean kosher;
-    private boolean vegeterian;
+    private boolean vegetarian;
     private boolean vegan;
     private Institution institution;
     private DishType dishType;

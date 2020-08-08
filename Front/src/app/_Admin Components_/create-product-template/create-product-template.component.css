@@ -4,7 +4,7 @@ h1 {
   padding-top: 20px;
 }
 .form {
-  top: 13%;
+  top: 10%;
   color: #404040;
   position: absolute;
   left: 50%;
@@ -18,8 +18,7 @@ mat-card {
   background: rgba(255, 255, 255, 0.8);
 }
 mat-form-field {
-  padding-top: 20px;
-  padding-bottom: 30px;
+  padding-top: 10px;
   font-size: 16px;
   display: block;
 }
@@ -50,4 +49,13 @@ button {
 }
 ::ng-deep.mat-simple-snackbar {
   justify-content: center !important;
+}
+.checkboxes {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+::ng-deep .mat-checkbox-checked .mat-checkbox-background {
+  background-color: darkcyan !important;
 }

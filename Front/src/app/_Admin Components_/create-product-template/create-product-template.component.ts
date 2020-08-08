@@ -1,11 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {Product} from "../../-Models-/product";
-import {Area} from "../../-Models-/area";
 import {ProductService} from "../../-Services-/product.service";
-import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
-import {first} from "rxjs/operators";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Institution} from "../../-Models-/institution";
 import {Subscription} from "rxjs";
@@ -14,6 +10,8 @@ import {ProductTemplate} from "../../-Models-/product-template";
 import {InstitutionService} from "../../-Services-/institution.service";
 import {AuthenticationService} from "../../-Services-/authentication.service";
 import {Role} from "../../-Models-/role";
+import {DishType} from "../../-Models-/dish-type";
+import {KitchenType} from "../../-Models-/kitchen-type";
 
 @Component({
   selector: 'app-create-product-template',
@@ -22,15 +20,29 @@ import {Role} from "../../-Models-/role";
 })
 export class CreateProductTemplateComponent implements OnInit {
 
-  selectedValue: string;
+  selectedInstitutionValue: string;
   institutionList: Institution[];
+
+  selectedKitchenValue: string;
+  kitchenTypeList: KitchenType[];
+
+  selectedDishValue: string;
+  dishTypeList: DishType[];
+
   userSubscription: Subscription;
   currentUser: User;
+
   formGroup: FormGroup;
   createdProductTemplate: ProductTemplate;
+  value: boolean[];
+
   error = '';
   role = '';
   maxChars = 250;
+
+  checkedKosher = false;
+  checkedVegetarian = false;
+  checkedVegan = false;
 
   constructor(private snack: MatSnackBar,
               private fb: FormBuilder,
@@ -41,14 +53,23 @@ export class CreateProductTemplateComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userSubscription = this.auth.currentUser.subscribe(data => this.currentUser = data);
-    this.institution.getAllInstitutions().subscribe(data => this.institutionList = data);
+    this.userSubscription = this.auth.currentUser.subscribe(data => {
+      this.currentUser = data;
+      this.institution.getAllInstitutions().subscribe(data => this.institutionList = data);
+      this.product.getKitchenTypes().subscribe(data => this.kitchenTypeList = data);
+      this.product.getDishTypes().subscribe(data => this.dishTypeList = data);
+    });
     if(this.currentUser && this.currentUser.role === Role.Admin) {
       this.formGroup = this.fb.group({
         productName: new FormControl('', Validators.required),
         productDescription: new FormControl('', Validators.required),
         productImage: new FormControl('', Validators.required),
-        institutionId: new FormControl(this.selectedValue, Validators.required)
+        institutionId: new FormControl(this.selectedInstitutionValue, Validators.required),
+        kitchenTypeId: new FormControl(this.selectedKitchenValue, Validators.required),
+        dishTypeId: new FormControl(this.selectedDishValue, Validators.required),
+        kosher: new FormControl(this.checkedKosher),
+        vegetarian: new FormControl(this.checkedVegetarian),
+        vegan: new FormControl(this.checkedVegan)
       });
     }
   }
@@ -59,10 +80,8 @@ export class CreateProductTemplateComponent implements OnInit {
     }
     this.product.createProductTemplate(this.formGroup.value).subscribe(data => {
       this.createdProductTemplate = data;
-      this.router.navigate(['/business-products']);
     }, error => {
-      error = this.snack.open('This product already exists!',
-        null, {duration: 3000, panelClass: 'snackReg'});
+      error = this.snack.open(error, null, {duration: 3000, panelClass: 'snackReg'});
       this.error = error;
     });
   }

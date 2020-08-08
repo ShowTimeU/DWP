@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Area} from "../../-Models-/area";
 import {ProductService} from "../../-Services-/product.service";
 import {Product} from "../../-Models-/product";
 import {Price} from "../../-Models-/price";
@@ -14,7 +13,6 @@ export class ProductFiltersComponent implements OnInit {
   @Input() selectedValue: any;
   @Input() selectedPrice: any;
   productList: Product[];
-  area: string;
   min: number;
   max: number;
 

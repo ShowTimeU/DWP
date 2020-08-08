@@ -31,8 +31,8 @@ public class ProductTemplate extends BaseId {
     @Column(name = "KOSHER")
     private boolean kosher;
 
-    @Column(name = "VEGETERIAN")
-    private boolean vegeterian;
+    @Column(name = "VEGETARIAN")
+    private boolean vegetarian;
 
     @Column(name = "VEGAN")
     private boolean vegan;
