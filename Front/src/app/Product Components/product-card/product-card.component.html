@@ -8,9 +8,9 @@
       <mat-card-title> {{productItem.productTemplate.productName}} </mat-card-title>
       <mat-card-subtitle> From <b>{{productItem.productTemplate.institution.institutionName}}</b></mat-card-subtitle>
       <div class="veg">
-        <img *ngIf="vegan" class="vegan" mat-card-image src="../../../assets/logos/vegan.png"/>
-        <img *ngIf="vegetarian" class="vegetarian" mat-card-image src="../../../assets/logos/vegetarian.png"/>
-        <img *ngIf="kosher" class="kosher" mat-card-image src="../../../assets/logos/kosher.png"/>
+        <img *ngIf="vegan" class="vegan" mat-card-image src="../../../assets/logos/vegan.png" title="Vegan-suitable"/>
+        <img *ngIf="vegetarian" class="vegetarian" mat-card-image src="../../../assets/logos/vegetarian.png" title="Vegetarian-suitable"/>
+        <img *ngIf="kosher" class="kosher" mat-card-image src="../../../assets/logos/kosher.png" title="Kosher"/>
       </div>
     </div>
   </mat-card-header>

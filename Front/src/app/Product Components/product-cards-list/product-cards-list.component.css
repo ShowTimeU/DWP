@@ -1,7 +1,9 @@
 .products {
   text-align: center;
-  margin: 18% auto;
   display: flex;
   flex-wrap: wrap;
-  width: 72%;
+  width: 95%;
+  justify-content: center;
+  margin: 18% auto;
 }
+

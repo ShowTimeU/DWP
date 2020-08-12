@@ -1,5 +1,4 @@
 <mat-card>
-
   <mat-form-field class="searchInput" floatLabel='never'>
     <input
       matInput
@@ -10,19 +9,40 @@
   </mat-form-field>
 
   <div class="filterInput">
-<!--    <mat-form-field appearance="fill">-->
-<!--      <mat-label> Choose Area </mat-label>-->
-<!--      <mat-select [(ngModel)]="selectedValue"-->
-<!--                  (ngModelChange)="filter()" >-->
-<!--        <mat-option *ngFor="let area of areas"-->
-<!--                    [value]="area.value">-->
-<!--          {{area.viewValue}}-->
-<!--        </mat-option>-->
-<!--      </mat-select>-->
-<!--    </mat-form-field>-->
+    <mat-form-field appearance="fill">
+      <mat-label> Choose City</mat-label>
+      <mat-select [(ngModel)]="selectedCity"
+                  (ngModelChange)="filter()">
+        <mat-option *ngFor="let city of cities"
+                    [value]="city">
+          {{city}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="even">
+      <mat-label> Choose Kitchen</mat-label>
+      <mat-select [(ngModel)]="selectedKitchen"
+                  (ngModelChange)="filter()">
+        <mat-option *ngFor="let kitchen of kitchens"
+                    [value]="kitchen" [innerHTML]="kitchen">
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label> Choose Price </mat-label>
+      <mat-label> Choose Dish Type</mat-label>
+      <mat-select [(ngModel)]="selectedDish"
+                  (ngModelChange)="filter()">
+        <mat-option *ngFor="let dish of dishes"
+                    [value]="dish">
+          {{dish}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="even">
+      <mat-label> Choose Price</mat-label>
       <mat-select [(ngModel)]="selectedPrice"
                   (ngModelChange)="filter()">
         <mat-option *ngFor="let price of priceList"
@@ -31,7 +51,6 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-
   </div>
 </mat-card>
 

@@ -2,6 +2,10 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ProductService} from "../../-Services-/product.service";
 import {Product} from "../../-Models-/product";
 import {Price} from "../../-Models-/price";
+import {Observable, ReplaySubject, Subject} from "rxjs";
+import {FormControl} from "@angular/forms";
+import {map, startWith, takeUntil} from "rxjs/operators";
+import {KitchenType} from "../../-Models-/kitchen-type";
 
 @Component({
   selector: 'app-product-filters',
@@ -10,9 +14,16 @@ import {Price} from "../../-Models-/price";
 })
 export class ProductFiltersComponent implements OnInit {
 
-  @Input() selectedValue: any;
+  @Input() selectedCity: any;
   @Input() selectedPrice: any;
+  @Input() selectedKitchen: any;
+  @Input() selectedDish: any;
+
   productList: Product[];
+  cities: Array<string> = ['All Cities'];
+  kitchens: Array<string> = ['All Kitchens'];
+  dishes: Array<string> = ['All Dishes']
+
   min: number;
   max: number;
 
@@ -20,10 +31,8 @@ export class ProductFiltersComponent implements OnInit {
   priceList: Price[] = [
     {min: 0, max: 1000, view: 'All Prices'},
     {min: 0, max: 50, view: '₪0 - ₪50'},
-    {min: 51, max: 100, view: '₪51 - ₪100'},
-    {min: 101, max: 150, view: '₪101 - ₪150'},
-    {min: 151, max: 200, view: '₪151 - ₪200'},
-    {min: 201, max: 250, view: '₪201 - ₪250'}
+    {min: 51, max: 150, view: '₪51 - ₪150'},
+    {min: 151, max: 250, view: '₪151 - ₪250'}
   ]
 
   constructor(private product: ProductService) {
@@ -34,26 +43,42 @@ export class ProductFiltersComponent implements OnInit {
   }
 
   getAllProducts() {
-    return this.product.getAllProducts().subscribe(data => {
+    this.product.getAllProducts().subscribe(data => {
       this.productList = data;
+      data.forEach(x => {
+        this.cities.push(x.branch.branchCity);
+      })
       this.sorting(this.productList);
     });
+
+    this.product.getKitchenTypes().subscribe(y => {
+      y.forEach( yData => {
+        this.kitchens.push(yData.kitchenName);
+      })
+      this.kitchens[6] = this.kitchens[6].bold();
+    })
+
+    this.product.getDishTypes().subscribe(z => {
+      z.forEach( zData => {
+        this.dishes.push(zData.dishType);
+      })
+    })
   }
 
   filter() {
-    if (this.selectedValue && !this.selectedPrice) {
-      if (this.selectedValue === 'All') {
+    if (this.selectedCity && !this.selectedPrice) {
+      if (this.selectedCity === 'All cities') {
         this.getAllProducts();
       } else {
-        this.getFilteredProducts(this.selectedValue, null, null);
+        this.getFilteredProducts(this.selectedCity, null, null);
       }
-    } else if (this.selectedPrice && !this.selectedValue) {
+    } else if (this.selectedPrice && !this.selectedCity) {
       this.getFilteredProducts(null, this.selectedPrice.min, this.selectedPrice.max);
-    } else if (this.selectedValue && this.selectedPrice) {
-      if (this.selectedValue == 'All' && this.selectedPrice) {
+    } else if (this.selectedCity && this.selectedPrice) {
+      if (this.selectedCity == 'All' && this.selectedPrice) {
         this.getFilteredProducts(null, this.selectedPrice.min, this.selectedPrice.max);
       } else {
-        this.getFilteredProducts(this.selectedValue, this.selectedPrice.min, this.selectedPrice.max);
+        this.getFilteredProducts(this.selectedCity, this.selectedPrice.min, this.selectedPrice.max);
       }
     }
   }
@@ -75,6 +100,5 @@ export class ProductFiltersComponent implements OnInit {
       else return 0;
     });
   }
-
 
 }
