@@ -106,7 +106,9 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom{
             DishType dishType = (DishType) res[4];
             KitchenType kitchenType = (KitchenType) res[5];
             results.add(ProductSearchResponse.builder()
-            .product(product)
+            .startingPrice(product.getStartingPrice())
+            .price(product.getPrice())
+            .quantity(product.getQuantity())
             .productTemplate(productTemplate)
             .institution(institution)
             .branch(branch)

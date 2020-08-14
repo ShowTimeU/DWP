@@ -15,7 +15,9 @@ import lombok.*;
 @Builder
 public class ProductSearchResponse {
 
-    private Product product;
+    private Double startingPrice;
+    private Double price;
+    private Integer quantity;
     private ProductTemplate productTemplate;
     private Institution institution;
     private Branch branch;
