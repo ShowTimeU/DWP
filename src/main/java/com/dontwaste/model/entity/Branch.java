@@ -22,10 +22,10 @@ public class Branch extends BaseId {
     private String branchPhone;
     @Column(name = "BRANCH_EMAIL", length = 30)
     private String branchEmail;
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID", referencedColumnName = "ID", unique = true)
     private User user;
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "INSTITUTION_ID", referencedColumnName = "ID")
     private Institution institution;
 

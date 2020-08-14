@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class BranchServiceImp implements BranchService {
@@ -62,5 +63,10 @@ public class BranchServiceImp implements BranchService {
     @Override
     public void deleteBranch(Long id) {
         branchRepository.deleteById(id);
+    }
+
+    @Override
+    public Set<String> getCities() {
+        return branchRepository.getAllCities();
     }
 }

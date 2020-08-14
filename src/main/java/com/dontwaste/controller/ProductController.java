@@ -4,6 +4,8 @@ package com.dontwaste.controller;
 import com.dontwaste.model.web.product.ProductCreationRequest;
 import com.dontwaste.model.web.product.ProductResponse;
 import com.dontwaste.model.entity.product.Product;
+import com.dontwaste.model.web.search.ProductSearchRequest;
+import com.dontwaste.model.web.search.ProductSearchResponse;
 import com.dontwaste.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,10 +25,10 @@ public class ProductController {
         productService.addProduct(productCreationRequest);
     }
 
-//    @PostMapping(value = "/searchProduct")
-//    public List<Product> fullSearch(@RequestBody ProductSearchObject searchObject){
-//        return productService.fullSearch(searchObject);
-//    }
+    @PostMapping(value = "/searchProduct")
+    public List<ProductSearchResponse> fullSearch(@RequestBody ProductSearchRequest searchRequest){
+        return productService.searchProduct(searchRequest);
+    }
 
     @DeleteMapping(value = "/deleteProduct/{id}")
     public void deleteProduct(@PathVariable("id") Long id){
@@ -37,17 +39,5 @@ public class ProductController {
     public List<ProductResponse> getAllProducts(){
         return productService.getAllProducts();
     }
-
-
-//    @GetMapping(value = "/getProductsByNameLike")
-//    public List<Product> getProductsByNameLike(@RequestParam(name = "name") String name){
-//        return productService.getAllProductsByNameLike(name);
-//    }
-//
-//    @GetMapping(value = "/getProductsWithPriceBetween")
-//    public List<Product> getProductsWithPriceBetween(@RequestParam(name = "minPrice") Double min,
-//                                                     @RequestParam(name = "maxPrice") Double max){
-//        return productService.getAllProductWithPriceBetween(min, max);
-//    }
 
 }

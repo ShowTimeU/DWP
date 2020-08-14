@@ -1,6 +1,9 @@
-package com.dontwaste.model.web.productTemplate;
+package com.dontwaste.model.web.search;
 
+import com.dontwaste.model.entity.Branch;
 import com.dontwaste.model.entity.Institution;
+import com.dontwaste.model.entity.ProductTemplate;
+import com.dontwaste.model.entity.product.Product;
 import com.dontwaste.model.entity.product.productType.DishType;
 import com.dontwaste.model.entity.product.productType.KitchenType;
 import lombok.*;
@@ -10,17 +13,12 @@ import lombok.*;
 @Getter
 @Setter
 @Builder
-public class ProductTemplateResponse {
+public class ProductSearchResponse {
 
-    private Long id;
-    private String productName;
-    private String productDescription;
-    private String productImage;
-    private boolean kosher;
-    private boolean vegetarian;
-    private boolean vegan;
+    private Product product;
+    private ProductTemplate productTemplate;
     private Institution institution;
+    private Branch branch;
     private DishType dishType;
     private KitchenType kitchenType;
-
 }

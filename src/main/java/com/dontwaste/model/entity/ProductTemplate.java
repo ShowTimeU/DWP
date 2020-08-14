@@ -31,21 +31,21 @@ public class ProductTemplate extends BaseId {
     @Column(name = "KOSHER")
     private boolean kosher;
 
-    @Column(name = "VEGETERIAN")
-    private boolean vegeterian;
+    @Column(name = "VEGETARIAN")
+    private boolean vegetarian;
 
     @Column(name = "VEGAN")
     private boolean vegan;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "INSTITUTION_ID", referencedColumnName = "ID")
     private Institution institution;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "KITCHENTYPE_ID", referencedColumnName = "ID")
     private KitchenType kitchenType;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "DISHTYPE_ID", referencedColumnName = "ID")
     private DishType dishType;
 

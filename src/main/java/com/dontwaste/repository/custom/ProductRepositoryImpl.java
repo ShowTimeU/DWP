@@ -1,45 +1,122 @@
 package com.dontwaste.repository.custom;
 
+import com.dontwaste.model.entity.Branch;
+import com.dontwaste.model.entity.Institution;
+import com.dontwaste.model.entity.ProductTemplate;
+import com.dontwaste.model.entity.product.Product;
+import com.dontwaste.model.entity.product.productType.DishType;
+import com.dontwaste.model.entity.product.productType.KitchenType;
+import com.dontwaste.model.web.search.ProductSearchRequest;
+import com.dontwaste.model.web.search.ProductSearchResponse;
 import org.springframework.stereotype.Repository;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Repository
 public class ProductRepositoryImpl implements ProductRepositoryCustom{
 
-//    @PersistenceContext
-//    private EntityManager entityManager;
-//
-//    @Override
-//    public List<Product> fullProductSearch(ProductSearchObject searchObject) {
-//
-//        Map<String, Object> parameters = new HashMap<>();
-//        StringBuilder query = new StringBuilder("select p, i from Product p, Institution i where 1=1");
-//
-//        if(searchObject.getProductName() != null){
-//            query.append(" and p.productName = :productName");
-//            parameters.put("productName", searchObject.getProductName());
-//        }
-//
-//        if(searchObject.getMax() != null){
-//            query.append(" and p.price between :min and :max");
-//            parameters.put("min", searchObject.getMin());
-//            parameters.put("max", searchObject.getMax());
-//        }
-//
-//        if(searchObject.getCity() != null){
-//            query.append(" and i.city = :city");
-//            parameters.put("city", searchObject.getCity());
-//        }
-//
-//        if(searchObject.getInstitutionName() != null){
-//            query.append(" and i.institution = :institution");
-//            parameters.put("institution", searchObject.getInstitutionName());
-//        }
-//
-//        Query jpaQuery = entityManager.createQuery(query.toString());
-//        for(Map.Entry<String, Object> map : parameters.entrySet()){
-//            jpaQuery.setParameter(map.getKey(), map.getValue());
-//        }
-//
+    @PersistenceContext
+    private EntityManager entityManager;
+
+    @Override
+    public List<ProductSearchResponse> fullProductSearch(ProductSearchRequest searchRequest) {
+        List<ProductSearchResponse> results = new ArrayList<>();
+        Map<String, Object> parameters = new HashMap<>();
+        StringBuilder query = new StringBuilder("SELECT p, pt, i, b, dt, kt FROM " +
+                "Product p, ProductTemplate pt, Institution i, Branch b, DishType dt, KitchenType kt " +
+                "WHERE " +
+                "p.productTemplate = pt AND p.branch = b AND pt.institution = i AND pt.dishType = dt AND " +
+                "pt.kitchenType = kt AND b.institution = i");
+
+
+        if(searchRequest.getMax() != null){
+            query.append(" and p.price between :min and :max");
+            parameters.put("min", searchRequest.getMin());
+            parameters.put("max", searchRequest.getMax());
+        }
+
+        if(searchRequest.getProductName() != null){
+            query.append(" and pt.productName = :productName");
+            parameters.put("productName", searchRequest.getProductName());
+        }
+
+        if(searchRequest.isKosher()){
+            query.append(" and pt.kosher = :kosher");
+            parameters.put("kosher", searchRequest.isKosher());
+        }
+
+        if(searchRequest.isVegan()){
+            query.append(" and pt.vegan = :vegan");
+            parameters.put("vegan", searchRequest.isVegan());
+        }
+
+        if(searchRequest.isKosher()){
+            query.append(" and pt.vegetarian = :vegetarian");
+            parameters.put("vegetarian", searchRequest.isVegetarian());
+        }
+
+        if(searchRequest.getDishType() != null){
+            query.append(" and dt.dishType = :dishType");
+            parameters.put("dishType", searchRequest.getDishType());
+        }
+
+        if(searchRequest.getKitchenType() != null){
+            query.append(" and kt.kitchenName = :kitchenName");
+            parameters.put("kitchenName", searchRequest.getKitchenType());
+        }
+
+        if(searchRequest.getCity() != null){
+            query.append(" and b.branchCity = :branchCity");
+            parameters.put("branchCity", searchRequest.getCity());
+        }
+
+        if(searchRequest.getInstitutionName() != null){
+            query.append(" and i.institutionName = :institutionName");
+            parameters.put("institutionName", searchRequest.getInstitutionName());
+        }
+        System.out.println(query.toString());
+        Query jpaQuery = entityManager.createQuery(query.toString());
+        for(Map.Entry<String, Object> map : parameters.entrySet()){
+            jpaQuery.setParameter(map.getKey(), map.getValue());
+        }
+
+
+        List<Object[]> jpaRes = jpaQuery.getResultList();
+        for(Object[] res : jpaRes){
+            System.out.println(res.toString());
+            for(int i = 0; i<res.length-1; i++){
+                System.out.println(res[i].toString());
+            }
+
+            System.out.println("----------------------------------------");
+        }
+        //jpaRes.stream()
+
+        for(Object[] res : jpaRes){
+            Product product = (Product) res[0];
+            ProductTemplate productTemplate = (ProductTemplate) res[1];
+            Institution institution = (Institution) res[2];
+            Branch branch = (Branch) res[3];
+            DishType dishType = (DishType) res[4];
+            KitchenType kitchenType = (KitchenType) res[5];
+            results.add(ProductSearchResponse.builder()
+            .product(product)
+            .productTemplate(productTemplate)
+            .institution(institution)
+            .branch(branch)
+            .dishType(dishType)
+            .kitchenType(kitchenType)
+            .build());
+        }
+
+
 //        return jpaQuery.getResultList();
-//    }
+        return results;
+    }
 }

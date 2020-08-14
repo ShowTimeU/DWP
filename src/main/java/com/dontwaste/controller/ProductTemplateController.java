@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @CrossOrigin
 @RestController
@@ -35,5 +36,4 @@ public class ProductTemplateController {
     public void deleteTemplate(@RequestParam Long id){
         productTemplateService.deleteProductTemplate(id);
     }
-
 }

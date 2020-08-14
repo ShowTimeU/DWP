@@ -31,7 +31,7 @@ public class ProductTemplateCreationRequest {
     @NotBlank
     private boolean kosher;
     @NotBlank
-    private boolean vegeterian;
+    private boolean vegetarian;
     @NotBlank
     private boolean vegan;
 

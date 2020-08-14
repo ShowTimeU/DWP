@@ -4,6 +4,7 @@ import com.dontwaste.model.web.branch.CreateBranchRequest;
 import com.dontwaste.model.web.branch.BranchResponse;
 
 import java.util.List;
+import java.util.Set;
 
 public interface BranchService {
 
@@ -11,4 +12,5 @@ public interface BranchService {
     List<BranchResponse> getAllBranches();
     BranchResponse getBranch(Long id);
     void deleteBranch(Long id);
+    Set<String> getCities();
 }

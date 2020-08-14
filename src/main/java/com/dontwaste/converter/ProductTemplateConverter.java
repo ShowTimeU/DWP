@@ -21,7 +21,7 @@ public class ProductTemplateConverter {
                 .productDescription(productTemplateCreationRequest.getProductDescription())
                 .kosher(productTemplateCreationRequest.isKosher())
                 .vegan(productTemplateCreationRequest.isVegan())
-                .vegeterian(productTemplateCreationRequest.isVegeterian())
+                .vegetarian(productTemplateCreationRequest.isVegetarian())
                 .institution(institution)
                 .dishType(dishType)
                 .kitchenType(kitchenType)
@@ -36,7 +36,7 @@ public class ProductTemplateConverter {
                 .productDescription(productTemplate.getProductDescription())
                 .kosher(productTemplate.isKosher())
                 .vegan(productTemplate.isVegan())
-                .vegeterian(productTemplate.isVegeterian())
+                .vegetarian(productTemplate.isVegetarian())
                 .institution(productTemplate.getInstitution())
                 .build();
     }

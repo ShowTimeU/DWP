@@ -1,4 +1,4 @@
-package com.dontwaste.model.web.product;
+package com.dontwaste.model.web.search;
 
 
 import lombok.AllArgsConstructor;
@@ -11,11 +11,17 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter @Setter
-public class ProductSearchObject {
+public class ProductSearchRequest {
 
-    private String productName;
     private Double min;
     private Double max;
+
+    private String productName;
+    private boolean vegetarian;
+    private boolean kosher;
+    private boolean vegan;
+    private String dishType;
+    private String kitchenType;
 
     private String institutionName;
     private String city;

@@ -24,11 +24,11 @@ public class Product extends BaseDate {
     @Column(name = "QUANTITY")
     private Integer quantity;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "BRANCH_ID", referencedColumnName = "ID")
     private Branch branch;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "TEMPLATE_ID", referencedColumnName = "ID")
     private ProductTemplate productTemplate;
 

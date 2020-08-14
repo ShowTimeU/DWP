@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import java.util.Set;
 
 @CrossOrigin
 @RestController
@@ -39,4 +40,8 @@ public class BranchController {
         branchService.deleteBranch(id);
     }
 
+    @GetMapping("/getCities")
+    public Set<String> getCities(){
+        return branchService.getCities();
+    }
 }

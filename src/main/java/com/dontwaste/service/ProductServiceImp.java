@@ -6,6 +6,8 @@ import com.dontwaste.model.entity.Branch;
 import com.dontwaste.model.web.product.ProductCreationRequest;
 import com.dontwaste.model.web.product.ProductResponse;
 import com.dontwaste.model.entity.product.Product;
+import com.dontwaste.model.web.search.ProductSearchRequest;
+import com.dontwaste.model.web.search.ProductSearchResponse;
 import com.dontwaste.repository.ProductRepository;
 import com.dontwaste.repository.ProductTemplateRepository;
 import com.dontwaste.repository.BranchRepository;
@@ -58,19 +60,8 @@ public class ProductServiceImp implements ProductService  {
         return products;
     }
 
-//    @Override
-//    public List<Product> getAllProductWithPriceBetween(Double min, Double max) {
-//        return productRepository.getAllProductsWithPriceBetween(min, max);
-//    }
-//
-//    @Override
-//    public List<Product> getAllProductsByNameLike(String name) {
-//        return productRepository.getAllProductsByNameLike(name);
-//    }
-
-//    @Override
-//    public List<Product> fullSearch(ProductSearchObject searchObject) {
-//        return productRepository.fullProductSearch(searchObject);
-//    }
-
+    @Override
+    public List<ProductSearchResponse> searchProduct(ProductSearchRequest productSearchRequest) {
+        return productRepository.fullProductSearch(productSearchRequest);
+    }
 }
