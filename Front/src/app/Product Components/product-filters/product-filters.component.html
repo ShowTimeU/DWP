@@ -20,6 +20,17 @@
       </mat-select>
     </mat-form-field>
 
+    <mat-form-field appearance="fill">
+      <mat-label> Choose Institution</mat-label>
+      <mat-select [(ngModel)]="selectedInstitution"
+                  (ngModelChange)="filter()">
+        <mat-option *ngFor="let inst of institutions"
+                    [value]="inst">
+          {{inst}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
     <mat-form-field appearance="fill" class="even">
       <mat-label> Choose Kitchen</mat-label>
       <mat-select [(ngModel)]="selectedKitchen"
@@ -41,16 +52,13 @@
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field appearance="fill" class="even">
-      <mat-label> Choose Price</mat-label>
-      <mat-select [(ngModel)]="selectedPrice"
-                  (ngModelChange)="filter()">
-        <mat-option *ngFor="let price of priceList"
-                    [value]="price">
-          {{price.view}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+    <mat-checkbox [(ngModel)]="selectedVegan"
+                  (ngModelChange)="filter()">Vegan</mat-checkbox>
+    <mat-checkbox [(ngModel)]="selectedVegetarian"
+                  (ngModelChange)="filter()">Vegetarian</mat-checkbox>
+    <mat-checkbox [(ngModel)]="selectedKosher"
+                  (ngModelChange)="filter()">Kosher</mat-checkbox>
+
   </div>
 </mat-card>
 

@@ -39,4 +39,8 @@ export class InstitutionService {
     return this.http.get<Branch[]>(this.urlBranch + '/getAllBranches');
   }
 
+  getCities(): Observable<string[]> {
+    return this.http.get<string[]>(this.urlBranch + '/getCities');
+  }
+
 }

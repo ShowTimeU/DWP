@@ -32,8 +32,8 @@ export class ProductService {
     return this.http.get<Product[]>(this.urlProduct + '/getAllProducts');
   }
 
-  getFilteredProducts(area, min, max) {
-    return this.http.post<Product[]>(this.urlProduct + '/searchProduct', {area, min, max});
+  getFilteredProducts(vegan?, vegetarian?, kosher?, dishType?, kitchenType?, institutionName?, city?) {
+    return this.http.post<Product[]>(this.urlProduct + '/searchProduct', {vegan, vegetarian, kosher, dishType, kitchenType, institutionName, city});
   }
 
   createProductTemplate(productTemplate): Observable<ProductTemplate> {

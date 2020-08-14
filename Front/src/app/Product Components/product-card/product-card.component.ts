@@ -39,9 +39,8 @@ export class ProductCardComponent implements OnInit {
     });
     if(this.productItem.productTemplate.vegan == true) {
       this.vegan = true;
-      this.vegetarian = false;
     }
-    if(this.productItem.productTemplate.vegan == false && this.productItem.productTemplate.vegetarian == true) {
+    if(this.productItem.productTemplate.vegetarian == true) {
       this.vegetarian = true;
     }
     if(this.productItem.productTemplate.kosher == true) {
