@@ -4,21 +4,21 @@ mat-card {
   color: #404040;
 }
 mat-form-field {
-  padding-right: 25px;
-  width: 200px;
+  width: 14%;
+  margin: 5px;
 }
 .filterInput{
-  margin: 0 auto;
-  display: table;
+  list-style: none;
+  display: flex;
+  justify-content: center;
 }
 .products {
   text-align: center;
-  margin: 55px 43px 0 43px;
   display: flex;
-  flex-wrap: wrap;
+  justify-content: center;
 }
 .list {
-  padding-top: 80px;
+  padding-top: 5%;
 }
 .searchInput {
   width: 95%;

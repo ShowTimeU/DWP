@@ -19,6 +19,9 @@ export class ProductCardComponent implements OnInit {
   public counter: number = 1;
   currentUser: any;
   manager = false;
+  vegan = false;
+  vegetarian = false;
+  kosher = false;
 
   constructor(private router: Router,
               private productService: ProductService,
@@ -30,7 +33,20 @@ export class ProductCardComponent implements OnInit {
   ngOnInit() {
     this.auth.currentUser.subscribe(data => {
       this.currentUser = data;
+      if(this.currentUser && this.currentUser.role === Role.Manager) {
+        this.manager = true;
+      }
     });
+    if(this.productItem.productTemplate.vegan == true) {
+      this.vegan = true;
+      this.vegetarian = false;
+    }
+    if(this.productItem.productTemplate.vegan == false && this.productItem.productTemplate.vegetarian == true) {
+      this.vegetarian = true;
+    }
+    if(this.productItem.productTemplate.kosher == true) {
+      this.kosher = true;
+    }
   }
 
 

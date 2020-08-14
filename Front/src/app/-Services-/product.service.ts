@@ -5,12 +5,15 @@ import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {User} from "../-Models-/user";
 import {AuthenticationService} from "./authentication.service";
 import {ProductTemplate} from "../-Models-/product-template";
+import {KitchenType} from "../-Models-/kitchen-type";
+import {DishType} from "../-Models-/dish-type";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
+  private url = 'http://localhost:8080';
   private urlProduct = 'http://localhost:8080/product';
   private urlProductTemplate = 'http://localhost:8080/productTemplate';
   private currentUser: User;
@@ -44,4 +47,11 @@ export class ProductService {
     return this.http.get<ProductTemplate[]>(this.urlProductTemplate + '/getAllTemplates', {headers: headers, params: params});
   }
 
+  getKitchenTypes(): Observable<KitchenType[]> {
+    return this.http.get<KitchenType[]>(this.url + '/getKitchenTypes');
+  }
+
+  getDishTypes(): Observable<DishType[]> {
+    return this.http.get<DishType[]>(this.url + '/getDishTypes');
+  }
 }

@@ -57,6 +57,8 @@ import { BranchSearchComponent } from './_Admin Components_/branch-search/branch
 import { BranchInfoComponent } from './_Admin Components_/branch-info/branch-info.component';
 import { CreateProductComponent } from './_Business Components_/create-product/create-product.component';
 import { BusinessProductTemplateComponent } from './_Business Components_/business-product-template/business-product-template.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
 
 @NgModule({
   declarations: [
@@ -95,30 +97,32 @@ import { BusinessProductTemplateComponent } from './_Business Components_/busine
     CreateProductComponent,
     BusinessProductTemplateComponent,
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatSidenavModule,
-    MatListModule,
-    RouterModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatBadgeModule,
-    MatButtonModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatCardModule,
-    MatSnackBarModule,
-    MatSelectModule,
-    FormsModule,
-    MatTableModule,
-    MatDialogModule,
-    MatTooltipModule,
-    MatStepperModule,
-    MatPaginatorModule
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatSidenavModule,
+        MatListModule,
+        RouterModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatBadgeModule,
+        MatButtonModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatCardModule,
+        MatSnackBarModule,
+        MatSelectModule,
+        FormsModule,
+        MatTableModule,
+        MatDialogModule,
+        MatTooltipModule,
+        MatStepperModule,
+        MatPaginatorModule,
+        MatCheckboxModule,
+        MatAutocompleteModule
+    ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
