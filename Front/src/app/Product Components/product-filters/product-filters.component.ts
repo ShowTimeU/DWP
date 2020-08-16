@@ -26,12 +26,6 @@ export class ProductFiltersComponent implements OnInit {
   institutions: Array<string> = ['--'];
 
   searchText: '';
-  // priceList: Price[] = [
-  //   {min: 0, max: 1000, view: '--'},
-  //   {min: 0, max: 50, view: '₪0 - ₪50'},
-  //   {min: 51, max: 150, view: '₪51 - ₪150'},
-  //   {min: 151, max: 250, view: '₪151 - ₪250'}
-  // ]
 
   constructor(private product: ProductService,
               private institution: InstitutionService) {
@@ -39,14 +33,18 @@ export class ProductFiltersComponent implements OnInit {
 
   ngOnInit() {
     this.getAllProducts();
+
     this.institution.getCities().subscribe(c => {
       c.forEach(cData => {
         this.cities.push(cData);
+        this.cities.sort();
       })
     })
+
     this.institution.getAllInstitutions().subscribe(x => {
       x.forEach(xData => {
         this.institutions.push(xData.institutionName);
+        this.institutions.sort();
       })
     });
 
@@ -60,6 +58,7 @@ export class ProductFiltersComponent implements OnInit {
     this.product.getDishTypes().subscribe(z => {
       z.forEach(zData => {
         this.dishes.push(zData.dishType);
+        this.dishes.sort();
       })
     });
   }

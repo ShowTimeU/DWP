@@ -80,6 +80,7 @@ export class CreateProductTemplateComponent implements OnInit {
     }
     this.product.createProductTemplate(this.formGroup.value).subscribe(data => {
       this.createdProductTemplate = data;
+      window.location.reload();
     }, error => {
       error = this.snack.open(error, null, {duration: 3000, panelClass: 'snackReg'});
       this.error = error;
