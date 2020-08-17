@@ -28,10 +28,15 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom{
     public List<ProductSearchResponse> fullProductSearch(ProductSearchRequest searchRequest) {
         List<ProductSearchResponse> results = new ArrayList<>();
         Map<String, Object> parameters = new HashMap<>();
+//        StringBuilder query = new StringBuilder("SELECT p, pt, i, b, dt, kt FROM " +
+//                "Product p, ProductTemplate pt, Institution i, Branch b, DishType dt, KitchenType kt " +
+//                "WHERE " +
+//                "p.productTemplate = pt AND p.branch = b AND pt.institution = i AND pt.dishType = dt AND " +
+//                "pt.kitchenType = kt AND b.institution = i");
         StringBuilder query = new StringBuilder("SELECT p, pt, i, b, dt, kt FROM " +
                 "Product p, ProductTemplate pt, Institution i, Branch b, DishType dt, KitchenType kt " +
                 "WHERE " +
-                "p.productTemplate = pt AND p.branch = b AND pt.institution = i AND pt.dishType = dt AND " +
+                "p.productTemplate = pt AND pt.institution = i AND pt.dishType = dt AND " +
                 "pt.kitchenType = kt AND b.institution = i");
 
 
@@ -56,7 +61,7 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom{
             parameters.put("vegan", searchRequest.isVegan());
         }
 
-        if(searchRequest.isKosher()){
+        if(searchRequest.isVegetarian()){
             query.append(" and pt.vegetarian = :vegetarian");
             parameters.put("vegetarian", searchRequest.isVegetarian());
         }
@@ -88,36 +93,30 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom{
 
 
         List<Object[]> jpaRes = jpaQuery.getResultList();
+        System.out.println("jpaRes -> "+jpaRes.size());
         for(Object[] res : jpaRes){
             System.out.println(res.toString());
             for(int i = 0; i<res.length-1; i++){
                 System.out.println(res[i].toString());
             }
-
             System.out.println("----------------------------------------");
         }
-        //jpaRes.stream()
-
+        Product product = new Product();
         for(Object[] res : jpaRes){
-            Product product = (Product) res[0];
-            ProductTemplate productTemplate = (ProductTemplate) res[1];
-            Institution institution = (Institution) res[2];
-            Branch branch = (Branch) res[3];
-            DishType dishType = (DishType) res[4];
-            KitchenType kitchenType = (KitchenType) res[5];
+            product = (Product) res[0];
             results.add(ProductSearchResponse.builder()
             .startingPrice(product.getStartingPrice())
             .price(product.getPrice())
             .quantity(product.getQuantity())
-            .productTemplate(productTemplate)
-            .institution(institution)
-            .branch(branch)
-            .dishType(dishType)
-            .kitchenType(kitchenType)
+            .productTemplate((ProductTemplate) res[1])
+            .institution((Institution) res[2])
+            .branch((Branch) res[3])
+            .dishType((DishType) res[4])
+            .kitchenType((KitchenType) res[5])
             .build());
         }
 
-
+        System.out.println("results -> "+results.size());
 //        return jpaQuery.getResultList();
         return results;
     }
