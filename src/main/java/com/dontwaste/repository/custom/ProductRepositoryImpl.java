@@ -28,16 +28,12 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom{
     public List<ProductSearchResponse> fullProductSearch(ProductSearchRequest searchRequest) {
         List<ProductSearchResponse> results = new ArrayList<>();
         Map<String, Object> parameters = new HashMap<>();
-//        StringBuilder query = new StringBuilder("SELECT p, pt, i, b, dt, kt FROM " +
-//                "Product p, ProductTemplate pt, Institution i, Branch b, DishType dt, KitchenType kt " +
-//                "WHERE " +
-//                "p.productTemplate = pt AND p.branch = b AND pt.institution = i AND pt.dishType = dt AND " +
-//                "pt.kitchenType = kt AND b.institution = i");
         StringBuilder query = new StringBuilder("SELECT p, pt, i, b, dt, kt FROM " +
                 "Product p, ProductTemplate pt, Institution i, Branch b, DishType dt, KitchenType kt " +
                 "WHERE " +
-                "p.productTemplate = pt AND pt.institution = i AND pt.dishType = dt AND " +
+                "p.productTemplate = pt AND p.branch = b AND pt.institution = i AND pt.dishType = dt AND " +
                 "pt.kitchenType = kt AND b.institution = i");
+
 
 
         if(searchRequest.getMax() != null){
