@@ -51,8 +51,8 @@ export class ProductFiltersComponent implements OnInit {
     this.product.getKitchenTypes().subscribe(y => {
       y.forEach(yData => {
         this.kitchens.push(yData.kitchenName);
+        this.institutions.sort();
       })
-      this.kitchens[6] = this.kitchens[6].bold();
     });
 
     this.product.getDishTypes().subscribe(z => {
@@ -125,7 +125,7 @@ export class ProductFiltersComponent implements OnInit {
     }
 
     if (!this.selectedVegetarian) {
-      this.getFilteredProducts(this.selectedVegan, null, this.selectedKosher,
+      this.getFilteredProducts(null, null, this.selectedKosher,
         this.selectedDish, this.selectedKitchen, this.selectedInstitution, this.selectedCity);
     } else {
       return this.getFilteredProducts(this.selectedVegan, this.selectedVegetarian, this.selectedKosher,
@@ -139,6 +139,7 @@ export class ProductFiltersComponent implements OnInit {
       return this.getFilteredProducts(this.selectedVegan, this.selectedVegetarian, this.selectedKosher,
         this.selectedDish, this.selectedKitchen, this.selectedInstitution, this.selectedCity);
     }
+
   }
 
   getFilteredProducts(vegan?, vegetarian?, kosher?, dishType?, kitchenType?, institutionName?, city?) {
@@ -146,6 +147,7 @@ export class ProductFiltersComponent implements OnInit {
       .subscribe(data => {
         this.productList = data;
         this.sorting(this.productList);
+        console.log(data);
       })
     return this.productList;
   }

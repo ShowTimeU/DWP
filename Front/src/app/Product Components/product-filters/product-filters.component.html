@@ -36,7 +36,8 @@
       <mat-select [(ngModel)]="selectedKitchen"
                   (ngModelChange)="filter()">
         <mat-option *ngFor="let kitchen of kitchens"
-                    [value]="kitchen" [innerHTML]="kitchen">
+                    [value]="kitchen">
+          {{kitchen}}
         </mat-option>
       </mat-select>
     </mat-form-field>
