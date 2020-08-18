@@ -72,6 +72,11 @@ public class CartServiceImp implements CartService{
     }
 
     @Override
+    public void deleteCartItem(Long cartId) {
+        cartRepository.deleteById(cartId);
+    }
+
+    @Override
     public void deleteProductFromCart(Long productId, Long userId) {
         Cart cartProductToDelete = cartRepository.getByProductIdAndUserId(productId, userId);
         if(cartProductToDelete == null){

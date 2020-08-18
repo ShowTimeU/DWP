@@ -32,5 +32,10 @@ public class CartController {
         cartService.deleteProductFromCart(productId, userId);
     }
 
+    @DeleteMapping(value = "/deleteCartItem")
+    public void deleteCartItem (@RequestParam(name = "userId") Long cartId){
+        cartService.deleteCartItem(cartId);
+    }
+
 
 }
