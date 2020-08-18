@@ -33,7 +33,13 @@ export class CartService {
     return this.http.post<any>(this.urlCart + '/addToCart', {productId, userId}, {headers: headers});
   }
 
-  removeProductsFromCart(product: CartItem, user: User) {
+  removeProductsFromCart(cartItemId: string) {
+    let headers = new HttpHeaders().set('Authorization', this.currentUser.token);
+    let params = new HttpParams().set('cartId', cartItemId);
+    return this.http.delete(this.urlCart + '/deleteCartItem', {params: params, headers: headers});
+  }
+
+  removeProductFromCart(product: CartItem, user: User) {
     let headers = new HttpHeaders().set('Authorization', this.currentUser.token);
     const productId = product.product.id;
     const userId = user.id;

@@ -31,7 +31,8 @@
     <button mat-raised-button
             type="button"
             *ngIf="!manager"
-            (click)="addToCart()">
+            (click)="addToCart()"
+            [disabled]="limit === productItem.quantity">
       <mat-icon>add_shopping_cart</mat-icon>
       Add To Cart
     </button>

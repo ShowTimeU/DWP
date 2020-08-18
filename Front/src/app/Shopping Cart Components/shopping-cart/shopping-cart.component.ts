@@ -16,6 +16,8 @@ export class ShoppingCartComponent implements OnInit {
   currentUser: User;
   @Input() cartItems = [];
   @Output() productRemoved = new EventEmitter();
+  @Output() productsRemoved = new EventEmitter();
+  @Output() productAdded = new EventEmitter();
   displayedColumns: string[] = ['name', 'price', 'qty'];
 
   constructor(private msg: MessengerService,
@@ -37,8 +39,20 @@ export class ShoppingCartComponent implements OnInit {
     }
   }
 
+  addProduct(product) {
+    this.cartService.addProductToCart(product, this.currentUser).subscribe(() => {
+      this.loadCartItems()
+    })
+  }
+
   removeProduct(product) {
-    this.cartService.removeProductsFromCart(product, this.currentUser).subscribe(() => {
+    this.cartService.removeProductFromCart(product, this.currentUser).subscribe(() => {
+      this.loadCartItems()
+    })
+  }
+
+  removeProducts(productCartId) {
+    this.cartService.removeProductsFromCart(productCartId).subscribe(() => {
       this.loadCartItems()
     })
   }

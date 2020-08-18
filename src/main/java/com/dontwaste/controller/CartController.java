@@ -33,7 +33,7 @@ public class CartController {
     }
 
     @DeleteMapping(value = "/deleteCartItem")
-    public void deleteCartItem (@RequestParam(name = "userId") Long cartId){
+    public void deleteCartItem (@RequestParam(name = "cartId") Long cartId){
         cartService.deleteCartItem(cartId);
     }
 

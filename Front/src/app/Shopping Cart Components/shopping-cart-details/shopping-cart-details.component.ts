@@ -14,11 +14,10 @@ import {Router} from "@angular/router";
 })
 export class ShoppingCartDetailsComponent implements OnInit {
 
-  cartItems: CartItem[];
+  cartItems: CartItem[] = [];
   userSubscription: Subscription;
   currentUser: User;
   displayedColumns: string[] = ['image', 'description', 'price', 'location', 'quantity', 'cancel'];
-  @Output() productRemoved = new EventEmitter();
 
   constructor(private msg: MessengerService,
               private cartService: CartService,
@@ -40,8 +39,8 @@ export class ShoppingCartDetailsComponent implements OnInit {
     }
   }
 
-  removeProduct(product) {
-    this.cartService.removeProductsFromCart(product, this.currentUser).subscribe(() => {
+  removeProducts(productCartId) {
+    this.cartService.removeProductsFromCart(productCartId).subscribe(() => {
       this.loadCartItems()
     })
   }

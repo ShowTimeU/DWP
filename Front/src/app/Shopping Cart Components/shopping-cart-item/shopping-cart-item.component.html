@@ -9,7 +9,15 @@
   </ng-container>
 
   <ng-container matColumnDef="quantity">
-    <th mat-header-cell *matHeaderCellDef> <b>{{cartItem.quantity}}</b> </th>
+    <th mat-header-cell *matHeaderCellDef>
+      <button mat-stroked-button (click)="minus()"
+              class="dec"
+              [disabled]="cartItem.quantity === 1">-</button>
+      <b>{{cartItem.quantity}}</b>
+      <button mat-stroked-button (click)="plus()"
+              class="inc"
+              [disabled]="cartItem.quantity === cartItem.product.quantity">+</button>
+    </th>
   </ng-container>
 
   <ng-container matColumnDef="cancel" class="cancelBtn">

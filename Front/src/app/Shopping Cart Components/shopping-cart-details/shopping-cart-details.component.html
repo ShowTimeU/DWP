@@ -35,7 +35,7 @@
 
         <ng-container matColumnDef="cancel" class="cancelBtn">
           <th mat-header-cell *matHeaderCellDef>
-            <button style="float: right;" mat-icon-button (click)="removeProduct(item)">
+            <button style="float: right;" mat-icon-button (click)="removeProducts(item.id)">
               <mat-icon>cancel</mat-icon>
             </button>
           </th>

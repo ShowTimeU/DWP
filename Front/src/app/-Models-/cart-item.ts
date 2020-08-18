@@ -4,6 +4,7 @@ import {Institution} from "./institution";
 import {Branch} from "./branch";
 
 export class CartItem {
+  id: string;
   productId: number;
   quantity: number;
   institution: Institution;
@@ -12,11 +13,13 @@ export class CartItem {
   branch: Branch;
 
 
-  constructor(product: Product,
+  constructor(id: string,
+              product: Product,
               productTemplate: ProductTemplate,
               institution: Institution,
               branch: Branch,
               quantity= 1) {
+    this.id = id;
     this.productId = product.id;
     this.quantity = quantity;
     this.institution = institution;

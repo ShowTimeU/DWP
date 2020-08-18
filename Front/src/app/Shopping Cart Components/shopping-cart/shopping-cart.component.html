@@ -21,7 +21,9 @@
 
     <app-shopping-cart-item *ngFor="let item of cartItems"
                             [cartItem]="item"
-                            (productRemoved)="removeProduct($event)">
+                            (productRemoved)="removeProduct($event)"
+                            (productsRemoved)="removeProducts($event)"
+                            (productAdded)="addProduct($event)">
     </app-shopping-cart-item>
   </div>
 
