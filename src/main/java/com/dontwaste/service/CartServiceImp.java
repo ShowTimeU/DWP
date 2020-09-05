@@ -37,6 +37,16 @@ public class CartServiceImp implements CartService{
             throw  new RuntimeException("Unknown user");
         }
 
+        if(product.getQuantity()>0){
+            product.setQuantity(product.getQuantity()-1);
+            productRepository.save(product);
+        }
+        if(product.getQuantity()<=1){
+            product.setQuantity(0);
+            product.setActive(false);
+            productRepository.save(product);
+        }
+
         Cart cart = cartRepository.findByProductAndUser(product, user);
         if(cart == null){
             Cart newCart = Cart.builder()
@@ -68,23 +78,57 @@ public class CartServiceImp implements CartService{
                          .branch(cart.getProduct().getBranch())
                          .build())
         .collect(Collectors.toList());
-
     }
 
     @Override
     public void deleteCartItem(Long cartId) {
+        Cart cartItemToDelete = cartRepository.findById(cartId).orElse(null);
+        if(cartItemToDelete == null){
+            throw new RuntimeException("product not exist in cart");
+        }
+        else{
+            Product product = productRepository.findById(cartItemToDelete.getProduct().getId()).orElse(null);
+            if(product == null){
+                throw new RuntimeException("This product is not exist");
+            }
+            if(product.getQuantity()>0){
+                product.setQuantity(product.getQuantity()+cartItemToDelete.getQuantity());
+                productRepository.save(product);
+            }
+            else{
+                product.setQuantity(cartItemToDelete.getQuantity());
+                product.setActive(true);
+                productRepository.save(product);
+            }
+
+        }
         cartRepository.deleteById(cartId);
+    }
+
+    @Override
+    public void deleteAllCartByUserId(Long userId) {
+        cartRepository.deleteAllCartByUserId(userId);
     }
 
     @Override
     public void deleteProductFromCart(Long productId, Long userId) {
         Cart cartProductToDelete = cartRepository.getByProductIdAndUserId(productId, userId);
+        Product product = productRepository.findById(productId).orElse(null);
         if(cartProductToDelete == null){
             throw new RuntimeException("product not exist in cart");
         }
         if(cartProductToDelete.getQuantity()>1){
             cartProductToDelete.setQuantity(cartProductToDelete.getQuantity()-1);
             cartRepository.save(cartProductToDelete);
+            if(product.getQuantity()>0){
+                product.setQuantity(product.getQuantity()+1);
+                productRepository.save(product);
+            }
+            else{
+                product.setQuantity(1);
+                product.setActive(true);
+                productRepository.save(product);
+            }
         }
         else{
             cartRepository.delete(cartProductToDelete);

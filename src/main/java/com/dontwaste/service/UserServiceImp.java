@@ -45,7 +45,7 @@ public class UserServiceImp implements UserService{
     ProductTemplateRepository productTemplateRepository;
 
     @Override
-    public UserResponse createUser(UserCreateRequest userCreateRequest) throws NoSuchAlgorithmException {
+    public UserResponse createUser(UserCreateRequest userCreateRequest) {
         User user = userConverter.convertToEntity(userCreateRequest);
         userRepository.save(user);
         Role defaultRole = roleRepository.findByIsDefaultTrue();
@@ -91,12 +91,11 @@ public class UserServiceImp implements UserService{
     }
 
     @Override
-    public LoginResponse login(UserLoginRequest userLoginRequest) throws NoSuchAlgorithmException {
-        User user = userRepository.findByEmailAndPassword(
-                userLoginRequest.getEmail(),
-                passwordConverter.getHash(userLoginRequest.getPassword())
+    public LoginResponse login(UserLoginRequest userLoginRequest) {
+        User user = userRepository.findByEmail(
+                userLoginRequest.getEmail()
         );
-        if(user==null){
+        if(user==null || !passwordConverter.comparePasswords(user.getPassword(), userLoginRequest.getPassword())){
             throw new RuntimeException("Incorrect user or password");
         }
 
@@ -111,7 +110,6 @@ public class UserServiceImp implements UserService{
             Branch branch = branchRepository.findByUser(user);
             Institution institution = branch.getInstitution();
             List<ProductTemplate> templates = productTemplateRepository.findAllByInstitution(institution);
-            System.out.println(templates.toString());
             return  LoginResponseForManager.childBuilder()
                     .id(user.getId())
                     .firstName(user.getFirstName())

@@ -13,6 +13,7 @@ public interface ProductService {
     void deleteProduct(Long id);
     List<ProductResponse> getAllProducts();
     List<ProductSearchResponse> searchProduct(ProductSearchRequest productSearchRequest);
+    List<ProductResponse> getAllActiveProducts();
 
 
 

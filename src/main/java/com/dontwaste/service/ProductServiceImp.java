@@ -61,6 +61,16 @@ public class ProductServiceImp implements ProductService  {
     }
 
     @Override
+    public List<ProductResponse> getAllActiveProducts() {
+        List<ProductResponse> products = new ArrayList<>();
+        List<Product> lp = productRepository.findAllByActiveTrue();
+        for(Product product : lp){
+            products.add(productConverter.convertToWeb(product));
+        }
+        return products;
+    }
+
+    @Override
     public List<ProductSearchResponse> searchProduct(ProductSearchRequest productSearchRequest) {
         return productRepository.fullProductSearch(productSearchRequest);
     }

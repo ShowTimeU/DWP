@@ -16,6 +16,7 @@ public class ProductConverter {
                 .startingPrice(productCreationRequest.getStartingPrice())
                 .price(productCreationRequest.getPrice())
                 .quantity(productCreationRequest.getQuantity())
+                .active(true)
                 .branch(branch)
                 .productTemplate(productTemplate)
                 .build();

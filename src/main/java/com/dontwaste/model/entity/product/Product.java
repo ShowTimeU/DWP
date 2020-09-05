@@ -24,6 +24,9 @@ public class Product extends BaseDate {
     @Column(name = "QUANTITY")
     private Integer quantity;
 
+    @Column(name = "ACTIVE")
+    private Boolean active;
+
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "BRANCH_ID", referencedColumnName = "ID")
     private Branch branch;

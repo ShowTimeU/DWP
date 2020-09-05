@@ -17,12 +17,12 @@ public class UserConverter {
     @Autowired
     PasswordConverter passwordConverter;
 
-    public User convertToEntity(UserCreateRequest userCreateRequest) throws NoSuchAlgorithmException {
+    public User convertToEntity(UserCreateRequest userCreateRequest) {
         return User.builder()
                 .firstName(userCreateRequest.getFirstName())
                 .lastName(userCreateRequest.getLastName())
                 .email(userCreateRequest.getEmail())
-                .password(passwordConverter.getHash(userCreateRequest.getPassword()))
+                .password(passwordConverter.getHashedPassword(userCreateRequest.getPassword()))
                 .phone(userCreateRequest.getPhone())
                 .build();
     }

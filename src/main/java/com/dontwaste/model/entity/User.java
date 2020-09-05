@@ -22,9 +22,6 @@ public class User extends BaseDate {
     private String email;
     @Column(name = "PASSWORD", length = 64, nullable = false)
     private String password;
-//    @Column(name = "USERSALT", length = 64, nullable = false)
-//    private String userSalt;
-
     @Column(name = "PHONE", length = 20, nullable = false)
     private String phone;
 }
