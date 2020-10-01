@@ -1,6 +1,8 @@
 package com.dontwaste.service;
 
 import com.dontwaste.converter.ProductConverter;
+import com.dontwaste.exception.BranchNotFoundException;
+import com.dontwaste.exception.TemplateNotFoundException;
 import com.dontwaste.model.entity.ProductTemplate;
 import com.dontwaste.model.entity.Branch;
 import com.dontwaste.model.web.product.ProductCreationRequest;
@@ -34,10 +36,10 @@ public class ProductServiceImp implements ProductService  {
         ProductTemplate productTemplate =
                 productTemplateRepository.findById(productCreationRequest.getProductTemplateId()).orElse(null);
         if(branch == null){
-            throw new RuntimeException("branch is not exist");
+            throw new BranchNotFoundException("branch is not exist");
         }
         if(productTemplate == null){
-            throw new RuntimeException("wrong ProductTemplate");
+            throw new TemplateNotFoundException("wrong ProductTemplate");
         }
         Product product = productConverter.convertToEntity(productCreationRequest, branch, productTemplate);
         productRepository.save(product);

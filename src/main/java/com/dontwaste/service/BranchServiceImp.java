@@ -1,6 +1,8 @@
 package com.dontwaste.service;
 
 import com.dontwaste.converter.BranchConverter;
+import com.dontwaste.exception.InstitutionNotFoundException;
+import com.dontwaste.exception.UserNotFoundException;
 import com.dontwaste.model.entity.Branch;
 import com.dontwaste.model.entity.Institution;
 import com.dontwaste.model.entity.User;
@@ -33,10 +35,10 @@ public class BranchServiceImp implements BranchService {
         User user = userRepository.findById(userId).get();
         Institution institution = institutionRepository.findById(institutionId).get();
         if(user == null){
-            throw new RuntimeException("user is not exist");
+            throw new UserNotFoundException("user is not exist");
         }
         if(institution == null){
-            throw new RuntimeException("institution is not exist");
+            throw new InstitutionNotFoundException("institution is not exist");
         }
 
         Branch branch = branchConverter.convertToEntity(createBranchRequest, user, institution);

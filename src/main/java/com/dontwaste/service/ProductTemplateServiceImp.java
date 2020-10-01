@@ -1,6 +1,8 @@
 package com.dontwaste.service;
 
 import com.dontwaste.converter.ProductTemplateConverter;
+import com.dontwaste.exception.InstitutionNotFoundException;
+import com.dontwaste.exception.KitchenDishTypeNotFoundException;
 import com.dontwaste.model.entity.Institution;
 import com.dontwaste.model.entity.ProductTemplate;
 import com.dontwaste.model.entity.product.productType.DishType;
@@ -40,13 +42,13 @@ public class ProductTemplateServiceImp implements ProductTemplateService {
         KitchenType kitchenType = kitchenTypeRepository.findById(
                 productTemplateCreationRequest.getDishTypeId()).orElse(null);
         if(institution == null){
-            throw new RuntimeException("institution is not exist");
+            throw new InstitutionNotFoundException("institution is not exist");
         }
         if(dishType == null){
-            throw new RuntimeException("dishType is not exist");
+            throw new KitchenDishTypeNotFoundException("dishType is not exist");
         }
         if(kitchenType == null){
-            throw new RuntimeException("kitchenType is not exist");
+            throw new KitchenDishTypeNotFoundException("kitchenType is not exist");
         }
 
         ProductTemplate productTemplate = productTemplateConverter.convertToEntity(
@@ -66,7 +68,7 @@ public class ProductTemplateServiceImp implements ProductTemplateService {
         List<ProductTemplateResponse> templates = new ArrayList<>();
         Institution institution = institutionRepository.findById(institutionId).orElse(null);
         if(institution == null){
-            throw new RuntimeException("Wrong institution");
+            throw new InstitutionNotFoundException("Wrong institution");
         }
         List<ProductTemplate> lt = productTemplateRepository.findAllByInstitution(institution);
         for(ProductTemplate productTemplate : lt){

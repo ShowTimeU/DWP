@@ -2,6 +2,8 @@ package com.dontwaste.service;
 
 import com.dontwaste.converter.user.PasswordConverter;
 import com.dontwaste.converter.user.UserConverter;
+import com.dontwaste.exception.UserLoginException;
+import com.dontwaste.exception.UserNotFoundException;
 import com.dontwaste.model.entity.*;
 import com.dontwaste.model.web.user.UserCreateRequest;
 import com.dontwaste.model.web.user.UserLoginRequest;
@@ -62,12 +64,13 @@ public class UserServiceImp implements UserService{
     public Boolean updateUser(UserUpdateRequest userUpdateRequest) {
         User userToUpdate = userRepository.findById(userUpdateRequest.getId()).get();
         if(userToUpdate == null){
-            throw new RuntimeException("This user is not exist in database");
+            throw new UserNotFoundException("This user is not exist in database");
         }
         userToUpdate.setFirstName(userUpdateRequest.getFirstName());
         userToUpdate.setLastName(userUpdateRequest.getLastName());
         userToUpdate.setPhone(userUpdateRequest.getPhone());
         User trueSave = userRepository.save(userToUpdate);
+
         if(trueSave != null){
             return true;
         }
@@ -96,7 +99,7 @@ public class UserServiceImp implements UserService{
                 userLoginRequest.getEmail()
         );
         if(user==null || !passwordConverter.comparePasswords(user.getPassword(), userLoginRequest.getPassword())){
-            throw new RuntimeException("Incorrect user or password");
+            throw new UserLoginException("Incorrect user or password");
         }
 
         Session userSession = Session.builder()

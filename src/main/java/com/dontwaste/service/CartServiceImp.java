@@ -1,5 +1,7 @@
 package com.dontwaste.service;
 
+import com.dontwaste.exception.ProductNotFoundException;
+import com.dontwaste.exception.UserNotFoundException;
 import com.dontwaste.model.entity.Cart;
 import com.dontwaste.model.entity.product.Product;
 import com.dontwaste.model.entity.User;
@@ -31,10 +33,10 @@ public class CartServiceImp implements CartService{
         Product product = productRepository.findById(productToCartRequest.getProductId()).get();
         User user = userRepository.findById(productToCartRequest.getUserId()).get();
         if(product == null){
-            throw  new RuntimeException("Unknown product");
+            throw  new ProductNotFoundException("Unknown product");
         }
         if(user == null){
-            throw  new RuntimeException("Unknown user");
+            throw  new UserNotFoundException("Unknown user");
         }
 
         if(product.getQuantity()>0){
@@ -65,7 +67,7 @@ public class CartServiceImp implements CartService{
     public List<ProductsInCartResponce> getAllProductsInCart(Long userId) {
         User user = userRepository.findById(userId).get();
         if(user == null){
-            throw  new RuntimeException("Unknown user");
+            throw  new UserNotFoundException("Unknown user");
         }
         return cartRepository.findAllByUser(user).stream()
                  .map(cart -> new ProductsInCartResponce().builder()
@@ -84,12 +86,12 @@ public class CartServiceImp implements CartService{
     public void deleteCartItem(Long cartId) {
         Cart cartItemToDelete = cartRepository.findById(cartId).orElse(null);
         if(cartItemToDelete == null){
-            throw new RuntimeException("product not exist in cart");
+            throw new ProductNotFoundException("product not exist in cart");
         }
         else{
             Product product = productRepository.findById(cartItemToDelete.getProduct().getId()).orElse(null);
             if(product == null){
-                throw new RuntimeException("This product is not exist");
+                throw new ProductNotFoundException("This product is not exist in cart");
             }
             if(product.getQuantity()>0){
                 product.setQuantity(product.getQuantity()+cartItemToDelete.getQuantity());
@@ -115,7 +117,7 @@ public class CartServiceImp implements CartService{
         Cart cartProductToDelete = cartRepository.getByProductIdAndUserId(productId, userId);
         Product product = productRepository.findById(productId).orElse(null);
         if(cartProductToDelete == null){
-            throw new RuntimeException("product not exist in cart");
+            throw new ProductNotFoundException("product not exist in cart");
         }
         if(cartProductToDelete.getQuantity()>1){
             cartProductToDelete.setQuantity(cartProductToDelete.getQuantity()-1);
